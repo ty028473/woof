@@ -1,0 +1,50 @@
+// 變數覆蓋需要在導入Bootstrap的Sass檔案之前
+// 參考Bootstrap的 _variables.scss
+$primary: #087bdc;
+$secondary: #fac42e;
+$success: #6ba456;
+$info: #51535b;
+$danger: #d34f4f;
+
+// 導入bootstrap所有的樣式與預設變數
+@import '~bootstrap/scss/bootstrap.scss';
+
+html {
+  font-size: 12px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.background-color {
+  background-color: #f4f4f5;
+}
+.background-pop {
+  background-color: rgba(225, 225, 225, 4);
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
+h2 {
+  font-size: 32px;
+}
+h3 {
+  font-size: 26px;
+}
+h4 {
+  font-size: 24px;
+}
+h5 {
+  font-size: 20px;
+}
+h6 {
+  font-size: 16px;
+}
+p {
+  font-size: 18px;
+}

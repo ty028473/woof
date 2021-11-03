@@ -8,7 +8,7 @@ import Home from './pages/home/Home'
 import Login from './pages/login/Login'
 import Signup from './pages/login/Signup'
 import About from './pages/about/About'
-import Map from './pages/maplist/Map'
+import Map2 from './pages/maplist/Map2'
 import ProductCheck from './pages/cart/ProductCheck'
 import ProductList from './pages/cart/ProductList'
 import Joinus from './pages/joinus/Joinus'
@@ -35,8 +35,8 @@ function App() {
         <Route path="/about" >
           <About />
         </Route>
-        <Route path="/map" >
-          <Map />
+        <Route path="/map2" >
+          <Map2 />
         </Route>
         <Route path="/productCheck" >
           <ProductCheck/>
