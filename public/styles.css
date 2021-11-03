@@ -1,0 +1,123 @@
+.App {
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #252525;
+  text-align: center;
+}
+
+/* Scrollbar  */
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  background-color: #dcecee;
+}
+::-webkit-scrollbar-thumb {
+  background: #69a1ac;
+  border-radius: 10px;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  padding: 48px 0;
+  position: relative;
+  z-index: 1;
+}
+.container {
+  width: 100%;
+  max-width: 75%;
+  margin: 0 auto;
+  padding: 0 25px;
+}
+.navbar .content {
+  display: flex;
+  justify-content: space-between;
+}
+.navbar .content .navigation {
+  display: flex;
+  align-items: center;
+}
+.navbar .content .navigation .nav__link--active {
+  color: #69a1ac;
+  text-decoration: underline;
+}
+.navbar .content .navigation .nav__link {
+  font-size: 16px;
+  margin-left: 32px;
+  letter-spacing: 0.21px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #252525;
+}
+
+.navbar .content .video_call_section {
+  display: flex;
+  align-items: center;
+}
+/* CustomButton */
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding: 15px 32px;
+  color: white;
+  margin-right: 30px;
+  border-radius: 35px;
+  background: #69a1ac;
+  height: 12px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Avatar */
+.profile-image {
+  vertical-align: middle;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 3px solid #69a1ac;
+}
+/* main part */
+main {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  max-width: 75%;
+  margin: 0 auto;
+  padding: 0 25px;
+  margin-bottom: 100px;
+}
+
+/* Calendar */
+.calendar {
+  flex: 4;
+  padding: 30px;
+}
+
+/* Info Board */
+.info_board {
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  background: #ecedf8;
+  border-radius: 25px;
+  text-align: left;
+  padding: 40px;
+}
+.info_board p {
+  font-weight: bold;
+}
+.info_board img {
+  width: 100%;
+  border: 2px solid rgb(191, 195, 228);
+}
+.info_board hr {
+  border-color: rgba(191, 195, 228, 0.2);
+}
+.info_board .flex_container_upper {
+  align-items: flex-start;
+}
+.info_board .flex_container_lower {
+  align-items: flex-end;
+}
