@@ -4,21 +4,34 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom'
+
 import Home from './pages/home/Home'
+import NotFoundPage from './pages/NotFoundPage'
 import Login from './pages/login/Login'
 import Signup from './pages/login/Signup'
 import About from './pages/about/About'
+import Joinus from './pages/joinus/Joinus'
 import Map2 from './pages/maplist/Map2'
+
+// 購物車
 import ProductCheck from './pages/cart/ProductCheck'
 import ProductList from './pages/cart/ProductList'
-import Joinus from './pages/joinus/Joinus'
-import Collection from './pages/member/Collection'
+
+// 會員
 import Member from './pages/member/Member'
 import Password from './pages/member/Password'
+import Pets from './pages/member/Pets'
+import Collection from './pages/member/Collection'
 import Record from './pages/member/Record'
+
+//保母會員
 import Album from './pages/petSitter/Album'
 import Schedule from './pages/petSitter/Schedule'
+//預約系統
 import Reserve from './pages/reserve/Reserve'
+
+import PetSitter from './pages/petSitter/PetSitter'
+import PetSitterRecord from './pages/petSitter/PetSitterRecord'
 
 function App() {
   return (
@@ -27,6 +40,7 @@ function App() {
         <Route path="/" exact>
           <Home />
         </Route>
+
         <Route path="/login">
           <Login />
         </Route>
@@ -39,12 +53,18 @@ function App() {
         <Route path="/map2">
           <Map2 />
         </Route>
-        <Route path="/Reserve">
+
+        <Route path="/map">
           <Reserve />
         </Route>
         <Route path="/productCheck">
           <ProductCheck />
         </Route>
+
+        <Route path="/productCheck">
+          <ProductCheck />
+        </Route>
+
         <Route path="/productList">
           <ProductList />
         </Route>
@@ -60,14 +80,35 @@ function App() {
         <Route path="/password">
           <Password />
         </Route>
+
         <Route path="/record">
           <Record />
         </Route>
+
+        <Route path="/pets">
+          <Pets />
+        </Route>
+        <Route path="/record">
+          <Record />
+        </Route>
+        <Route path="/petSitter">
+          <PetSitter />
+        </Route>
+        <Route path="/petSitterRecord">
+          <PetSitterRecord />
+        </Route>
+
         <Route path="/album">
           <Album />
         </Route>
         <Route path="/schedule">
           <Schedule />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+        <Route path="*">
+          <NotFoundPage />
         </Route>
       </Switch>
     </Router>
