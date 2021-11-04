@@ -18,6 +18,7 @@ import Password from './pages/member/Password'
 import Record from './pages/member/Record'
 import Album from './pages/petSitter/Album'
 import Schedule from './pages/petSitter/Schedule'
+import Reserve from './pages/reserve/Reserve'
 
 function App() {
   return (
@@ -26,46 +27,48 @@ function App() {
         <Route path="/" exact>
           <Home />
         </Route>
-        <Route path="/login" >
+        <Route path="/login">
           <Login />
         </Route>
-        <Route path="/signup" >
+        <Route path="/signup">
           <Signup />
         </Route>
-        <Route path="/about" >
+        <Route path="/about">
           <About />
         </Route>
-        <Route path="/map2" >
+        <Route path="/map2">
           <Map2 />
         </Route>
-        <Route path="/productCheck" >
-          <ProductCheck/>
+        <Route path="/Reserve">
+          <Reserve />
         </Route>
-        <Route path="/productList" >
+        <Route path="/productCheck">
+          <ProductCheck />
+        </Route>
+        <Route path="/productList">
           <ProductList />
         </Route>
-        <Route path="/joinus" >
+        <Route path="/joinus">
           <Joinus />
         </Route>
-        <Route path="/collection" >
+        <Route path="/collection">
           <Collection />
         </Route>
-        <Route path="/member" >
+        <Route path="/member">
           <Member />
         </Route>
-        <Route path="/password" >
+        <Route path="/password">
           <Password />
         </Route>
-        <Route path="/record" >
+        <Route path="/record">
           <Record />
         </Route>
-        <Route path="/album" >
+        <Route path="/album">
           <Album />
         </Route>
-        <Route path="/schedule" >
-          <Schedule/>
+        <Route path="/schedule">
+          <Schedule />
         </Route>
-
       </Switch>
     </Router>
   )
