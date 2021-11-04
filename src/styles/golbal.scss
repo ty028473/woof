@@ -5,9 +5,14 @@ $secondary: #fac42e;
 $success: #6ba456;
 $info: #51535b;
 $danger: #d34f4f;
-
+$font-family: 'Noto Sans TC', sans-serif;
+$background: #f4f4f5; //背景色
+$button-parimary-font-color: #ffffff; //一般按鈕 底藍色字白色
+$button-secondary-font-color: #51535b; //聊聊按鈕 底黃色字黑色 bootstrap預設#212529
+$button-radious: 50px;
 // 導入bootstrap所有的樣式與預設變數
 @import '~bootstrap/scss/bootstrap.scss';
+
 
 html {
   font-size: 12px;
@@ -48,3 +53,70 @@ h6 {
 p {
   font-size: 18px;
 }
+.btn-woof-parimary {
+    border-radius: $button-radious;
+    color: $button-parimary-font-color;
+    border-color: $primary;
+    background-color: $primary;
+  }
+  .btn-woof-secondary {
+    border-radius: $button-radious;
+    color: $button-secondary-font-color;
+    border-color: $secondary;
+    background-color: $secondary;
+  }
+  .btn-lg-woof-parimary {
+    border-radius: $button-radious;
+    color: $button-parimary-font-color;
+    border-color: $primary;
+    background-color: $primary;
+    padding: 0.5 rem 1 rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+  .btn-lg-woof-secondary {
+    border-radius: $button-radious;
+    color: $button-secondary-font-color;
+    border-color: $secondary;
+    background-color: $secondary;
+    padding: 0.5 rem 1 rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+  .btn-woof-secondary:hover,
+  .btn-lg-woof-secondary:hover {
+    color: $button-secondary-font-color;
+    border-color: #efb106;
+    background-color: #f9b909;
+  }
+  
+  .btn-woof-secondary:active,
+  .btn-lg-woof-secondary:active {
+    color: #212529;
+    background-color: #efb106;
+    border-color: #e3a805;
+  }
+  .btn-woof-secondary:focus,
+  .btn-lg-woof-secondary:focus {
+    color: #212529;
+    background-color: #f9b909;
+    border-color: #efb106;
+    box-shadow: 0 0 0 0.2rem rgb(217 172 45 / 50%) !important;
+  }
+  .btn-woof-secondary:active,
+  .btn-lg-woof-secondary:active {
+    color: #212529 !important;
+    background-color: #efb106 !important;
+    border-color: #e3a805 !important;
+  }
+  .btn-woof-parimary:hover,
+  .btn-lg-woof-parimary:hover {
+    color: #fff;
+    border-color: #065fab;
+    background-color: #0766b7;
+  }
+  
+  //陰影
+  .shadow {
+    box-shadow: 4px 4px 20px #000 5%;
+  }
