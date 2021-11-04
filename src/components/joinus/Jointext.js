@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../styles/about.scss'
 
-function AboutText(props) {
+function Jointext(props) {
   return (
     <>
       <div className="container ">
@@ -70,4 +70,4 @@ function AboutText(props) {
   )
 }
 
-export default AboutText
+export default Jointext
