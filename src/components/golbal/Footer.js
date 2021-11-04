@@ -2,6 +2,7 @@ import React from 'react'
 import { AiFillInstagram } from 'react-icons/ai'
 import { MdEmail, MdFacebook } from 'react-icons/md'
 import '../../styles/golbal.scss'
+import '../../styles/navbar-footer.scss'
 
 function Footer(props) {
   return (
