@@ -1,31 +1,72 @@
 // 變數覆蓋需要在導入Bootstrap的Sass檔案之前
 // 參考Bootstrap的 _variables.scss
+
+// 主要5色
 $primary: #087bdc;
 $secondary: #fac42e;
 $success: #6ba456;
 $info: #51535b;
 $danger: #d34f4f;
 
+// 主要背景色
+$background-color: #f4f4f5;
+
+// 主要字體色
+$font-color: #51535b;
+
+// 按鈕
+$btn-font-color: #fff; //按鈕白字(聊聊按鈕就不用套這個)
+$button-radious: 50px;
+
 // 導入bootstrap所有的樣式與預設變數
 @import '~bootstrap/scss/bootstrap.scss';
-
-html {
-  font-size: 12px;
-}
 
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  //使用font-wight可調整粗細
+  // 300: light
+  // 400: regular
+  // 500: medium
+  // 700: bold
+  font-weight: 400;
+  font-family: 'Noto Sans TC', sans-serif;
+  color: $font-color;
+  background-color: $background-color;
 }
 
-.background-color {
-  background-color: #f4f4f5;
-}
+// 彈跳視窗背景
 .background-pop {
   background-color: rgba(225, 225, 225, 4);
+  filter: blur(10px);
 }
 
+// 按鈕樣式
+.btn-woof {
+  border-radius: $button-radious;
+  color: $btn-font-color !important;
+  &:hover,
+  &:active,
+  &:active {
+    border-radius: $button-radious;
+    color: $btn-font-color !important;
+  }
+}
+.btn-woof-Chat {
+  border-radius: $button-radious;
+}
+// 陰影
+.shadow {
+  box-shadow: 4px 4px 20px #000 5%;
+}
+
+//icon大小
+.icon-btn {
+  border: none;
+  font-size: 20px;
+}
+
+// 文字相關
 h1 {
   font-size: 40px;
   font-weight: bold;
