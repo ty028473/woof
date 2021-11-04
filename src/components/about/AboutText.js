@@ -1,6 +1,5 @@
 import React from 'react'
 import '../../styles/about.scss'
-import { Form, Button } from 'react-bootstrap'
 
 function AboutText(props) {
   return (
@@ -11,59 +10,58 @@ function AboutText(props) {
           <div className="aboutright">
             <div className="formsub">
               <h1 className="aboutmb24">成為保母</h1>
-              <Form>
-                <Form.Group
-                  className=""
-                  controlId="exampleForm.SelectCustomSizeSm"
-                >
-                  <Form.Control as="select" size="lg" custom>
-                    <option>台北市信義區</option>
-                    <option>台北市中山區</option>
-                    <option>台北市中正區</option>
-                    <option>台北市北投區</option>
-                    <option>台北市文山區</option>
-                  </Form.Control>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Control type="text" placeholder="地址" size="lg" />
-                  <Form.Text className="text-muted"></Form.Text>
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Control
+              <form>
+                <select class="form-control form-control-lg mb-2">
+                  <option>台北市信義區</option>
+                  <option>台北市中山區</option>
+                  <option>台北市中正區</option>
+                  <option>台北市北投區</option>
+                  <option>台北市文山區</option>
+                </select>
+                <div class="form-group mb-4 ">
+                  <input
                     type="text"
-                    placeholder="身分證字號"
-                    size="lg"
+                    class="form-control form-control-lg"
+                    id="formGroupExampleInput"
+                    placeholder="地址"
                   />
-                </Form.Group>
+                </div>
+                <div class="form-group mb-3">
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    id="formGroupExampleInput"
+                    placeholder="身分證字號"
+                  />
+                </div>
                 <div className=" mb-4 d-flex  align-items-center">
-                  <Button
-                    className="btn-lg-woof-secondary aboutbtnuodata   "
-                    variant="primary"
-                    type="submit"
+                  <button
+                    type="button"
+                    className=" btn btn-secondary btn-woof aboutbtnuodata"
                   >
                     身分證正面上傳
-                  </Button>
-                  <Form.Label className="fontsize">還沒上傳檔案</Form.Label>
+                  </button>
+                  <label className="fontsize">還沒上傳檔案</label>
                 </div>
-
-                <Form.Group
-                  className="mt-3 mb-3   "
-                  controlId="formBasicCheckbox"
-                >
-                  <Form.Check
-                    className="checkwh"
+                <div class="form-group form-check checkwh">
+                  <input
                     type="checkbox"
-                    label="我遵守網站守則"
+                    class="form-check-input"
+                    id="exampleCheck1"
                   />
-                </Form.Group>
-
-                <div className=" mt-4 d-flex  align-items-center">
-                  <Button className="aboutbtn" variant="primary" type="submit">
-                    送出
-                  </Button>
+                  <label class="form-check-label" for="exampleCheck1">
+                    我遵守網站守則
+                  </label>
                 </div>
-              </Form>
+                <div className=" mt-4 d-flex  align-items-center">
+                  <button
+                    type="button"
+                    className=" btn btn-primary btn-woof aboutbtn"
+                  >
+                    送出
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
