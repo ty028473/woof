@@ -2,6 +2,7 @@ import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import { BsFillCartFill } from 'react-icons/bs'
 import '../../styles/golbal.scss'
+import '../../styles/navbar-footer.scss'
 
 function NavBar(props) {
   return (
