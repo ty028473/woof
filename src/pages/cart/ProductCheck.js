@@ -8,7 +8,4 @@ function ProductCheck(props) {
     )
 }
 
-
-
 export default ProductCheck
-
