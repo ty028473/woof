@@ -32,6 +32,7 @@ import Reserve from './pages/reserve/Reserve'
 
 import PetSitter from './pages/petSitter/PetSitter'
 import PetSitterRecord from './pages/petSitter/PetSitterRecord'
+import Chatroom from './pages/chatroom/Chatroom'
 
 function App() {
   return (
@@ -96,6 +97,9 @@ function App() {
         </Route>
         <Route path="/petSitterRecord">
           <PetSitterRecord />
+        </Route>
+        <Route path="/chatroom">
+          <Chatroom />
         </Route>
 
         <Route path="/album">
