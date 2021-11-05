@@ -57,11 +57,6 @@ function App() {
         <Route path="/productCheck">
           <ProductCheck />
         </Route>
-
-        <Route path="/productCheck">
-          <ProductCheck />
-        </Route>
-
         <Route path="/productList">
           <ProductList />
         </Route>
