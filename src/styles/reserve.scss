@@ -9,9 +9,6 @@
 img {
   object-fit: cover;
 }
-.App {
-  font-family: 'Ubuntu', sans-serif;
-}
 
 .center-element {
   display: flex;
@@ -40,7 +37,7 @@ img {
   z-index: 1000;
   padding: 5%;
   font-size: 54px;
-  color: white;
+  color: #087bdc;
 }
 
 .header-filtros {
@@ -98,34 +95,33 @@ img {
   letter-spacing: 1px;
 }
 
-.hotel-container {
+.sitter-container {
   flex-wrap: wrap;
   padding: 1%;
 }
 
-.hotel-card {
+.sitter-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid lightgrey;
-  height: 650px;
   width: 340px;
   border-radius: 25px;
   margin: 10px;
   box-shadow: 2px 2px 8px 2px rgba(155, 155, 155, 0.5);
 }
 
-.hotel-card h2 {
+.sitter-card h2 {
   height: 3%;
 }
 
-.hotel-img {
+.sitter-img {
   border-radius: 25px 25px 0px 0px;
   width: 100%;
   height: 250px;
 }
 
-.hotel-description {
+.sitter-description {
   font-size: 14px;
   font-weight: lighter;
   text-align: justify;
@@ -161,11 +157,11 @@ img {
   padding-left: 10px;
 }
 
-.hotel-rooms-price {
+.sitter-rooms-price {
   display: inline-flex;
 }
 
-.hotel-price {
+.sitter-price {
   background: #209cee;
   margin-left: 4%;
   width: 30%;

@@ -9,13 +9,14 @@ export default function Filters(props) {
     handleCountry,
     date,
     handleDate,
-    time,
-    handleTimefrom,
     price,
     handlePrice,
     distance,
     handleDistance,
-    handleClear,
+    from,
+    handleDateFrom,
+    to,
+    handleDateTo,
   } = props
 
   const todayDate = new Date()
@@ -24,10 +25,7 @@ export default function Filters(props) {
   return (
     <div className="filter-container">
       <div className="filter-select">
-        <label>
-          交易地區
-          <button className="icon-btn" onClick={handleClear}></button>
-        </label>
+        <label>交易地區:</label>
 
         <select
           className="input-filters"
@@ -62,13 +60,25 @@ export default function Filters(props) {
       </div>
 
       <div className="filter-select">
-        <label>預約時間:</label>
+        <label>從:</label>
         <input
           className="input-filters"
           type="time"
-          value={time}
-          onChange={handleTimefrom}
+          value={from}
+          onChange={handleDateFrom}
           autoComplete="off"
+          min={today}
+        />
+      </div>
+      <div className="filter-select">
+        <label>至:</label>
+        <input
+          className="input-filters"
+          type="time"
+          value={to}
+          onChange={handleDateTo}
+          autoComplete="off"
+          min={from}
         />
       </div>
 
@@ -83,7 +93,7 @@ export default function Filters(props) {
         </select>
       </div>
       <div className="filter-select">
-        <label>距離:</label>
+        <label>篩選:</label>
         <select
           className="input-filters"
           onChange={handleDistance}
@@ -94,6 +104,7 @@ export default function Filters(props) {
           <option value="熱門">熱門</option>
         </select>
       </div>
+
       <div className="filter-select">
         <label className="text-hidden">.</label>
         <FontAwesomeIcon icon={faMapMarker} />

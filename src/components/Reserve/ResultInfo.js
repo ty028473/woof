@@ -1,5 +1,4 @@
 import React from 'react'
-import dayjs from 'dayjs'
 
 export default function ResultInfo(props) {
   const { country, price } = props
@@ -26,8 +25,13 @@ export default function ResultInfo(props) {
   return (
     <div className="results-container">
       <h5 className="results-text">
+        {/* <br />
         {countryInfo()}
+        <br />
         {priceInfo()}
+        <br />
+
+        <br /> */}
       </h5>
     </div>
   )

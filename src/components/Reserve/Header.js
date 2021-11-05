@@ -23,7 +23,7 @@ export default function Header() {
         <div>
           <img
             className="header-img"
-            src="../resources/AdobeStock_62255314 (1).jpeg"
+            src="../resources/AdobeStock_173443769 (1).jpeg"
             alt="pic2"
           />
         </div>
@@ -35,7 +35,7 @@ export default function Header() {
           />
         </div>
       </Carousel>
-      {/* <h1 className="header-title ">預約代遛</h1> */}
+      <h1 className="header-title ">預約代遛</h1>
     </div>
   )
 }
