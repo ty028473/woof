@@ -1,0 +1,25 @@
+$block-radious: 20px;
+
+.height {
+  height: 100vh;
+}
+
+.block-item-title {
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+  border-radius: $block-radious;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 5%);
+}
+
+.block-item {
+  width: 100%;
+  height: 220px;
+  background-color: #fff;
+  border-radius: $block-radious;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 5%);
+}
+
+// h4 {
+//   margin-bottom: -8px;
+// }
