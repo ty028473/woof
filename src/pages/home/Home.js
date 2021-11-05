@@ -32,8 +32,8 @@ function Home(props) {
           <div className="col-4"></div>
           <img
             className="intro-1-img"
-            src="../../../public/images/home/intro-1.png"
-            alt="intro-1"
+            src="/images/home/intro-1.png"
+            alt="Intros"
           />
         </div>
 
