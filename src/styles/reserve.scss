@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  object-fit: cover;
+}
+
+.center-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color-white {
+  color: whitesmoke;
+}
+
+.color-grey {
+  color: rgba(170, 170, 170, 0.85);
+}
+
+.header-img {
+  height: 300px;
+}
+
+.header-container {
+  height: 300px;
+}
+
+.header-title {
+  position: absolute;
+  z-index: 1000;
+  padding: 5%;
+  font-size: 54px;
+  color: #087bdc;
+}
+
+.header-filtros {
+  position: absolute;
+  top: 4%;
+  z-index: 1000;
+  padding: 5%;
+  color: white;
+}
+
+.header-carousel {
+  height: 0;
+}
+
+.carousel .thumbs-wrapper {
+  display: none;
+}
+
+.filter-container {
+  border: 20px solid #8e8e8e;
+  background: #e3e3e3;
+  padding: 1%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-hidden {
+  visibility: hidden;
+}
+
+.filter-select {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.input-filters {
+  display: flex;
+  flex-direction: row;
+
+  padding: 10px;
+
+  height: 45px;
+}
+
+.results-container {
+  display: flex;
+  padding: 1% 2%;
+  box-shadow: inset 2px 2px 10px 2px #ccc;
+}
+
+.results-text {
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.sitter-container {
+  flex-wrap: wrap;
+  padding: 1%;
+}
+
+.sitter-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid lightgrey;
+  width: 340px;
+  border-radius: 25px;
+  margin: 10px;
+  box-shadow: 2px 2px 8px 2px rgba(155, 155, 155, 0.5);
+}
+
+.sitter-card h2 {
+  height: 3%;
+}
+
+.sitter-img {
+  border-radius: 25px 25px 0px 0px;
+  width: 100%;
+  height: 250px;
+}
+
+.sitter-description {
+  font-size: 14px;
+  font-weight: lighter;
+  text-align: justify;
+  padding: 0 5%;
+  height: 20%;
+}
+
+.btn-book {
+  background: #01d1b1;
+  color: white;
+  border: none;
+  padding: 4%;
+  font-weight: bold;
+  border-radius: 20px;
+  width: 50%;
+  margin-bottom: 5%;
+  cursor: pointer;
+}
+
+.btn-book:hover {
+  transform: scale(1.2, 1.2);
+  transition: transform 0.5s ease-in-out;
+}
+
+.filters {
+  background: #eeeeee;
+  padding: 2% 5%;
+  display: flex;
+  align-items: center;
+}
+
+.icon-filter {
+  padding-left: 10px;
+}
+
+.sitter-rooms-price {
+  display: inline-flex;
+}
+
+.sitter-price {
+  background: #209cee;
+  margin-left: 4%;
+  width: 30%;
+}
+
+.text-no-results {
+  padding: 5% 0;
+  border: 1px solid lightgrey;
+  border-radius: 25px;
+  box-shadow: 2px 2px 8px 2px rgba(155, 155, 155, 0.5);
+  text-align: center;
+  width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+  .filter-container {
+    flex-direction: column;
+  }
+  .filter-select {
+    width: 60%;
+  }
+  .input-filters {
+    width: 100%;
+  }
+}
+.icon-btn {
+  border: none;
+  font-size: 20px;
+  background-color: transparent;
+}

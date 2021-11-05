@@ -27,6 +27,9 @@ import Record from './pages/member/Record'
 //保母會員
 import Album from './pages/petSitter/Album'
 import Schedule from './pages/petSitter/Schedule'
+//預約系統
+import Reserve from './pages/reserve/Reserve'
+
 import PetSitter from './pages/petSitter/PetSitter'
 import PetSitterRecord from './pages/petSitter/PetSitterRecord'
 
@@ -34,6 +37,10 @@ function App() {
   return (
     <Router>
       <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+
         <Route path="/login">
           <Login />
         </Route>
@@ -46,9 +53,18 @@ function App() {
         <Route path="/map2">
           <Map2 />
         </Route>
+
+        <Route path="/map">
+          <Reserve />
+        </Route>
         <Route path="/productCheck">
           <ProductCheck />
         </Route>
+
+        <Route path="/productCheck">
+          <ProductCheck />
+        </Route>
+
         <Route path="/productList">
           <ProductList />
         </Route>
@@ -64,6 +80,11 @@ function App() {
         <Route path="/password">
           <Password />
         </Route>
+
+        <Route path="/record">
+          <Record />
+        </Route>
+
         <Route path="/pets">
           <Pets />
         </Route>
@@ -76,6 +97,7 @@ function App() {
         <Route path="/petSitterRecord">
           <PetSitterRecord />
         </Route>
+
         <Route path="/album">
           <Album />
         </Route>
