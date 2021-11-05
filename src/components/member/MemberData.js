@@ -89,7 +89,7 @@ function MemberData(props) {
         {/* 內容區塊 2 */}
         <section className="m-5">
           <div className={`row text-center p-5 ${styles.record_block}`}>
-            <div className="col divider">
+            <div className={`col ${styles.divider}`}>
               <h5>預約次數</h5>
               <h5>5</h5>
             </div>
@@ -97,7 +97,7 @@ function MemberData(props) {
               <h5>累積紅利</h5>
               <h5>30</h5>
             </div>
-            <div className={`col ${styles.divider}`}>
+            <div className="col">
               <h5>已折抵紅利</h5>
               <h5>60</h5>
             </div>
