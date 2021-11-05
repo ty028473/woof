@@ -3,15 +3,14 @@ import '../../styles/golbal.scss'
 import '../../styles/home.scss'
 import NavBar from '../../components/golbal/NavBar'
 import Footer from '../../components/golbal/Footer'
-import { Button } from 'react-bootstrap'
 
 function Home(props) {
   return (
     <>
       <NavBar />
-      <div className="container">
+      <div className="container relative">
         {/* 立即預約 */}
-        <div className="row intro-1 intro-height relative">
+        <div className="row intro-1 intro-height">
           <div className="col-7 intro-title-1">
             <h1>
               總是擔心毛小孩沒人照顧嗎？
@@ -32,14 +31,14 @@ function Home(props) {
           </div>
           <div className="col-4"></div>
           <img
-            className="absolute intro-1-img"
-            src="../../../images/home/intro-1.png"
+            className="intro-1-img"
+            src="../../../public/images/home/intro-1.png"
             alt="intro-1"
           />
         </div>
 
         {/* 馬上找保母 */}
-        <div className="row intro-height relative">
+        <div className="row intro-height">
           <div className="col-5 ">
             <h2>馬上找附近的保母</h2>
             <select
@@ -82,13 +81,13 @@ function Home(props) {
             </div>
           </div>
           <img
-            className="absolute city-bg-img"
-            src="../../../images/home/city-bg.png"
+            className="city-bg-img"
+            src="../../../public/images/home/city-bg.png"
             alt="city-bg"
           />
         </div>
         {/* 立即預約 */}
-        <div className="row intro-height relative">
+        <div className="row intro-height ">
           <div className="col-12 text-center">
             <h2>保母評價</h2>
           </div>

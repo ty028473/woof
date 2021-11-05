@@ -2,7 +2,7 @@ $primary: #087bdc;
 $text-color: #163d61;
 
 .intro-height {
-  height: 100vh;
+  height: 1000px;
 }
 
 .intro-1 {
@@ -45,19 +45,19 @@ $text-color: #163d61;
   position: absolute;
 }
 
-// background imagea
+// background images
 
 .intro-1-img {
-  width: 80%;
+  max-width: 80%;
   position: absolute;
   right: 0px;
   top: 80px;
   z-index: -1;
 }
 .city-bg-img {
-  width: 90%;
+  max-width: 80%;
   position: absolute;
   left: 0px;
-  top: calc(100vh + 80px);
+  top: calc(1000px * 1);
   z-index: -1;
 }
