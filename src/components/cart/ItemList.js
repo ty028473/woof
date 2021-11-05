@@ -1,4 +1,7 @@
 import React from 'react'
+import '../../styles/carts.scss'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function ItemList(props) {
   return (
@@ -26,7 +29,9 @@ function ItemList(props) {
             08:00 - 12:00
           </td>
           <td>$500</td>
-          <td>X</td>
+          <td>
+            <FontAwesomeIcon icon={faTrash} size="lg" />
+          </td>
         </tr>
       </table>
     </>

@@ -42,9 +42,31 @@ function ProductList(props) {
           </button>
         </section> */}
         <ItemList />
+        <div className="check-order cart-shadow">
+          <div class="d-flex bd-highlight ">
+            <div class="py-4 px-5 flex-grow-1 bd-highlight"></div>
+            <div class="py-4 px-5 bd-highlight">
+              <input type="checkbox" className="mr-3" />
+              紅利點數不足
+            </div>
+            <div class="py-4 px-5 bd-highlight col-2">$0</div>
+          </div>
+
+          <hr />
+          <div class="d-flex bd-highlight my-auto">
+            <div class="py-4 px-5 flex-grow-1 bd-highlight"></div>
+            <div class="py-4 px-5 bd-highlight ">總金額 (1個商品):$500</div>
+            <div class="py-4 px-5 bd-highlight col-2">
+              <button type="button" className="btn btn-primary btn-woof">
+                下訂單
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <Footer />
+      <div className="footer-long"></div>
     </>
   )
 }

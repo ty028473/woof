@@ -40,7 +40,7 @@ function Footer(props) {
                 />
                 <div className="input-group-append">
                   <button
-                    className="btn btn-secondary btn-woof"
+                    className="btn btn-secondary btn-woof down"
                     type="button"
                     id="button-addon2"
                   >
