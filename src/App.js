@@ -54,18 +54,12 @@ function App() {
         <Route path="/map2">
           <Map2 />
         </Route>
-
         <Route path="/map">
           <Reserve />
         </Route>
         <Route path="/productCheck">
           <ProductCheck />
         </Route>
-
-        <Route path="/productCheck">
-          <ProductCheck />
-        </Route>
-
         <Route path="/productList">
           <ProductList />
         </Route>
