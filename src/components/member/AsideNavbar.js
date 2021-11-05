@@ -24,16 +24,16 @@ function AsideNavbar(props) {
       <div className="mt-3">
         <ul className={`${styles.list_styled} ${styles.member_nav}`}>
           <li>
-            <Link to="/Member">會員資料</Link>
+            <Link to="/member">會員資料</Link>
           </li>
           <li>
-            <Link to="/Password">忘記密碼</Link>
+            <Link to="/password">忘記密碼</Link>
           </li>
           <li>
-            <Link to="/Pets">寵物資料</Link>
+            <Link to="/member/pets">寵物資料</Link>
           </li>
           <li>
-            <Link to="/Record">訂單紀錄</Link>
+            <Link to="/record">訂單紀錄</Link>
           </li>
           <li className="p-0">
             <Link to="/Collection">保母收藏</Link>
