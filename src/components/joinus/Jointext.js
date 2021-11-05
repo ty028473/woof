@@ -9,7 +9,7 @@ function Jointext(props) {
           <div className="aboutleft"></div>
           <div className="aboutright">
             <div className="formsub">
-              <h1 className="aboutmb24">成為保母</h1>
+              <h3 className="aboutmb24">成為保母</h3>
               <form>
                 <select class="form-control form-control-lg mb-2">
                   <option>台北市信義區</option>
@@ -56,7 +56,7 @@ function Jointext(props) {
                 <div className=" mt-4 d-flex  align-items-center">
                   <button
                     type="button"
-                    className=" btn btn-primary btn-woof aboutbtn"
+                    className=" btn btn-primary btn-woof aboutbtn btn-lg"
                   >
                     送出
                   </button>
