@@ -9,7 +9,6 @@ import ResultInfo from '../../components/Reserve/ResultInfo'
 import { sitterData } from '../../components/Reserve/data.js'
 import NavBar from '../../components/golbal/NavBar'
 import Footer from '../../components/golbal/Footer'
-import Map from '../../components/map/App'
 
 export default function App() {
   const [from, setFrom] = useState('')
@@ -46,7 +45,7 @@ export default function App() {
     <div className="App">
       <NavBar />
       <Header />
-      <Map />
+
       <Filters
         from={from}
         handleDateFrom={handleDateFrom}
@@ -55,6 +54,18 @@ export default function App() {
         price={price}
         handlePrice={handlePrice}
       />
+      <div className="col-10 mx-auto">
+        {/* <!--Google map--> */}
+        <div
+          id="map-container-google-1"
+          className="z-depth-1-half map-container map-height"
+        >
+          <iframe
+            src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            className="map-ifram map-height"
+          ></iframe>
+        </div>
+      </div>
       <ResultInfo from={from} to={to} country={country} price={price} />
       <SitterContainer filteredList={filteredList} />
       <Footer />
