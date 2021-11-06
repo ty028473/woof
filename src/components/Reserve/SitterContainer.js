@@ -1,6 +1,8 @@
 import React from 'react'
 import SitterInfo from './SitterInfo'
 import NoResults from './NoResults'
+import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
+import { Carousel } from 'react-responsive-carousel'
 
 export default function sitterContainer(props) {
   const { filteredList } = props
@@ -22,7 +24,7 @@ export default function sitterContainer(props) {
             )
           })
         : {
-            /* <NoResults /> */
+            /* <NoResults />  */
           }}
     </div>
   )

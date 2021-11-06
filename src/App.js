@@ -11,7 +11,7 @@ import Login from './pages/login/Login'
 import Signup from './pages/login/Signup'
 import About from './pages/about/About'
 import Joinus from './pages/joinus/Joinus'
-import Map2 from './pages/maplist/Map2'
+import Calendar from './pages/reserve_calendar/calendar'
 
 // 購物車
 import ProductCheck from './pages/cart/ProductCheck'
@@ -29,7 +29,7 @@ import Record from './pages/member/Record'
 import Album from './pages/petSitter/Album'
 import Schedule from './pages/petSitter/Schedule'
 //預約系統
-import Reserve from './pages/reserve/Reserve'
+import ReserveMap from './pages/reserve_map/ReserveMap'
 
 import PetSitter from './pages/petSitter/PetSitter'
 import PetSitterRecord from './pages/petSitter/PetSitterRecord'
@@ -48,11 +48,11 @@ function App() {
         <Route path="/about">
           <About />
         </Route>
-        <Route path="/map2">
-          <Map2 />
+        <Route path="/Reservecalendar">
+          <Calendar />
         </Route>
-        <Route path="/map">
-          <Reserve />
+        <Route path="/ReserveMap">
+          <ReserveMap />
         </Route>
         <Route path="/productCheck">
           <ProductCheck />
