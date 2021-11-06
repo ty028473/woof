@@ -12,14 +12,12 @@ function Footer(props) {
           <div class="row">
             <div class="col-sm">
               <p>聯絡我們</p>
-              <h6>
-                地址：新北市三重區三重路103號1樓
-                <br />
-                電話：02-2987-0000
-                <br />
-                客服服務時間：週一至週五 10:00 - 17:00 <br />
-                E-mail：woof@gmail.com
-              </h6>
+              地址：新北市三重區三重路103號1樓
+              <br />
+              電話：02-2987-0000
+              <br />
+              客服服務時間：週一至週五 10:00 - 17:00 <br />
+              E-mail：woof@gmail.com
             </div>
             <div class="col-sm">
               <p>追蹤我們</p>
@@ -29,7 +27,7 @@ function Footer(props) {
             </div>
             <div class="col-sm">
               <p>訂閱電子信箱</p>
-              <h6>將最新的優惠訊息直達你信箱！</h6>
+              <p>將最新的優惠訊息直達你信箱！</p>
               <div className="input-group mb-3">
                 <input
                   type="text"
@@ -51,7 +49,7 @@ function Footer(props) {
             </div>
           </div>
           <div className="line" />
-          <h6 className="text-center">© Copyright 2021 Woof</h6>
+          <div className="text-center">© Copyright 2021 Woof</div>
         </div>
       </div>
     </>
