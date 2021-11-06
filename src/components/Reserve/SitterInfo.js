@@ -5,14 +5,17 @@ import {
   faDollarSign,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
+import { Carousel } from 'react-responsive-carousel'
 
 export default function sitterInfo(props) {
   const { name, photo, description, price, country, star } = props
 
   return (
-    <div className="sitter-card">
+    <div className="sitter-card shadow">
       <img className="sitter-img" src={photo} alt={'pic1'} />
-      <h2>{name}</h2>
+
+      <h3 className="sitter-title">{name}</h3>
       <p className="sitter-description">{description}</p>
       <div className="filters">
         <FontAwesomeIcon icon={faMapMarker} />

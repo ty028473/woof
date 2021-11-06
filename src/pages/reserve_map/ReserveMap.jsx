@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import dayjs from 'dayjs'
 import '../../styles/reserve.scss'
 import '../../styles/golbal.scss'
-import SitterContainer from '../../components/Reserve/SitterContainer'
-import Header from '../../components/Reserve/Header'
-import Filters from '../../components/Reserve/Filters'
-import ResultInfo from '../../components/Reserve/ResultInfo'
-import { sitterData } from '../../components/Reserve/data.js'
+import SitterContainer from '../../components/reserve/SitterContainer'
+import Header from '../../components/reserve/Header'
+import Filters from '../../components/reserve/Filters'
+import ResultInfo from '../../components/reserve/ResultInfo'
+import { sitterData } from '../../components/reserve/data.js'
 import NavBar from '../../components/golbal/NavBar'
 import Footer from '../../components/golbal/Footer'
 
@@ -54,20 +54,26 @@ export default function App() {
         price={price}
         handlePrice={handlePrice}
       />
-      <div className="col-10 mx-auto">
-        {/* <!--Google map--> */}
-        <div
-          id="map-container-google-1"
-          className="z-depth-1-half map-container map-height"
-        >
-          <iframe
-            src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"
-            className="map-ifram map-height"
-          ></iframe>
+      <div className="container">
+        <div className="row ">
+          <aside className="col-4">
+            {' '}
+            <SitterContainer filteredList={filteredList} />
+          </aside>
+          <main className="col-8">
+            <div /* <!--Google map--> */
+              id="map-container-google-1"
+              className="z-depth-1-half map-container map-height"
+            >
+              <iframe
+                src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                className="map-ifram map-height"
+              ></iframe>
+            </div>
+          </main>
         </div>
       </div>
-      <ResultInfo from={from} to={to} country={country} price={price} />
-      <SitterContainer filteredList={filteredList} />
+
       <Footer />
     </div>
   )

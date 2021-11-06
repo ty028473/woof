@@ -35,7 +35,7 @@ export default function Header() {
           />
         </div>
       </Carousel>
-      <h1 className="header-title ">預約代遛</h1>
+      <h3 className="header-title primary">預約代遛</h3>
     </div>
   )
 }
