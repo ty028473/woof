@@ -56,7 +56,7 @@ function Jointext(props) {
                 <div className=" mt-4 d-flex  align-items-center">
                   <button
                     type="button"
-                    className=" btn btn-primary btn-woof aboutbtn btn-lg"
+                    className=" btn btn-primary btn-woof aboutbtn"
                   >
                     送出
                   </button>

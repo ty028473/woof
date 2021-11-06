@@ -3,7 +3,7 @@ import FullCalendar, { formatDate } from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import { INITIAL_EVENTS, createEventId } from '../../components/Calendar2/event-utils'
+import { INITIAL_EVENTS, createEventId } from './event-utils'
 
 export default class DemoApp extends React.Component {
   state = {
