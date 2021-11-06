@@ -37,7 +37,7 @@ body {
 
 // 彈跳視窗背景
 .background-pop {
-  background-color: rgba(225, 225, 225, 4);
+  background-color: rgba(225, 225, 225, 40%);
   filter: blur(10px);
 }
 
@@ -57,7 +57,7 @@ body {
 }
 // 陰影
 .shadow {
-  box-shadow: 4px 4px 20px #000 5%;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 5%);
 }
 
 //icon大小
@@ -69,7 +69,6 @@ body {
 // 文字相關
 h1 {
   font-size: 40px;
-  font-weight: bold;
   line-height: 1.3em;
 }
 h2 {
@@ -100,4 +99,10 @@ p {
 .icon-btn {
   border: none;
   font-size: 20px;
+}
+
+hr {
+  margin: 0;
+  border: 1px solid #c7c7c7;
+  background: #c7c7c7;
 }

@@ -31,6 +31,7 @@ Nav.Link:hover {
   height: 274px;
   background-color: $primary;
   padding: 30px;
+  z-index: -1;
 }
 .icon-footer {
   color: #fff;
@@ -45,4 +46,8 @@ Nav.Link:hover {
 .line {
   margin: 20px auto;
   border: 0.5px solid #fff;
+}
+
+.down {
+  z-index: -3;
 }

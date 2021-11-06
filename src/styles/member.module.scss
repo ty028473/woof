@@ -1,6 +1,5 @@
 $frame-backgroundcolor: #ffffff;
 $font-color: #51535b;
-$hr-color: #c7c7c7;
 $member-nav-hover-color: #087bdc;
 
 .frame {
@@ -9,7 +8,7 @@ $member-nav-hover-color: #087bdc;
   border-radius: 10px;
 }
 
-.list-styled {
+.list_styled {
   list-style-type: none;
   padding: 0;
 
@@ -18,7 +17,7 @@ $member-nav-hover-color: #087bdc;
   }
 }
 
-.title-list-styled {
+.title_list_styled {
   list-style-type: none;
   padding: 0;
 
@@ -27,13 +26,7 @@ $member-nav-hover-color: #087bdc;
   }
 }
 
-hr {
-  margin: 0;
-  border: 1px solid $hr-color;
-  background: $hr-color;
-}
-
-.member-nav a {
+.member_nav a {
   color: $font-color;
   &:hover {
     color: $member-nav-hover-color;
@@ -42,7 +35,7 @@ hr {
   }
 }
 
-.img-cover-sm {
+.img_cover_sm {
   border-radius: 50%;
   width: 100px;
   height: 100px;
@@ -50,7 +43,7 @@ hr {
   object-position: center;
 }
 
-.img-cover-lg {
+.img_cover_lg {
   border-radius: 50%;
   width: 200px;
   height: 200px;
@@ -58,10 +51,10 @@ hr {
   object-position: center;
 }
 
-.record-block {
-  border: 2px solid $hr-color;
+.record_block {
+  border: 2px solid #c7c7c7;
   border-radius: 10px;
 }
 .divider {
-  border-right: 2px solid $hr-color;
+  border-right: 2px solid #c7c7c7;
 }
