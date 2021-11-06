@@ -11,7 +11,7 @@ import Login from './pages/login/Login'
 import Signup from './pages/login/Signup'
 import About from './pages/about/About'
 import Joinus from './pages/joinus/Joinus'
-import Calendar from './pages/reserve_calendar/calendar'
+import Calendar from './pages/reserve_calendar/Reserve'
 
 // 購物車
 import ProductCheck from './pages/cart/ProductCheck'
