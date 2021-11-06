@@ -21,6 +21,7 @@ import ProductList from './pages/cart/ProductList'
 import Member from './pages/member/Member'
 import Password from './pages/member/Password'
 import Pets from './pages/member/Pets'
+import PetsAdd from './pages/member/PetsAdd'
 import Collection from './pages/member/Collection'
 import Record from './pages/member/Record'
 
@@ -38,10 +39,6 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact>
-          <Home />
-        </Route>
-
         <Route path="/login">
           <Login />
         </Route>
@@ -69,19 +66,17 @@ function App() {
         <Route path="/collection">
           <Collection />
         </Route>
+        <Route path="/member/pets/add">
+          <PetsAdd />
+        </Route>
+        <Route path="/member/pets">
+          <Pets />
+        </Route>
         <Route path="/member">
           <Member />
         </Route>
         <Route path="/password">
           <Password />
-        </Route>
-
-        <Route path="/record">
-          <Record />
-        </Route>
-
-        <Route path="/pets">
-          <Pets />
         </Route>
         <Route path="/record">
           <Record />

@@ -1,6 +1,5 @@
 $frame-backgroundcolor: #ffffff;
 $font-color: #51535b;
-$hr-color: #c7c7c7;
 $member-nav-hover-color: #087bdc;
 
 .frame {
@@ -25,12 +24,6 @@ $member-nav-hover-color: #087bdc;
   li {
     padding-bottom: 37px;
   }
-}
-
-hr {
-  margin: 0;
-  border: 1px solid $hr-color;
-  background: $hr-color;
 }
 
 .member_nav a {
@@ -59,9 +52,9 @@ hr {
 }
 
 .record_block {
-  border: 2px solid $hr-color;
+  border: 2px solid #c7c7c7;
   border-radius: 10px;
 }
 .divider {
-  border-right: 2px solid $hr-color;
+  border-right: 2px solid #c7c7c7;
 }

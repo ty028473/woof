@@ -1,15 +1,15 @@
 import React from 'react'
-import styles from '../../styles/member.module.scss'
+import styles from '../../styles/pets.module.scss'
 
-function MemberData(props) {
+function AddPet(props) {
   return (
     <>
       <div className={`shadow ${styles.frame}`}>
         {/* 標題區塊 */}
         <section>
           <div>
-            <h3>我的檔案</h3>
-            <p>管理你的檔案以保護你的帳戶</p>
+            <h3>新增寵物</h3>
+            <p>讓保母更了解您的寵物</p>
           </div>
         </section>
         <hr />
@@ -19,17 +19,15 @@ function MemberData(props) {
             <div className="row">
               <div className="col-2 text-center">
                 <ul className={styles.title_list_styled}>
-                  <li>帳號</li>
-                  <li>姓名</li>
-                  <li>電話</li>
-                  <li>生日</li>
+                  <li>寵物名稱</li>
                   <li>性別</li>
+                  <li>歲數</li>
+                  <li>詳細資料</li>
                 </ul>
               </div>
               <div className="col-6">
-                <ul className={styles.list_styled}>
-                  <li>mockup01@gmail.com</li>
-                  <li>
+                <ul className={styles.input_list_styled}>
+                  <li className="mb-1">
                     <div class="input-group">
                       <input
                         type="text"
@@ -39,24 +37,6 @@ function MemberData(props) {
                     </div>
                   </li>
                   <li>
-                    <div class="input-group">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Username"
-                      />
-                    </div>
-                  </li>
-                  <li>
-                    <div class="input-group">
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Username"
-                      />
-                    </div>
-                  </li>
-                  <li className="p-0">
                     <div class="input-group mb-3">
                       <select class="custom-select">
                         <option selected>Choose...</option>
@@ -64,6 +44,25 @@ function MemberData(props) {
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                       </select>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="input-group mb-3">
+                      <select class="custom-select">
+                        <option selected>Choose...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Username"
+                      />
                     </div>
                   </li>
                 </ul>
@@ -74,7 +73,7 @@ function MemberData(props) {
               <div className="col-4 text-center">
                 <div className="mb-3">
                   <img
-                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
+                    src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=1200:*"
                     className={styles.img_cover_lg}
                     alt="會員大頭像"
                   />
@@ -85,27 +84,11 @@ function MemberData(props) {
               </div>
             </div>
           </div>
-        </section>
-        {/* 內容區塊 2 */}
-        <section className="m-5">
-          <div className={`row text-center p-5 ${styles.record_block}`}>
-            <div className={`col ${styles.divider}`}>
-              <h5>預約次數</h5>
-              <h5>5</h5>
-            </div>
-            <div className={`col ${styles.divider}`}>
-              <h5>累積紅利</h5>
-              <h5>30</h5>
-            </div>
-            <div className="col">
-              <h5>已折抵紅利</h5>
-              <h5>60</h5>
-            </div>
-          </div>
+          <div className={styles.Bottom_blank}></div>
         </section>
       </div>
     </>
   )
 }
 
-export default MemberData
+export default AddPet
