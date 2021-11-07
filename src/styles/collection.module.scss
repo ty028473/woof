@@ -1,0 +1,38 @@
+$frame-backgroundcolor: #ffffff;
+$data-block-bg-color: #f4f4f5;
+$right_navbar_color: #51535b;
+$right_navbar_hover_color: #087bdc;
+
+// Record page common class
+.frame {
+  background-color: $frame-backgroundcolor;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.data_block {
+  background: $data-block-bg-color;
+  border-radius: 20px;
+  padding: 30px 40px;
+}
+
+.img_cover_sm {
+  border-radius: 20%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
+  margin-top: 10px;
+}
+
+.list_styled {
+  list-style-type: none;
+
+  li {
+    margin: 20px 0;
+  }
+}
+
+.title_font {
+  font-weight: 500;
+}

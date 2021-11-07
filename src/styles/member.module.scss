@@ -1,46 +1,43 @@
-$frame-backgroundcolor: #ffffff;
-$font-color: #51535b;
-$member-nav-hover-color: #087bdc;
-
-.frame {
-  background-color: $frame-backgroundcolor;
-  padding: 30px;
-  border-radius: 10px;
-}
-
-.list_styled {
-  list-style-type: none;
-  padding: 0;
-
-  li {
-    padding-bottom: 25px;
-  }
-}
-
-.title_list_styled {
-  list-style-type: none;
-  padding: 0;
-
-  li {
-    padding-bottom: 37px;
-  }
-}
-
-.member_nav a {
-  color: $font-color;
-  &:hover {
-    color: $member-nav-hover-color;
-    text-decoration: none;
-    font-weight: 700;
-  }
-}
-
+// 會員導覽列
 .img_cover_sm {
   border-radius: 50%;
   width: 100px;
   height: 100px;
   object-fit: cover;
   object-position: center;
+}
+
+.member_nav {
+  list-style-type: none;
+
+  a {
+    color: #51535b;
+    font-weight: 500;
+    display: inline-block;
+    padding: 10px;
+    &:hover {
+      color: #087bdc;
+      font-weight: 700;
+      text-decoration: solid #087bdc underline;
+      text-underline-offset: 10px;
+      text-decoration-thickness: 3px;
+    }
+  }
+}
+
+//會員資料
+.frame {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.title_font {
+  line-height: 38px;
+}
+
+.list_styled {
+  list-style-type: none;
 }
 
 .img_cover_lg {
@@ -52,9 +49,10 @@ $member-nav-hover-color: #087bdc;
 }
 
 .record_block {
-  border: 2px solid #c7c7c7;
-  border-radius: 10px;
+  border: 3px solid #c7c7c7;
+  border-radius: 20px;
 }
 .divider {
-  border-right: 2px solid #c7c7c7;
+  border-right: 3px solid #c7c7c7;
+  border-left: 3px solid #c7c7c7;
 }

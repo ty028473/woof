@@ -21,13 +21,13 @@ function AsideNavbar(props) {
         </div>
       </div>
       <hr />
-      <div className="mt-3">
-        <ul className={`${styles.list_styled} ${styles.member_nav}`}>
+      <div className="mt-4 text-center">
+        <ul className={styles.member_nav}>
           <li>
             <Link to="/member">會員資料</Link>
           </li>
           <li>
-            <Link to="/password">忘記密碼</Link>
+            <Link to="/member/changepwd">更改密碼</Link>
           </li>
           <li>
             <Link to="/member/pets">寵物資料</Link>
@@ -35,14 +35,14 @@ function AsideNavbar(props) {
           <li>
             <Link to="/member/record/carryout">訂單紀錄</Link>
           </li>
-          <li className="p-0">
-            <Link to="/Collection">保母收藏</Link>
+          <li>
+            <Link to="/member/Collection">保母收藏</Link>
           </li>
         </ul>
       </div>
       <hr />
-      <div className="mt-3">
-        <ul className={`${styles.list_styled} ${styles.member_nav}`}>
+      <div className="mt-4 text-center">
+        <ul className={styles.member_nav}>
           <li>
             <Link to="/PetSitter">切換為保母身分</Link>
           </li>
