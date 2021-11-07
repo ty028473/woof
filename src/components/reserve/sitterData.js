@@ -1,10 +1,13 @@
+import React from 'react'
 import {
   faStar,
   faMapMarker,
   faDollarSign,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import Slider from 'react-slick'
 export default function sitterInfo(props) {
   const { name, photo, description, price, country, star } = props
 
