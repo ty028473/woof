@@ -4,7 +4,7 @@ import '../../styles/carts.scss'
 function ItemListDetail(props) {
   return (
     <>
-      <table className="mt-3 table-list-styled">
+      <table className="mt-3 my-2 table-list-styled">
         <tr>
           <td>
             <h6>審佳宜</h6>

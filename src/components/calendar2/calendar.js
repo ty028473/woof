@@ -14,7 +14,6 @@ export default class DemoApp extends React.Component {
   render() {
     return (
       <div className="demo-app">
-        {this.renderSidebar()}
         <div className="demo-app-main">
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -41,6 +40,7 @@ export default class DemoApp extends React.Component {
             */
           />
         </div>
+        {this.renderSidebar()}
       </div>
     )
   }
@@ -49,12 +49,8 @@ export default class DemoApp extends React.Component {
     return (
       <div className="demo-app-sidebar">
         <div className="demo-app-sidebar-section">
-          <h2>Instructions</h2>
-          <ul>
-            <li>Select dates and you will be prompted to create a new event</li>
-            <li>Drag, drop, and resize events</li>
-            <li>Click an event to delete it</li>
-          </ul>
+          <h3>All Events ({this.state.currentEvents.length})</h3>
+          <ul>{this.state.currentEvents.map(renderSidebarEvent)}</ul>
         </div>
         <div className="demo-app-sidebar-section">
           <label>
@@ -65,10 +61,6 @@ export default class DemoApp extends React.Component {
             ></input>
             toggle weekends
           </label>
-        </div>
-        <div className="demo-app-sidebar-section">
-          <h2>All Events ({this.state.currentEvents.length})</h2>
-          <ul>{this.state.currentEvents.map(renderSidebarEvent)}</ul>
         </div>
       </div>
     )
