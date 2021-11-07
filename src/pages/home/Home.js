@@ -150,6 +150,12 @@ function Home(props) {
         src="../../../images/home/chat-bg.png"
         alt="優勢背景"
       />
+      {/* footprint-start */}
+      {/* <img
+        className="footprint-1"
+        src="../../../images/home/footprint.png.png"
+        alt="優勢背景"
+      /> */}
 
       <Footer />
     </>
