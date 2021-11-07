@@ -74,7 +74,7 @@ hr {
   height: 180px;
   background-color: $primary;
 }
-.none-color{
+.none-color {
   color: $hr-color;
 }
 
@@ -94,6 +94,11 @@ hr {
   list-style-type: none;
   padding: 0px 0px 20px 0px;
 }
-.price-color{
+.price-color {
   color: $danger;
+}
+
+// 彈跳視窗 AddCreditCard.js
+.add-credit-card-mt {
+  margin-top: 10px;
 }
