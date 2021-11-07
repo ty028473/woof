@@ -33,7 +33,7 @@ function AsideNavbar(props) {
             <Link to="/member/pets">寵物資料</Link>
           </li>
           <li>
-            <Link to="/record">訂單紀錄</Link>
+            <Link to="/member/record/carryout">訂單紀錄</Link>
           </li>
           <li className="p-0">
             <Link to="/Collection">保母收藏</Link>
