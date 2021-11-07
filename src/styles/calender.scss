@@ -4,14 +4,8 @@ $block-radious-cart: 20px 20px 0px 0px;
 $block-radious: 20px;
 $block-background: #fff;
 $hr-color: #c7c7c7;
-$container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1140px,
-  xxl: 1320px,
-);
-.img-cover {
+
+.profile-img-cover {
   border-radius: 20%;
   width: 200px;
   height: 200px;
@@ -22,6 +16,7 @@ $container-max-widths: (
   margin: 20px;
 }
 .list-styled tr td,
+.evaluation-list-styled tr td,
 .summary-list-styled tr td {
   padding-left: 10px;
 }
@@ -43,14 +38,19 @@ $container-max-widths: (
   background-color: $block-background;
   border-radius: $block-radious;
 }
-.address {
-  width: 960px;
-}
+
 .board-pic img {
   border-radius: 10%;
-  margin: 5px;
+  margin: 10px;
   width: 300px;
   height: 300px;
+  // object-fit: cover;
+  // object-position: center;
+}
+.evaluation-img-cover {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   object-position: center;
 }

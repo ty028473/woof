@@ -1,8 +1,6 @@
 import React from 'react'
 
 import '../../styles/calender.scss'
-import { faStar, faMapMarker } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function SitterSummary(props) {
   return (

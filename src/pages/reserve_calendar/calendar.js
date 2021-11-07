@@ -3,9 +3,9 @@ import DemoApp from '../../components/calendar2/calendar'
 import SitterDetail from '../../components/reserve/personal'
 import SitterSummary from '../../components/reserve/summary'
 import { Form } from 'react-bootstrap'
-import Image from 'react-bootstrap/Image'
-
 import NavBar from '../../components/golbal/NavBar'
+import Board from '../../components/reserve/ImgBoard'
+import Evalution from '../../components/reserve/EvaluationBoard'
 import Footer from '../../components/golbal/Footer'
 
 function Reservecalendar(props) {
@@ -13,7 +13,7 @@ function Reservecalendar(props) {
     <>
       <NavBar />
       <div className="container">
-        <div className="row d-flex justify-content-center">
+        <div className="row d-flex justify-content-center mx-0">
           <div className="col-6 my-4 ">
             <SitterDetail />
           </div>
@@ -71,104 +71,15 @@ function Reservecalendar(props) {
           </div>
 
           <div className="col-2 ">
-            <button type="button" className="btn btn-primary btn-woof ">
+            <button type="button" className=" btn btn-primary btn-woof ">
               立即預約
             </button>
           </div>
         </div>
       </div>
-      <div className="container">
-        <div className="row d-flex justify-content-between my-2">
-          <div className="col-12  ">
-            <h3>照片牆</h3>
-          </div>
-        </div>
-      </div>
-      <div className="container ">
-        <div className="row d-flex justify-content-center  my-2 calendar-bg">
-          <div className="col-12  board-pic ">
-            <div className="container">
-              <div className="row">
-                <div className="col-4 ">
-                  <img
-                    src="../resources/AdobeStock_173443769 (1).jpeg"
-                    alt="..."
-                    class="img-thumbnail img-fluid "
-                  />
-                </div>
-                <div className="col-4 ">
-                  <img
-                    src="../resources/AdobeStock_173443769 (1).jpeg"
-                    alt="..."
-                    class="img-thumbnail img-fluid "
-                  />
-                </div>
-                <div className="col-4 ">
-                  <img
-                    src="../resources/AdobeStock_173443769 (1).jpeg"
-                    alt="..."
-                    class="img-thumbnail img-fluid "
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-12  board-pic ">
-            <div className="container">
-              <div className="row">
-                <div className="col-4 ">
-                  <img
-                    src="../resources/AdobeStock_173443769 (1).jpeg"
-                    alt="..."
-                    class="img-thumbnail img-fluid "
-                  />
-                </div>
-                <div className="col-4 ">
-                  <img
-                    src="../resources/AdobeStock_173443769 (1).jpeg"
-                    alt="..."
-                    class="img-thumbnail img-fluid "
-                  />
-                </div>
-                <div className="col-4 ">
-                  <img
-                    src="../resources/AdobeStock_173443769 (1).jpeg"
-                    alt="..."
-                    class="img-thumbnail img-fluid "
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-12  board-pic ">
-            <div className="container">
-              <div className="row">
-                <div className="col-4 ">
-                  <img
-                    src="../resources/AdobeStock_173443769 (1).jpeg"
-                    alt="..."
-                    class="img-thumbnail img-fluid "
-                  />
-                </div>
-                <div className="col-4 ">
-                  <img
-                    src="../resources/AdobeStock_173443769 (1).jpeg"
-                    alt="..."
-                    class="img-thumbnail img-fluid "
-                  />
-                </div>
-                <div className="col-4 ">
-                  <img
-                    src="../resources/AdobeStock_173443769 (1).jpeg"
-                    alt="..."
-                    class="img-thumbnail img-fluid "
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Board />
+      <Evalution />
+      <Footer />
     </>
   )
 }

@@ -12,7 +12,7 @@ function SitterDetail(props) {
           <td>
             <img
               src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
-              className="img-cover"
+              className="profile-img-cover"
               alt="保母頭像"
             />
           </td>

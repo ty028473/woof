@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import '../../styles/golbal.scss'
 import NavBar from '../../components/golbal/NavBar'
 import Footer from '../../components/golbal/Footer'
 import ItemListDetail from '../../components/cart/ItemListDetail'
+import AddCreditCard from '../../components/cart/AddCreditCard'
+import CheckOutResult from '../../components/cart/CheckOutResult'
 
 function ProductList(props) {
+  const [addCreditCard, setAddCreditCard] = useState(false)
+  const [checkOutResult, setCheckOutResult] = useState(false)
   return (
     <>
       <NavBar />
@@ -49,14 +54,38 @@ function ProductList(props) {
               </button>
             </div>
             <div className="py-2 px-5 bd-highlight">
-              <button type="button" className="btn btn-info btn-woof disabled">
-                銀行轉帳
-              </button>
+              <OverlayTrigger
+                overlay={
+                  <Tooltip id="tooltip-disabled">抱歉現在沒有這項服務!</Tooltip>
+                }
+              >
+                <span className="d-inline-block">
+                  <Button
+                    disabled
+                    className="btn btn-info btn-woof"
+                    style={{ pointerEvents: 'none' }}
+                  >
+                    銀行轉帳
+                  </Button>
+                </span>
+              </OverlayTrigger>
             </div>
             <div className="py-2 px-5 bd-highlight">
-              <button type="button" className="btn btn-info btn-woof disabled">
-                面交付款
-              </button>
+              <OverlayTrigger
+                overlay={
+                  <Tooltip id="tooltip-disabled">抱歉現在沒有這項服務!</Tooltip>
+                }
+              >
+                <span className="d-inline-block">
+                  <Button
+                    disabled
+                    className="btn btn-info btn-woof"
+                    style={{ pointerEvents: 'none' }}
+                  >
+                    面交付款
+                  </Button>
+                </span>
+              </OverlayTrigger>
             </div>
           </div>
           {/* 信用卡資訊 */}
@@ -105,11 +134,22 @@ function ProductList(props) {
                 </label>
               </div>
             </li>
-            <button type="button" className="btn btn-primary btn-woof ">
-              新增信用卡
-            </button>
+            <div className="blog__controller">
+              <Button
+                className="btn btn-primary btn-woof"
+                onClick={() => setAddCreditCard(true)}
+              >
+                新增信用卡
+              </Button>
+              {addCreditCard && (
+                <AddCreditCard
+                  show={addCreditCard}
+                  onHide={() => setAddCreditCard(false)}
+                  state="editing"
+                />
+              )}
+            </div>
           </ul>
-
           <hr />
           {/* 紅利折抵+總付款金額 */}
           <div className=" mt-3 d-flex bd-highlight ">
@@ -120,20 +160,33 @@ function ProductList(props) {
           <div className="d-flex bd-highlight ">
             <div className="py-2 px-5 flex-grow-1 bd-highlight"></div>
             <div className="py-2 px-5 bd-highlight">總付款金額 (1個商品):</div>
-            <div className="py-2 px-5 bd-highlight col-2"><span className="price-color">$500</span></div>
+            <div className="py-2 px-5 bd-highlight col-2">
+              <span className="price-color">$500</span>
+            </div>
           </div>
           <div className="d-flex bd-highlight my-auto">
             <div className="py-2 px-5 flex-grow-1 bd-highlight"></div>
             <div className="py-2 px-5 bd-highlight "></div>
             <div className="py-2 px-5 bd-highlight col-2">
-              <button type="button" className="btn btn-primary btn-woof">
-                下訂單
-              </button>
+              <div className="blog__controller">
+                <Button
+                  className="btn btn-primary btn-woof"
+                  onClick={() => setCheckOutResult(true)}
+                >
+                  下訂單
+                </Button>
+                {checkOutResult && (
+                  <CheckOutResult
+                    show={checkOutResult}
+                    onHide={() => setCheckOutResult(false)}
+                    state="editing"
+                  />
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
-
       <Footer />
     </>
   )
