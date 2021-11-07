@@ -1,143 +1,87 @@
 import React from 'react'
-import FullCalendar, { formatDate } from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import timeGridPlugin from '@fullcalendar/timegrid'
-import interactionPlugin from '@fullcalendar/interaction'
-import {
-  INITIAL_EVENTS,
-  createEventId,
-} from '../../components/calendar2/event-utils'
+import DemoApp from '../../components/calendar2/calendar'
+import SitterDetail from '../../components/reserve/personal'
+import SitterSummary from '../../components/reserve/summary'
+import { Form } from 'react-bootstrap'
+import NavBar from '../../components/golbal/NavBar'
+import Board from '../../components/reserve/ImgBoard'
+import Evalution from '../../components/reserve/EvaluationBoard'
+import Footer from '../../components/golbal/Footer'
 
-export default class DemoApp extends React.Component {
-  state = {
-    weekendsVisible: true,
-    currentEvents: [],
-  }
-
-  render() {
-    return (
-      <div className="demo-app">
-        {this.renderSidebar()}
-        <div className="demo-app-main">
-          <FullCalendar
-            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-            headerToolbar={{
-              left: 'prev,next today',
-              center: 'title',
-              right: 'dayGridMonth,timeGridWeek,timeGridDay',
-            }}
-            initialView="dayGridMonth"
-            editable={true}
-            selectable={true}
-            selectMirror={true}
-            dayMaxEvents={true}
-            weekends={this.state.weekendsVisible}
-            initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-            select={this.handleDateSelect}
-            eventContent={renderEventContent} // custom render function
-            eventClick={this.handleEventClick}
-            eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
-            /* you can update a remote database when these fire:
-            eventAdd={function(){}}
-            eventChange={function(){}}
-            eventRemove={function(){}}
-            */
-          />
-        </div>
-      </div>
-    )
-  }
-
-  renderSidebar() {
-    return (
-      <div className="demo-app-sidebar">
-        <div className="demo-app-sidebar-section">
-          <h2>Instructions</h2>
-          <ul>
-            <li>Select dates and you will be prompted to create a new event</li>
-            <li>Drag, drop, and resize events</li>
-            <li>Click an event to delete it</li>
-          </ul>
-        </div>
-        <div className="demo-app-sidebar-section">
-          <label>
-            <input
-              type="checkbox"
-              checked={this.state.weekendsVisible}
-              onChange={this.handleWeekendsToggle}
-            ></input>
-            toggle weekends
-          </label>
-        </div>
-        <div className="demo-app-sidebar-section">
-          <h2>All Events ({this.state.currentEvents.length})</h2>
-          <ul>{this.state.currentEvents.map(renderSidebarEvent)}</ul>
-        </div>
-      </div>
-    )
-  }
-
-  handleWeekendsToggle = () => {
-    this.setState({
-      weekendsVisible: !this.state.weekendsVisible,
-    })
-  }
-
-  handleDateSelect = (selectInfo) => {
-    let title = prompt('Please enter a new title for your event')
-    let calendarApi = selectInfo.view.calendar
-
-    calendarApi.unselect() // clear date selection
-
-    if (title) {
-      calendarApi.addEvent({
-        id: createEventId(),
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay,
-      })
-    }
-  }
-
-  handleEventClick = (clickInfo) => {
-    if (
-      // eslint-disable-next-line no-restricted-globals
-      confirm(
-        `Are you sure you want to delete the event '${clickInfo.event.title}'`
-      )
-    ) {
-      clickInfo.event.remove()
-    }
-  }
-
-  handleEvents = (events) => {
-    this.setState({
-      currentEvents: events,
-    })
-  }
-}
-
-function renderEventContent(eventInfo) {
+function Reservecalendar(props) {
   return (
     <>
-      <b>{eventInfo.timeText}</b>
-      <i>{eventInfo.event.title}</i>
+      <NavBar />
+      <div className="container">
+        <div className="row d-flex justify-content-center mx-0">
+          <div className="col-6 my-4 ">
+            <SitterDetail />
+          </div>
+          <div className="col-6 my-2 ">
+            <SitterSummary />
+          </div>
+        </div>
+      </div>
+      <div className="container">
+        <div className="row d-flex justify-content-between">
+          <div className="col-12  ">
+            <h3>保母日曆</h3>
+          </div>
+        </div>
+      </div>
+      <div className="container">
+        <div className="row d-flex justify-content-beteeen calendar-bg">
+          <div className="col-12 my-4  ">
+            <DemoApp />
+          </div>
+          <div className="col-5 ">
+            <div className="container">
+              <div className="row">
+                <div className="col-4 ">
+                  <Form.Control type="text" placeholder="北投區" readOnly />
+                </div>
+                <div className="col-8 ">
+                  <Form.Control type="text" placeholder="交易地點" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-2 ">
+            <div class="input-group mb-3">
+              <select class="custom-select">
+                <option selected>寵物名稱</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
+          <div className="col-3 ">
+            <div className="container">
+              <div className="row">
+                <div className="col-6 ">
+                  <p>開始時間：08:00</p>
+                  <p>結束時間：12:00</p>
+                </div>
+                <div className="col-6 ">
+                  <p>金額：500</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-2 ">
+            <button type="button" className=" btn btn-primary btn-woof ">
+              立即預約
+            </button>
+          </div>
+        </div>
+      </div>
+      <Board />
+      <Evalution />
+      <Footer />
     </>
   )
 }
 
-function renderSidebarEvent(event) {
-  return (
-    <li key={event.id}>
-      <b>
-        {formatDate(event.start, {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric',
-        })}
-      </b>
-      <i>{event.title}</i>
-    </li>
-  )
-}
+export default Reservecalendar
