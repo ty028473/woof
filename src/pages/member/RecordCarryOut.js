@@ -8,7 +8,6 @@ import { withRouter } from 'react-router-dom'
 import styles from '../../styles/record.module.scss'
 
 function RecordCarryOut(props) {
-  console.log('props', props)
   return (
     <>
       {/* navbar區塊 */}
