@@ -19,7 +19,7 @@ import ProductList from './pages/cart/ProductList'
 
 // 會員
 import Member from './pages/member/Member'
-import Password from './pages/member/Password'
+import ChangePwd from './pages/member/ChangePwd'
 // 會員 --> 寵物頁面
 import Pets from './pages/member/Pets'
 import PetsAdd from './pages/member/PetsAdd'
@@ -27,6 +27,7 @@ import PetsAdd from './pages/member/PetsAdd'
 import RecordCarryOut from './pages/member/RecordCarryOut'
 import RecordComplete from './pages/member/RecordComplete'
 import RecordCancel from './pages/member/RecordCancel'
+// 會員 --> 保母收藏頁面
 import Collection from './pages/member/Collection'
 
 //保母會員
@@ -67,9 +68,6 @@ function App() {
         <Route path="/joinus">
           <Joinus />
         </Route>
-        <Route path="/collection">
-          <Collection />
-        </Route>
         <Route path="/member/pets/add">
           <PetsAdd />
         </Route>
@@ -85,13 +83,15 @@ function App() {
         <Route path="/member/record/cancel">
           <RecordCancel />
         </Route>
+        <Route path="/member/collection">
+          <Collection />
+        </Route>
+        <Route path="/member/changepwd">
+          <ChangePwd />
+        </Route>
         <Route path="/member">
           <Member />
         </Route>
-        <Route path="/password">
-          <Password />
-        </Route>
-
         <Route path="/petSitter">
           <PetSitter />
         </Route>
