@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 function ItemList(props) {
   return (
     <>
-      <table className="mt-3 table-list-styled">
+      <table className="my-3 table-list-styled shadow">
         <tr>
           <td>
             <h6>審佳宜</h6>
