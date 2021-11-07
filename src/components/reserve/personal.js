@@ -29,7 +29,7 @@ function SitterDetail(props) {
       </table>
       <button
         type="button"
-        className="col-5 mt-3 btn btn-secondary btn-sm btn-woof"
+        className="col-6 mt-3 btn btn-secondary btn-sm btn-woof"
       >
         聊聊
       </button>
