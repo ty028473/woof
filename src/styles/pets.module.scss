@@ -1,18 +1,19 @@
-$frame-backgroundcolor: #ffffff;
-$data-block-bg-color: #f4f4f5;
-
 // pet共用
 .frame {
-  background-color: $frame-backgroundcolor;
+  background-color: #ffffff;
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 // Pets用
 .data_block {
-  background: $data-block-bg-color;
+  background: #f4f4f5;
   border-radius: 20px;
-  padding-top: 30px;
+  padding: 30px 0;
+}
+
+.title_font {
+  font-weight: 500;
 }
 
 .img_cover_sm {
@@ -21,19 +22,22 @@ $data-block-bg-color: #f4f4f5;
   height: 100px;
   object-fit: cover;
   object-position: center;
-  margin-top: 10px;
+  margin: 20px;
 }
 
 .list_styled {
   list-style-type: none;
-  padding: 0;
 
   li {
-    padding-bottom: 10px;
+    margin: 10px;
   }
 }
 
 // PetsAdd用
+
+.title_font {
+  line-height: 38px;
+}
 
 .img_cover_lg {
   border-radius: 50%;
@@ -43,25 +47,11 @@ $data-block-bg-color: #f4f4f5;
   object-position: center;
 }
 
-.title_list_styled {
+.list_styled {
   list-style-type: none;
-  padding: 0;
-
-  li {
-    padding-bottom: 37px;
-  }
-}
-
-.input_list_styled {
-  list-style-type: none;
-  padding: 0;
-
-  li {
-    padding-bottom: 10px;
-  }
 }
 
 //底部留白
 .Bottom_blank {
-  padding-bottom: 200px;
+  padding-bottom: 100px;
 }
