@@ -1,58 +1,20 @@
-// 會員導覽列
-.img_cover_sm {
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  object-position: center;
-}
+// 會員&保母都要用到
+$border-color: #c7c7c7;
 
-.member_nav {
+.control_lh {
   list-style-type: none;
 
-  a {
-    color: #51535b;
-    font-weight: 500;
-    display: inline-block;
-    padding: 10px;
-    &:hover {
-      color: #087bdc;
-      font-weight: 700;
-      text-decoration: solid #087bdc underline;
-      text-underline-offset: 10px;
-      text-decoration-thickness: 3px;
-    }
+  li {
+    line-height: 38px;
   }
 }
 
-//會員資料
-.frame {
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 20px;
-}
-
-.title_font {
-  line-height: 38px;
-}
-
-.list_styled {
-  list-style-type: none;
-}
-
-.img_cover_lg {
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  object-position: center;
-}
-
 .record_block {
-  border: 3px solid #c7c7c7;
+  border: 3px solid $border-color;
   border-radius: 20px;
 }
+
 .divider {
-  border-right: 3px solid #c7c7c7;
-  border-left: 3px solid #c7c7c7;
+  border-right: 3px solid $border-color;
+  border-left: 3px solid $border-color;
 }

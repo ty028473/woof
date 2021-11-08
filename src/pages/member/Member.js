@@ -5,6 +5,7 @@ import Footer from '../../components/golbal/Footer'
 
 // css
 import styles from '../../styles/member.module.scss'
+import userGlobal from '../../styles/user-global.module.scss'
 
 function Member(props) {
   return (
@@ -20,7 +21,7 @@ function Member(props) {
           </aside>
           {/* 右側content */}
           <main className="col-10">
-            <div className={`shadow ${styles.frame}`}>
+            <div className={`shadow ${userGlobal.frame}`}>
               {/* 標題區塊 */}
               <section>
                 <div>
@@ -33,8 +34,10 @@ function Member(props) {
               <section>
                 <div className="mt-3">
                   <div className="row">
-                    <div className={`col-2 text-center ${styles.title_font}`}>
-                      <ul className={styles.list_styled}>
+                    <div className="col-2 text-center">
+                      <ul
+                        className={`${userGlobal.list_styled} ${userGlobal.title_font}`}
+                      >
                         <li className="my-4">帳號</li>
                         <li className="my-4">姓名</li>
                         <li className="my-4">電話</li>
@@ -43,43 +46,47 @@ function Member(props) {
                       </ul>
                     </div>
                     <div className="col-6">
-                      {/* <li>mockup01@gmail.com</li> */}
-                      <div class="input-group my-4">
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Username"
-                        />
-                      </div>
-                      <div class="input-group my-4">
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Username"
-                        />
-                      </div>
-                      <div class="input-group my-4">
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Username"
-                        />
-                      </div>
-                      <div class="input-group my-4">
-                        <input
-                          type="date"
-                          class="form-control"
-                          placeholder="生日"
-                        />
-                      </div>
-                      <div class="input-group my-4">
-                        <select class="custom-select">
-                          <option selected>性別</option>
-                          <option value="1">男</option>
-                          <option value="2">女</option>
-                          <option value="3">不顯示</option>
-                        </select>
-                      </div>
+                      <ul className={styles.control_lh}>
+                        <li className="my-4">mockup01@gmail.com</li>
+                        <li className="my-4">
+                          <div class="input-group my-4">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Username"
+                            />
+                          </div>
+                        </li>
+                        <li className="my-4">
+                          <div class="input-group my-4">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Username"
+                            />
+                          </div>
+                        </li>
+                        <li className="my-4">
+                          <div class="input-group my-4">
+                            <input
+                              type="date"
+                              class="form-control"
+                              placeholder="生日"
+                            />
+                          </div>
+                        </li>
+                        <li className="my-4">
+                          <div class="input-group my-4">
+                            <select class="custom-select">
+                              <option selected>性別</option>
+                              <option value="1">男</option>
+                              <option value="2">女</option>
+                              <option value="3">不顯示</option>
+                            </select>
+                          </div>
+                        </li>
+                      </ul>
+
                       <button
                         type="button"
                         className="btn btn-primary btn-woof"
@@ -91,7 +98,7 @@ function Member(props) {
                       <div>
                         <img
                           src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
-                          className={styles.img_cover_lg}
+                          className={userGlobal.img_cover_lg}
                           alt="會員大頭像"
                         />
                         <br />
