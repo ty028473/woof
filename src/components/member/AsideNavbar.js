@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styles from '../../styles/member.module.scss'
+
+// css
+import userGlobal from '../../styles/user-global.module.scss'
 
 function AsideNavbar(props) {
   return (
@@ -9,12 +11,12 @@ function AsideNavbar(props) {
         <div className="col">
           <img
             src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
-            className={styles.img_cover_sm}
+            className={userGlobal.img_cover_sm}
             alt="會員小頭像"
           />
         </div>
         <div className="col">
-          <ul className={styles.list_styled}>
+          <ul className={userGlobal.list_styled}>
             <li className="p-0">mockup01</li>
             <li className="p-0">會員中心</li>
           </ul>
@@ -22,7 +24,7 @@ function AsideNavbar(props) {
       </div>
       <hr />
       <div className="mt-4 text-center">
-        <ul className={styles.member_nav}>
+        <ul className={userGlobal.member_nav}>
           <li>
             <Link to="/member">會員資料</Link>
           </li>
@@ -42,7 +44,7 @@ function AsideNavbar(props) {
       </div>
       <hr />
       <div className="mt-4 text-center">
-        <ul className={styles.member_nav}>
+        <ul className={userGlobal.member_nav}>
           <li>
             <Link to="/PetSitter">切換為保母身分</Link>
           </li>

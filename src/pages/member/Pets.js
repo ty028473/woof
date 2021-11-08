@@ -5,7 +5,7 @@ import NavBar from '../../components/golbal/NavBar'
 import Footer from '../../components/golbal/Footer'
 
 // css
-import styles from '../../styles/pets.module.scss'
+import userGlobal from '../../styles/user-global.module.scss'
 
 // icon
 import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'
@@ -25,7 +25,7 @@ function Pets(props) {
           </aside>
           {/* 右側content */}
           <main className="col-10">
-            <div className={`shadow ${styles.frame}`}>
+            <div className={`shadow ${userGlobal.frame}`}>
               {/*標題區塊*/}
               <section>
                 <div className="row align-items-center">
@@ -46,17 +46,21 @@ function Pets(props) {
               <hr />
               {/*功能區塊*/}
               <section className="m-4">
-                <div className={`row ${styles.data_block}`}>
+                <div className={`row ${userGlobal.data_block}`}>
                   <div className="col-3 text-right">
+                    <br />
+
                     <img
                       src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=1200:*"
-                      className={styles.img_cover_sm}
+                      className={userGlobal.img_cover_square_sm}
                       alt="寵物頭像"
                     />
                   </div>
 
                   <div className="col-3 text-center">
-                    <ul className={styles.list_styled}>
+                    <ul
+                      className={`${userGlobal.list_styled} ${userGlobal.title_font}`}
+                    >
                       <li className="fontsize">寵物名稱</li>
                       <li>寵物性別</li>
                       <li>寵物歲數</li>
@@ -64,7 +68,9 @@ function Pets(props) {
                     </ul>
                   </div>
                   <div className="col-3 text-left">
-                    <ul className={styles.list_styled}>
+                    <ul
+                      className={`${userGlobal.list_styled} ${userGlobal.content_font}`}
+                    >
                       <li>雞腿</li>
                       <li>1998/08/18</li>
                       <li>公</li>
