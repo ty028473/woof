@@ -92,21 +92,20 @@ function App() {
         <Route path="/member">
           <Member />
         </Route>
-        <Route path="/petSitter">
+        <Route path="/petsitter/schedule">
+          <Schedule />
+        </Route>
+        <Route path="/petsitter/album">
+          <Album />
+        </Route>
+        <Route path="/petsitter">
           <PetSitter />
         </Route>
-        <Route path="/petSitterRecord">
+        <Route path="/petsitterrecord">
           <PetSitterRecord />
         </Route>
         <Route path="/chatroom">
           <Chatroom />
-        </Route>
-
-        <Route path="/album">
-          <Album />
-        </Route>
-        <Route path="/schedule">
-          <Schedule />
         </Route>
         <Route path="/">
           <Home />
