@@ -5,11 +5,15 @@ import NavBar from '../../components/golbal/NavBar'
 import Footer from '../../components/golbal/Footer'
 import Evaluation from '../../components/home/Evaluation'
 import Advantage from '../../components/home/Advantage'
+import ScrollToTop from 'react-scroll-to-top'
+import { ReactComponent as MyArrow } from './myArrow.svg'
+// color="#087bdc"
 
 function Home(props) {
   return (
     <>
       <NavBar />
+      <ScrollToTop smooth component={<MyArrow />} />
       <div className="container relative">
         {/* 1-立即預約 */}
         <div className="col  intro-1 intro-height p-top">
