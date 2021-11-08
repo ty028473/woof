@@ -8,7 +8,7 @@ function NavBar(props) {
   return (
     <>
       <Navbar fixed="top" sticky="top" bg="secondary" variant="dark">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <img
             className="logo-woof"
             src="../../../images/global/logo-woof.png"
@@ -16,24 +16,24 @@ function NavBar(props) {
           />
         </Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link className="nav-title" href="#home">
+          <Nav.Link className="nav-title" href="/ReserveMap">
             預約帶遛
           </Nav.Link>
-          <Nav.Link className="nav-title" href="#features">
+          <Nav.Link className="nav-title" href="/about">
             關於我們
           </Nav.Link>
-          <Nav.Link className="nav-title" href="#pricing">
+          <Nav.Link className="nav-title" href="/joinus">
             成為保母
           </Nav.Link>
         </Nav>
         <Nav className="mr-right flex-right">
-          <a className="icon-cart" href="#1">
+          <a className="icon-cart" href="/productList">
             <BsFillCartFill />
           </a>
-          <Nav.Link className="nav-title" href="#1">
+          <Nav.Link className="nav-title" href="/login">
             登入
           </Nav.Link>
-          <Nav.Link className="nav-title" href="#2">
+          <Nav.Link className="nav-title" href="/signup">
             註冊
           </Nav.Link>
         </Nav>

@@ -8,38 +8,30 @@ function Advantage(props) {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="../resources/AdobeStock_317438568.jpeg"
+              src="../images/home/chat-online.png"
               alt="First slide"
             />
             <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>1</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="../resources/AdobeStock_317438568.jpeg"
+              src="../images/home/chat-online.png"
               alt="Second slide"
             />
 
             <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>2</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="../resources/AdobeStock_317438568.jpeg"
+              src="../images/home/chat-online.png"
               alt="Third slide"
             />
 
             <Carousel.Caption>
-              <h3>Third slide label</h3>
-              <p>
-                2
-              </p>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
