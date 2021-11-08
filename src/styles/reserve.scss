@@ -69,10 +69,6 @@ $hr-color: #c7c7c7;
   visibility: hidden;
 }
 
-.filter-select {
-  justify-content: flex-start;
-}
-
 .input-filters {
   padding: 10px;
 
@@ -112,6 +108,7 @@ $hr-color: #c7c7c7;
   border-radius: 5%;
   width: 200px;
   height: 200px;
+  object-fit: cover;
 }
 
 .sitter-description {
