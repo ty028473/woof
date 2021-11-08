@@ -40,25 +40,25 @@ function Home(props) {
           <div className="row mt-5">
             <div className="col-6 ">
               <h2>馬上找附近的保母</h2>
-              <select
-                className="col-5 mt-3 mr-4 form-control-lg"
-                id="exampleFormControlSelect1"
-              >
-                <option>地區</option>
-                <option>2</option>
-              </select>
-              <input
-                type="date"
-                className="col-6 form-control-lg"
-                id="date"
-                name="date"
-              />
-              <button
-                type="button"
-                className="col mt-4 btn btn-primary btn-lg btn-woof"
-              >
-                找尋保母去!!
-              </button>
+              <div className="row mt-4">
+                <select className=" col-5 form-control form-control-lg ">
+                  <option selected>地區</option>
+                  <option value="1">中正區</option>
+                  <option value="2">中山區</option>
+                </select>
+                <input
+                  type="date"
+                  className=" col-6 form-control form-control-lg"
+                  id="date"
+                  name="date"
+                />
+                <button
+                  type="button"
+                  className="col-11 mt-4 btn btn-primary btn-lg btn-woof"
+                >
+                  找尋保母去!!
+                </button>
+              </div>
             </div>
             <div className="col-6">
               <h2>如何預約？</h2>
@@ -68,7 +68,7 @@ function Home(props) {
                 alt="立即預約"
               />
             </div>
-            <div className="mt-5 map text-center">
+            <div className=" map text-center">
               <h1>我是MAP</h1>
             </div>
           </div>
@@ -139,10 +139,81 @@ function Home(props) {
           src="../../../images/home/calendar.png"
           alt="預約日曆"
         />
+        {/* footprint-start */}
+        <img
+          className="footprint-1"
+          src="../../../images/home/footprint.png"
+          alt="狗狗腳印"
+        />
+        <img
+          className="footprint-2"
+          src="../../../images/home/footprint.png"
+          alt="狗狗腳印"
+        />
+        <img
+          className="footprint-3"
+          src="../../../images/home/footprint.png"
+          alt="狗狗腳印"
+        />
+        <img
+          className="footprint-4"
+          src="../../../images/home/footprint.png"
+          alt="狗狗腳印"
+        />
+        <img
+          className="footprint-5"
+          src="../../../images/home/footprint.png"
+          alt="狗狗腳印"
+        />
+        <img
+          className="footprint-6"
+          src="../../../images/home/footprint.png"
+          alt="狗狗腳印"
+        />
+        <img
+          className="footprint-7"
+          src="../../../images/home/footprint.png"
+          alt="狗狗腳印"
+        />
+        <img
+          className="footprint-8"
+          src="../../../images/home/footprint.png"
+          alt="狗狗腳印"
+        />
+        <img
+          className="footprint-9"
+          src="../../../images/home/footprint.png"
+          alt="狗狗腳印"
+        />
+        <img
+          className="footprint-10"
+          src="../../../images/home/footprint.png"
+          alt="狗狗腳印"
+        />
+        <img
+          className="footprint-11"
+          src="../../../images/home/footprint.png"
+          alt="狗狗腳印"
+        />
+        <img
+          className="footprint-12"
+          src="../../../images/home/footprint.png"
+          alt="狗狗腳印"
+        />
+        <img
+          className="footprint-13"
+          src="../../../images/home/footprint.png"
+          alt="狗狗腳印"
+        />
+        <img
+          className="footprint-14"
+          src="../../../images/home/footprint.png"
+          alt="狗狗腳印"
+        />
       </div>
       {/* container-end */}
       {/* 6-slide */}
-      <div className="col intro-1 intro-height ">
+      <div className="col intro-1 intro-height">
         <Advantage />
       </div>
       <img
@@ -150,13 +221,6 @@ function Home(props) {
         src="../../../images/home/chat-bg.png"
         alt="優勢背景"
       />
-      {/* footprint-start */}
-      {/* <img
-        className="footprint-1"
-        src="../../../images/home/footprint.png.png"
-        alt="優勢背景"
-      /> */}
-
       <Footer />
     </>
   )

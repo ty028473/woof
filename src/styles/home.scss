@@ -38,33 +38,11 @@ $block-background: #fff;
   width: 1600px;
   height: 500px;
   background-color: rgba(0, 0, 0, 30%);
+  margin-top: 110px;
 }
 
-// map
-// .map-height {
-//   height: 300px;
-//   width: 100%;
-// }
-// .map-ifram {
-//   border: 0;
-// }
-// .map-container {
-//   overflow: hidden;
-//   padding-bottom: 56.25%;
-//   position: relative;
-//   height: 0;
-//   z-index: 2;
-// }
-// .map-container iframe {
-//   left: 0;
-//   top: 0;
-//   height: 100%;
-//   width: 100%;
-//   position: absolute;
-//   z-index: 2;
-// }
+// 3-保母評價
 
-// 保母評價區塊
 .eva-margin {
   margin-top: 100px;
   margin-bottom: 50px;
@@ -131,8 +109,7 @@ $block-background: #fff;
   max-width: 90%;
   position: absolute;
   left: 0px;
-  // top: calc(1000px - 200px);
-  top: calc(1000px);
+  top: calc(900px);
   // z-index: -1;
 }
 
@@ -161,6 +138,105 @@ $block-background: #fff;
   top: calc(100vh * 5 - 100px);
   // z-index: -1;
 }
-.footer-index {
-  height: 100px;
+
+//footprint-start
+
+.footprint-1 {
+  width: 80px;
+  position: absolute;
+  left: 10px;
+  top: 100px;
+  transform: rotate(160deg);
+}
+
+.footprint-2 {
+  width: 100px;
+  position: absolute;
+  left: 100px;
+  top: 190px;
+  transform: rotate(110deg);
+}
+.footprint-3 {
+  width: 100px;
+  position: absolute;
+  left: 250px;
+  top: 600px;
+  transform: rotate(210deg);
+}
+.footprint-4 {
+  width: 80px;
+  position: absolute;
+  left: 350px;
+  top: 780px;
+  transform: rotate(130deg);
+}
+.footprint-5 {
+  width: 100px;
+  position: absolute;
+  left: 1280px;
+  top: calc(100vh + 200px);
+  transform: rotate(160deg);
+}
+.footprint-6 {
+  width: 100px;
+  position: absolute;
+  left: 1300px;
+  top: calc(100vh * 2 + 150px);
+  transform: rotate(200deg);
+}
+.footprint-7 {
+  width: 80px;
+  position: absolute;
+  left: 1200px;
+  top: calc(100vh * 2 + 500px);
+  transform: rotate(240deg);
+}
+.footprint-8 {
+  width: 100px;
+  position: absolute;
+  left: 400px;
+  top: calc(100vh * 2 + 650px);
+  transform: rotate(200deg);
+}
+.footprint-9 {
+  width: 80px;
+  position: absolute;
+  left: 300px;
+  top: calc(100vh * 2 + 800px);
+  transform: rotate(150deg);
+}
+.footprint-10 {
+  width: 100px;
+  position: absolute;
+  left: 200px;
+  top: calc(100vh * 3 + 520px);
+  transform: rotate(130deg);
+}
+.footprint-11 {
+  width: 80px;
+  position: absolute;
+  left: 900px;
+  top: calc(100vh * 4);
+  transform: rotate(130deg);
+}
+.footprint-12 {
+  width: 100px;
+  position: absolute;
+  left: 1200px;
+  top: calc(100vh * 4 + 200px);
+  transform: rotate(160deg);
+}
+.footprint-13 {
+  width: 80px;
+  position: absolute;
+  left: 1050px;
+  top: calc(100vh * 4 + 600px);
+  transform: rotate(230deg);
+}
+.footprint-14 {
+  width: 100px;
+  position: absolute;
+  left: 100px;
+  top: calc(100vh * 5 + 500px);
+  transform: rotate(130deg);
 }
