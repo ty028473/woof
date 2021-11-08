@@ -19,11 +19,16 @@ import ProductList from './pages/cart/ProductList'
 
 // 會員
 import Member from './pages/member/Member'
-import Password from './pages/member/Password'
+import ChangePwd from './pages/member/ChangePwd'
+// 會員 --> 寵物頁面
 import Pets from './pages/member/Pets'
 import PetsAdd from './pages/member/PetsAdd'
+// 會員 --> 訂單紀錄頁面
+import RecordCarryOut from './pages/member/RecordCarryOut'
+import RecordComplete from './pages/member/RecordComplete'
+import RecordCancel from './pages/member/RecordCancel'
+// 會員 --> 保母收藏頁面
 import Collection from './pages/member/Collection'
-import Record from './pages/member/Record'
 
 //保母會員
 import Album from './pages/petSitter/Album'
@@ -63,23 +68,29 @@ function App() {
         <Route path="/joinus">
           <Joinus />
         </Route>
-        <Route path="/collection">
-          <Collection />
-        </Route>
         <Route path="/member/pets/add">
           <PetsAdd />
         </Route>
         <Route path="/member/pets">
           <Pets />
         </Route>
+        <Route path="/member/record/carryout">
+          <RecordCarryOut />
+        </Route>
+        <Route path="/member/record/complete">
+          <RecordComplete />
+        </Route>
+        <Route path="/member/record/cancel">
+          <RecordCancel />
+        </Route>
+        <Route path="/member/collection">
+          <Collection />
+        </Route>
+        <Route path="/member/changepwd">
+          <ChangePwd />
+        </Route>
         <Route path="/member">
           <Member />
-        </Route>
-        <Route path="/password">
-          <Password />
-        </Route>
-        <Route path="/record">
-          <Record />
         </Route>
         <Route path="/petSitter">
           <PetSitter />

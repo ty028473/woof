@@ -1,15 +1,15 @@
 import React from 'react'
-import '../../styles/about.scss'
+import '../../styles/joinus.scss'
 
 function Jointext(props) {
   return (
     <>
       <div className="container ">
-        <div className="aboutbg">
-          <div className="aboutleft"></div>
-          <div className="aboutright">
+        <div className="jsbg">
+          <div className="jsleft"></div>
+          <div className="jsright">
             <div className="formsub">
-              <h3 className="aboutmb24">成為保母</h3>
+              <h3 className="jsmb24">成為保母</h3>
               <form>
                 <select class="form-control form-control-lg mb-2">
                   <option>台北市信義區</option>
@@ -37,7 +37,7 @@ function Jointext(props) {
                 <div className=" mb-4 d-flex  align-items-center">
                   <button
                     type="button"
-                    className=" btn btn-secondary btn-woof aboutbtnuodata"
+                    className=" btn btn-secondary btn-woof jsbtnuodata"
                   >
                     身分證正面上傳
                   </button>
@@ -56,7 +56,7 @@ function Jointext(props) {
                 <div className=" mt-4 d-flex  align-items-center">
                   <button
                     type="button"
-                    className=" btn btn-primary btn-woof aboutbtn"
+                    className=" btn btn-primary btn-woof jsbtn"
                   >
                     送出
                   </button>
