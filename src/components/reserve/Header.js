@@ -7,7 +7,6 @@ import { IconContext } from 'react-icons'
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
-import { withRouter } from 'react-router'
 
 export default function Header() {
   return (
