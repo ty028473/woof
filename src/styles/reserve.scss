@@ -1,5 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+$primary: #087bdc;
+$secondary: #fac42e;
+$success: #6ba456;
+$info: #51535b;
+$danger: #d34f4f;
 
+$block-radious-cart: 20px 20px 0px 0px;
+$block-radious: 20px;
+$block-background: #fff;
+$hr-color: #c7c7c7;
 * {
   box-sizing: border-box;
   padding: 0;
@@ -8,20 +16,13 @@
 
 img {
   object-fit: cover;
+  filter: brightness(110%);
 }
 
 .center-element {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.color-white {
-  color: whitesmoke;
-}
-
-.color-grey {
-  color: rgba(170, 170, 170, 0.85);
 }
 
 .header-img {
@@ -31,13 +32,19 @@ img {
 .header-container {
   height: 300px;
 }
-
+.header-container label {
+  color: #000;
+}
 .header-title {
   position: absolute;
   padding: 5%;
-  font-size: 54px;
+  color: $secondary;
 }
-
+.filter-title {
+  position: relative;
+  padding-top: 15%;
+  z-index: 1000;
+}
 .header-filtros {
   position: absolute;
   top: 4%;
@@ -55,8 +62,7 @@ img {
 }
 
 .filter-container {
-  border: 20px solid #8e8e8e;
-  background: #ffffff;
+  background-color: transparent;
   padding: 1%;
   display: flex;
   justify-content: space-between;
@@ -68,15 +74,10 @@ img {
 }
 
 .filter-select {
-  display: flex;
-  flex-direction: column;
   justify-content: flex-start;
 }
 
 .input-filters {
-  display: flex;
-  flex-direction: row;
-
   padding: 10px;
 
   height: 45px;
@@ -102,10 +103,6 @@ img {
 }
 
 .sitter-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid lightgrey;
   width: 340px;
   border-radius: 25px;
   margin: 10px;
@@ -116,9 +113,9 @@ img {
 }
 
 .sitter-img {
-  border-radius: 25px 25px 0px 0px;
-  width: 100%;
-  height: 250px;
+  border-radius: 5%;
+  width: 200px;
+  height: 200px;
 }
 
 .sitter-description {
@@ -147,7 +144,6 @@ img {
 }
 
 .filters {
-  background: #eeeeee;
   padding: 2% 5%;
   display: flex;
   align-items: center;
@@ -191,4 +187,8 @@ img {
   border: none;
   font-size: 20px;
   background-color: transparent;
+}
+.myreact-icons {
+  color: red;
+  height: 2em;
 }
