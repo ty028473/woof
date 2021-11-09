@@ -5,7 +5,7 @@ function Jointext(props) {
   return (
     <>
       <div className="container ">
-        <div className="jsbg">
+        <div className="jsbg mt-4 mb-4 shadow">
           <div className="jsleft">
           <div className="pt-4">
             <img
