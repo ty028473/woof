@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../styles/carts.scss'
 
-function ItemListDetail(props) {
+function ProductItemDetail(props) {
   return (
     <>
       <table className="mt-3 table-list-styled shadow">
@@ -33,4 +33,4 @@ function ItemListDetail(props) {
   )
 }
 
-export default ItemListDetail
+export default ProductItemDetail

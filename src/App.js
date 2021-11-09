@@ -14,8 +14,8 @@ import Joinus from './pages/joinus/Joinus'
 import Calendar from './pages/reserve_calendar/calendar'
 
 // 購物車
-import ProductCheck from './pages/cart/ProductCheck'
-import ProductList from './pages/cart/ProductList'
+import OrderCheck from './pages/cart/OrderCheck'
+import OrderList from './pages/cart/OrderList'
 
 // 會員
 import Member from './pages/member/Member'
@@ -59,11 +59,11 @@ function App() {
         <Route path="/ReserveMap">
           <ReserveMap />
         </Route>
-        <Route path="/productCheck">
-          <ProductCheck />
+        <Route path="/orderCheck">
+          <OrderCheck />
         </Route>
-        <Route path="/productList">
-          <ProductList />
+        <Route path="/orderList">
+          <OrderList />
         </Route>
         <Route path="/joinus">
           <Joinus />
