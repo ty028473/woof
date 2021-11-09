@@ -4,7 +4,7 @@ function AboutDown(props) {
   return (
     <>
       <div className="container ">
-        <div className="abdownbg pt-4">
+        <div className="abdownbg mb-4 pr-4 pl-4 pt-4 shadow">
            
                <img className="abImg2" src="images/about/2.png" alt="" />    
            
