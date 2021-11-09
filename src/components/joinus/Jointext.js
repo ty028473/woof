@@ -6,12 +6,20 @@ function Jointext(props) {
     <>
       <div className="container ">
         <div className="jsbg">
-          <div className="jsleft"></div>
+          <div className="jsleft">
+          <div className="pt-4">
+            <img
+              className="jsImg3"
+              src="../../../images/login/login.png"
+              alt="立即預約"
+            />
+          </div>
+          </div>
           <div className="jsright">
             <div className="formsub">
               <h3 className="jsmb24">成為保母</h3>
               <form>
-                <select class="form-control form-control-lg mb-2">
+                <select class="form-control  mb-2">
                   <option>台北市信義區</option>
                   <option>台北市中山區</option>
                   <option>台北市中正區</option>
@@ -21,7 +29,7 @@ function Jointext(props) {
                 <div class="form-group mb-4 ">
                   <input
                     type="text"
-                    class="form-control form-control-lg"
+                    class="form-control "
                     id="formGroupExampleInput"
                     placeholder="地址"
                   />
@@ -29,7 +37,7 @@ function Jointext(props) {
                 <div class="form-group mb-3">
                   <input
                     type="text"
-                    class="form-control form-control-lg"
+                    class="form-control "
                     id="formGroupExampleInput"
                     placeholder="身分證字號"
                   />
