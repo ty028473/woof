@@ -5,7 +5,7 @@ import Footer from '../../components/golbal/Footer'
 import AsideNavbar from '../../components/member/AsideNavbar'
 
 // css
-import styles from '../../styles/collection.module.scss'
+import userGlobal from '../../styles/user-global.module.scss'
 
 // icon
 import {
@@ -29,7 +29,7 @@ function Collection(props) {
           </aside>
           {/* 右側content */}
           <main className="col-10">
-            <div className={`shadow ${styles.frame}`}>
+            <div className={`shadow ${userGlobal.frame}`}>
               <section>
                 <div className="row align-items-center">
                   <div className="col">
@@ -50,59 +50,61 @@ function Collection(props) {
               </section>
               <hr />
               <section className="m-3">
-                <div className={styles.data_block}>
-                  <div className="text-right">
+                <div className={userGlobal.data_block}>
+                  <div className="text-right mr-5">
                     <FontAwesomeIcon icon={faTrash} size="lg" />
                   </div>
 
                   <div className="row">
-                    <div className="col-3">
-                      <h5 className={styles.title_font}>林海海保母</h5>
+                    <div className="col-3 text-center">
+                      <h5 className={userGlobal.title_font}>林海海保母</h5>
                       <img
                         src="https://kpopthing.com/wp-content/uploads/2021/03/Yes-i-an-sana-making.jpg"
-                        className={styles.img_cover_sm}
+                        className={userGlobal.img_cover_square_sm}
                         alt="寵物頭像"
                       />
-                    </div>
-                    <div className="col-1 p-0 text-center">
-                      <ul
-                        className={`${styles.list_styled} ${styles.title_font}`}
-                      >
-                        <li>技能</li>
-                        <li>簡介</li>
-                      </ul>
-                    </div>
-                    <div className="col-8">
-                      <ul className={styles.list_styled}>
-                        <li>PCP寵物照護員認證(基礎)</li>
-                        <li>
-                          本身體力不錯，常帶雇主的狗狗出門散步耗體力。目前其中1位雇主的狗體重24公斤，愛爆衝，但因為之前有帶多隻毛孩外出的經驗及長時間固定運動，因此可以控制住比較活潑好動的狗狗。在遛毛孩的同時，也會不定時拍照及拍影片回傳給飼主，讓飼主放心。
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-6">
+                      <br />
+                      <br />
                       <FontAwesomeIcon icon={faMapMarkerAlt} size="lg" />
                       文山區
                       <br />
                       <FontAwesomeIcon icon={faStar} size="lg" />
                       評價星數
                     </div>
-                    <div className="col-6 text-right">
-                      <button
-                        type="button"
-                        className="btn btn-secondary btn-woof-Chat"
+                    <div className="col-1 p-0 text-center">
+                      <ul
+                        className={`${userGlobal.list_styled} ${userGlobal.title_font}`}
                       >
-                        聊聊
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-primary btn-woof-Chat ml-3"
-                      >
-                        觀看更多
-                      </button>
+                        <li>技能</li>
+                        <li>簡介</li>
+                      </ul>
                     </div>
+                    <div className="col-7">
+                      <ul
+                        className={`${userGlobal.list_styled} ${userGlobal.content_font}`}
+                      >
+                        <li>PCP寵物照護員認證(基礎)</li>
+                        <li>
+                          本身體力不錯，常帶雇主的狗狗出門散步耗體力。目前其中1位雇主的狗體重24公斤，愛爆衝，但因為之前有帶多隻毛孩外出的經驗及長時間固定運動，因此可以控制住比較活潑好動的狗狗。在遛毛孩的同時，也會不定時拍照及拍影片回傳給飼主，讓飼主放心。
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="col-1"></div>
+                  </div>
+
+                  <div className="text-right mr-5">
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-woof-Chat"
+                    >
+                      聊聊
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-woof-Chat ml-3"
+                    >
+                      觀看更多
+                    </button>
                   </div>
                 </div>
               </section>

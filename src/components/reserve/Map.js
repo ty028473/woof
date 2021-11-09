@@ -117,16 +117,16 @@ let loadingElementStyle = { height: `100%` }
 
 let containerElementStyle = {
   width: '100%',
-  height: '704px',
+  height: '600px',
   display: 'block',
   marginTop: '-80px',
 }
 
-function Map() {
+function Example() {
   return (
     <>
       <MapComponent
-        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places"
+        googleMapURL="https://maps.googleapis.com/maps/api/js?key="
         loadingElement={<div style={loadingElementStyle} />}
         containerElement={
           <div
@@ -141,4 +141,4 @@ function Map() {
   )
 }
 
-export default Map
+export default Example

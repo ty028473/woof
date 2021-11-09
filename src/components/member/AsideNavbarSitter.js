@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 // css
 import userGlobal from '../../styles/user-global.module.scss'
 
-function AsideNavbar(props) {
+function AsideNavbarSitter(props) {
   return (
     <>
       <div className="row flex-column text-center">
@@ -18,7 +18,7 @@ function AsideNavbar(props) {
         <div className="col">
           <ul className={userGlobal.list_styled}>
             <li className="p-0">mockup01</li>
-            <li className="p-0">會員中心</li>
+            <li className="p-0">保母會員中心</li>
           </ul>
         </div>
       </div>
@@ -26,19 +26,16 @@ function AsideNavbar(props) {
       <div className="mt-4 text-center">
         <ul className={userGlobal.member_nav}>
           <li>
-            <Link to="/member">會員資料</Link>
+            <Link to="/petsitter">保母資料</Link>
           </li>
           <li>
-            <Link to="/member/changepwd">更改密碼</Link>
+            <Link to="/petsitter/schedule">工作排程管理</Link>
           </li>
           <li>
-            <Link to="/member/pets">寵物資料</Link>
+            <Link to="/petsitter/record/carryout">訂單紀錄</Link>
           </li>
           <li>
-            <Link to="/member/record/carryout">訂單紀錄</Link>
-          </li>
-          <li>
-            <Link to="/member/Collection">保母收藏</Link>
+            <Link to="/petsitter/album">保母相簿</Link>
           </li>
         </ul>
       </div>
@@ -46,7 +43,7 @@ function AsideNavbar(props) {
       <div className="mt-4 text-center">
         <ul className={userGlobal.member_nav}>
           <li>
-            <Link to="/PetSitter">切換為保母身分</Link>
+            <Link to="/member">切換為會員身分</Link>
           </li>
           <li>
             <Link to="/login">登出</Link>
@@ -57,4 +54,4 @@ function AsideNavbar(props) {
   )
 }
 
-export default AsideNavbar
+export default AsideNavbarSitter

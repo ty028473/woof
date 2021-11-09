@@ -4,7 +4,7 @@ import NavBar from '../../components/golbal/NavBar'
 import Footer from '../../components/golbal/Footer'
 
 // css
-import styles from '../../styles/change-pwd.module.scss'
+import userGlobal from '../../styles/user-global.module.scss'
 
 function ChangePwd(props) {
   return (
@@ -20,7 +20,7 @@ function ChangePwd(props) {
           </aside>
           {/* 右側content */}
           <main className="col-10">
-            <div className={`shadow ${styles.frame}`}>
+            <div className={`shadow ${userGlobal.frame}`}>
               <section>
                 <div className="row align-items-center">
                   <div className="col">
@@ -32,8 +32,8 @@ function ChangePwd(props) {
               <hr />
               <section className="m-3">
                 <div className="row">
-                  <div className={`col-4 text-right ${styles.title_font}`}>
-                    <ul className={styles.list_styled}>
+                  <div className={`col-4 text-right ${userGlobal.title_font}`}>
+                    <ul className={userGlobal.list_styled}>
                       <li className="my-4">現在的密碼</li>
                       <li className="my-4">新的密碼</li>
                       <li className="my-4">確認密碼</li>
@@ -55,7 +55,7 @@ function ChangePwd(props) {
                   </div>
                   <div className="col-3"></div>
                 </div>
-                <div className={styles.Bottom_blank}></div>
+                <div className={userGlobal.Bottom_blank}></div>
               </section>
             </div>
           </main>

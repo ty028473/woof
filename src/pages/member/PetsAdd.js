@@ -4,7 +4,7 @@ import NavBar from '../../components/golbal/NavBar'
 import Footer from '../../components/golbal/Footer'
 
 // css
-import styles from '../../styles/pets.module.scss'
+import userGlobal from '../../styles/user-global.module.scss'
 
 function PetsAdd(props) {
   return (
@@ -20,7 +20,7 @@ function PetsAdd(props) {
           </aside>
           {/* 右側content */}
           <main className="col-10">
-            <div className={`shadow ${styles.frame}`}>
+            <div className={`shadow ${userGlobal.frame}`}>
               {/* 標題區塊 */}
               <section>
                 <div>
@@ -33,8 +33,10 @@ function PetsAdd(props) {
               <section>
                 <div className="mt-4">
                   <div className="row">
-                    <div className={`col-2 text-center ${styles.title_font}`}>
-                      <ul className={styles.list_styled}>
+                    <div
+                      className={`col-2 text-center ${userGlobal.title_font}`}
+                    >
+                      <ul className={userGlobal.list_styled}>
                         <li className="my-4">寵物名稱</li>
                         <li className="my-4">性別</li>
                         <li className="my-4">歲數</li>
@@ -83,7 +85,7 @@ function PetsAdd(props) {
                       <div>
                         <img
                           src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=1200:*"
-                          className={styles.img_cover_lg}
+                          className={userGlobal.img_cover_lg}
                           alt="會員大頭像"
                         />
                         <br />
@@ -98,7 +100,7 @@ function PetsAdd(props) {
                     </div>
                   </div>
                 </div>
-                <div className={styles.Bottom_blank}></div>
+                <div className={userGlobal.Bottom_blank}></div>
               </section>
             </div>
           </main>
