@@ -1,11 +1,7 @@
 import React from 'react'
-import {
-  faStar,
-  faMapMarker,
-  faDollarSign,
-} from '@fortawesome/free-solid-svg-icons'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import NoResults from './NoResults'
+
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 
 function sitterContainer(props) {

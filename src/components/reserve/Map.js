@@ -1,144 +1,48 @@
 import React from 'react'
-// react plugin used to create google maps
-import {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Marker,
-} from 'react-google-maps'
-// reactstrap components
-// import {
-//
-// } from "reactstrap";
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
 
-// Core Components
-
-let defaultOptions = {
-  scrollwheel: false,
-  styles: [
-    {
-      featureType: 'administrative',
-      elementType: 'labels.text.fill',
-      stylers: [
-        {
-          color: '#444444',
-        },
-      ],
-    },
-    {
-      featureType: 'landscape',
-      elementType: 'all',
-      stylers: [
-        {
-          color: '#f2f2f2',
-        },
-      ],
-    },
-    {
-      featureType: 'poi',
-      elementType: 'all',
-      stylers: [
-        {
-          visibility: 'off',
-        },
-      ],
-    },
-    {
-      featureType: 'road',
-      elementType: 'all',
-      stylers: [
-        {
-          saturation: -100,
-        },
-        {
-          lightness: 45,
-        },
-      ],
-    },
-    {
-      featureType: 'road.highway',
-      elementType: 'all',
-      stylers: [
-        {
-          visibility: 'simplified',
-        },
-      ],
-    },
-    {
-      featureType: 'road.arterial',
-      elementType: 'labels.icon',
-      stylers: [
-        {
-          visibility: 'off',
-        },
-      ],
-    },
-    {
-      featureType: 'transit',
-      elementType: 'all',
-      stylers: [
-        {
-          visibility: 'off',
-        },
-      ],
-    },
-    {
-      featureType: 'water',
-      elementType: 'all',
-      stylers: [
-        {
-          color: '#C5CBF5',
-        },
-        {
-          visibility: 'on',
-        },
-      ],
-    },
-  ],
-}
-
-let defaultCenter = { lat: 40.748817, lng: -73.985428 }
-
-let position = { lat: 40.748817, lng: -73.985428 }
-
-const MapComponent = withScriptjs(
-  withGoogleMap((props) => (
-    <GoogleMap
-      defaultZoom={13}
-      defaultCenter={defaultCenter}
-      defaultOptions={defaultOptions}
-    >
-      <Marker position={position} />
-    </GoogleMap>
-  ))
-)
-
-let loadingElementStyle = { height: `100%` }
-
-let containerElementStyle = {
-  width: '100%',
+const containerStyle = {
+  width: '500px',
   height: '600px',
-  display: 'block',
-  marginTop: '-80px',
 }
 
-function Example() {
-  return (
-    <>
-      <MapComponent
-        googleMapURL="https://maps.googleapis.com/maps/api/js?key="
-        loadingElement={<div style={loadingElementStyle} />}
-        containerElement={
-          <div
-            style={containerElementStyle}
-            className="map"
-            id="map-contactus-1"
-          />
-        }
-        mapElement={<div />}
-      />
-    </>
+const center = {
+  lat: 25.03746,
+  lng: 121.564558,
+}
+
+function MyComponent() {
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: '',
+  })
+
+  const [map, setMap] = React.useState(null)
+
+  const onLoad = React.useCallback(function callback(map) {
+    const bounds = new window.google.maps.LatLngBounds()
+    map.fitBounds(bounds)
+    setMap(map)
+  }, [])
+
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null)
+  }, [])
+
+  return isLoaded ? (
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={center}
+      zoom={15}
+      onLoad={onLoad}
+      onUnmount={onUnmount}
+    >
+      {/* Child components, such as markers, info windows, etc. */}
+      <></>
+    </GoogleMap>
+  ) : (
+    <></>
   )
 }
 
-export default Example
+export default React.memo(MyComponent)
