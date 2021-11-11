@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../../styles/reserve.scss'
 import '../../styles/golbal.scss'
 import SitterContainer from '../../components/reserve/SitterContainer'
 import Header from '../../components/reserve/Header'
 import Filters from '../../components/reserve/Filters'
-import Example from '../../components/reserve/Map'
+import MyComponent from '../../components/reserve/Map'
 
 import NavBar from '../../components/golbal/NavBar'
 import Footer from '../../components/golbal/Footer'
@@ -17,9 +17,9 @@ export default function App() {
 
       <Filters />
 
-      <div className="container">
+      <div className="container ">
         <div className="row">
-          <div className="col-6">
+          <div className="col-6 overflow">
             <SitterContainer />
             <SitterContainer />
             <SitterContainer />
@@ -27,8 +27,8 @@ export default function App() {
             <SitterContainer />
             <SitterContainer />{' '}
           </div>
-          <div className="col-6 mt-5 position-relative">
-            <Example />
+          <div className="col-6 map-site ">
+            <MyComponent />
           </div>
         </div>
       </div>
