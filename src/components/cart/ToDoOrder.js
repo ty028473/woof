@@ -1,6 +1,7 @@
 import React from 'react'
 
 function ToDoOrder(props) {
+  const { productCount, total } = props
   return (
     <div>
       <div className="check-order cart-shadow">
@@ -19,11 +20,12 @@ function ToDoOrder(props) {
         <div class="d-flex bd-highlight my-auto">
           <div class="py-4 px-5 flex-grow-1 bd-highlight"></div>
           <div class="py-4 px-5 bd-highlight ">
-            總金額 (1個商品): <span className="price-color">$500</span>
+            總金額 ({productCount}個商品):{' '}
+            <span className="price-color">${total}</span>
           </div>
           <div class="py-4 px-5 bd-highlight col-2">
             <button type="button" className="btn btn-primary btn-woof">
-              下訂單
+              去結帳
             </button>
           </div>
         </div>

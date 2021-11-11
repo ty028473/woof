@@ -16,10 +16,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // }
 
 function ProductItem(props) {
-  const { name, image, address, pet_name, start_event, end_event, price } =
-  props
-  // const { name, image, address, pet_name, start_event, end_event, price,countOne, setCountOne } =
-  //   props
+  const {
+    name,
+    image,
+    address,
+    pet_name,
+    start_event,
+    end_event,
+    price,
+    handleDelete,
+  } = props
+
   return (
     <>
       <table className="my-3 table-list-styled shadow">
@@ -43,7 +50,7 @@ function ProductItem(props) {
           </td>
           <td className="price-color">${price}</td>
           <td>
-            <FontAwesomeIcon icon={faTrash} size="lg" />
+            <FontAwesomeIcon icon={faTrash} size="lg" onClick={handleDelete} />
           </td>
         </tr>
       </table>
