@@ -115,17 +115,19 @@ $hr-color: #c7c7c7;
 .sitter-card h2 {
   height: 3%;
 }
-
+.sitter-icon {
+  color: $secondary;
+  margin-right: 5px;
+}
 .sitter-img {
   border-radius: 5%;
   width: 200px;
   height: 200px;
+  padding: 5px;
   object-fit: cover;
 }
 
 .sitter-description {
-  font-size: 14px;
-  font-weight: lighter;
   text-align: justify;
   padding: 0 5%;
   height: 20%;

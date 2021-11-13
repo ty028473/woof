@@ -1,5 +1,5 @@
 import React from 'react'
-import DemoApp from '../../components/calendar2/calendar'
+import ViewApp from '../../components/calendar2/calendarView'
 import SitterDetail from '../../components/reserve/personal'
 import SitterSummary from '../../components/reserve/summary'
 import { Form } from 'react-bootstrap'
@@ -32,7 +32,7 @@ function Reservecalendar(props) {
       <div className="container">
         <div className="row d-flex justify-content-beteeen calendar-bg">
           <div className="col-12 my-4  ">
-            <DemoApp />
+            <ViewApp />
           </div>
           <div className="col-5 ">
             <div className="container">
