@@ -1,11 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import AddCreditCard from './AddCreditCard'
 import CheckOutResult from './CheckOutResult'
+import axios from 'axios'
 
 function ToCheckout(props) {
   const [addCreditCard, setAddCreditCard] = useState(false)
   const [checkOutResult, setCheckOutResult] = useState(false)
+  // 會員的信用卡
+  const [creditCard, setCreditCard] = React.useState([])
+  React.useEffect(() => {
+    axios
+      .get('./api/member.json')
+      .then((res) => setCreditCard(res.data))
+      .catch((err) => console.log(err))
+  }, [])
   return (
     <>
       <div className="my-3 check-out shadow">
@@ -58,50 +67,25 @@ function ToCheckout(props) {
         </div>
         {/* 信用卡資訊 */}
         <ul className="my-3 credit-card-list-styled">
-          <li>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-                checked
-              />
-              <label className="form-check-label" for="exampleRadios1">
-                VISA 台新國際商業銀行 **** 4106
-              </label>
-            </div>
-          </li>
-          <li>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios2"
-                value="option2"
-              />
-              <label className="form-check-label" for="exampleRadios2">
-                VISA 台新國際商業銀行 **** 4106
-              </label>
-            </div>
-          </li>
-          <li>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios3"
-                value="option3"
-                disabled
-              />
-              <label className="form-check-label" for="exampleRadios3">
-                VISA 台新國際商業銀行 **** 4106
-              </label>
-            </div>
-          </li>
+          {creditCard &&
+            creditCard.map((creditCard) => (
+              <li key={creditCard.user_id}>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="exampleRadios"
+                    id="exampleRadios1"
+                    value="option1"
+                    checked
+                  />
+                  <label className="form-check-label" for="exampleRadios1">
+                    {creditCard.bank} {creditCard.number}
+                  </label>
+                </div>
+              </li>
+            ))}
+
           <div className="blog__controller">
             <Button
               className="btn btn-primary btn-woof"

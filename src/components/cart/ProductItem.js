@@ -2,58 +2,57 @@ import React from 'react'
 import '../../styles/carts.scss'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-// 每個商品的物件
-// {
-//     id :1,
-//     name:'審佳宜',
-//     image:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
-//     address:'台北市中山區大同二路28巷2號',
-//     pet_name:'毛毛',
-//     start_event:'2021/12/1 08:00',
-//     end_event:'2021/12/1 12:00',
-//     price: 500,
-// }
+import ToDoOrder from './ToDoOrder'
 
 function ProductItem(props) {
-  const {
-    name,
-    image,
-    address,
-    pet_name,
-    start_event,
-    end_event,
-    price,
-    handleDelete,
-  } = props
-
+  const { cartItems, onRemove } = props
+  
+  
   return (
     <>
-      <table className="my-3 table-list-styled shadow">
-        <tr>
-          <td>
-            <h6>{name}</h6>
-            <img src={image} className="img-cover-sm-square" alt="" />
-          </td>
-          <td className="adderss-width">
-            交易地點： <br />
-            {address}
-            <br />
-            <br />
-            寵物名稱： <br />
-            {pet_name}
-          </td>
-          <td>
-            {start_event} ~
-            <br />
-            {end_event}
-          </td>
-          <td className="price-color">${price}</td>
-          <td>
-            <FontAwesomeIcon icon={faTrash} size="lg" onClick={handleDelete} />
-          </td>
-        </tr>
-      </table>
+      {/* 如果購物車裡面沒東西，顯示是空的 */}
+      {cartItems.length === 0 && (
+        <section className="table-list-styled text-center my-3 shadow">
+          <h5 className="pt-5">購物車是空的！趕快去逛逛吧～</h5>
+          <br />
+          <button type="button" className="btn btn-primary btn-woof">
+            點我預約去～
+          </button>
+        </section>
+      )}
+      {/* 購物車商品條列 */}
+      {cartItems.map((item) => (
+        <table className="my-3 table-list-styled shadow " key={item.id}>
+          <tr>
+            <td>
+              <h6>{item.name}</h6>
+              <img src={item.image} className="img-cover-sm-square" alt="" />
+            </td>
+            <td className="adderss-width">
+              交易地點： <br />
+              {item.address}
+              <br />
+              <br />
+              寵物名稱： <br />
+              {item.pet_name}
+            </td>
+            <td>
+              {item.start_event} ~
+              <br />
+              {item.end_event}
+            </td>
+            <td className="price-color">${item.price}</td>
+            <td>
+              <FontAwesomeIcon
+                icon={faTrash}
+                size="lg"
+                onClick={() => onRemove(item)}
+              />
+            </td>
+          </tr>
+        </table>
+      ))}
+      <ToDoOrder cartItems={cartItems}/>
     </>
   )
 }

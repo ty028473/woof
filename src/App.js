@@ -15,7 +15,7 @@ import Calendar from './pages/reserve_calendar/calendar'
 
 // 購物車
 import OrderCheck from './pages/cart/OrderCheck'
-import OrderList from './pages/cart/OrderList'
+import Cart from './pages/cart/Cart'
 
 // 會員
 import Member from './pages/member/Member'
@@ -62,8 +62,8 @@ function App() {
         <Route path="/orderCheck">
           <OrderCheck />
         </Route>
-        <Route path="/orderList">
-          <OrderList />
+        <Route path="/cart">
+          <Cart />
         </Route>
         <Route path="/joinus">
           <Joinus />

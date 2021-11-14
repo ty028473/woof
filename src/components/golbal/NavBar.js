@@ -27,8 +27,16 @@ function NavBar(props) {
           </Nav.Link>
         </Nav>
         <Nav className="mr-right flex-right">
-          <a className="icon-cart" href="/productList">
+          {/* <a className="icon-cart" href="/productList">
             <BsFillCartFill />
+          </a> */}
+          <a className="icon-cart" href="#/cart">
+            <BsFillCartFill className="mr-2"/>
+            {props.countCartItems ? (
+              <button className="badge">{props.countCartItems}</button>
+            ) : (
+              ''
+            )}
           </a>
           <Nav.Link className="nav-title" href="/login">
             登入

@@ -1,4 +1,15 @@
 $primary: #087bdc;
+$danger: #d34f4f;
+$button-radious: 50px;
+
+// cart
+.badge {
+  background-color: $danger;
+  border: none;
+  color: #ffffff;
+  width: 1.5rem;
+  border-radius: $button-radious;
+}
 
 // navbar
 
