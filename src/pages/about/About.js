@@ -6,10 +6,14 @@ import AboutTop from '../../components/about/AboutTop'
 import AboutDown from '../../components/about/AboutDown'
 
 function About(props) {
-  return <><NavBar/>
-  <AboutTop/>
-  <AboutDown/>
-  <Footer/></>
+  return (
+    <>
+      <NavBar />
+      <AboutTop />
+      <AboutDown />
+      <Footer />
+    </>
+  )
 }
 
 export default About
