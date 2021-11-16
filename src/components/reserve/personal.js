@@ -9,17 +9,17 @@ function SitterDetail(props) {
   return (
     <>
       {personalData &&
-        personalData.map(({ img, name, district, evaluation, starnum, id }) => (
+        personalData.map(({ image, name, district, evaluation, score, id }) => (
           <table className=" list-styled">
             <tr key={id}>
               <td>
-                <img className="profile-img-cover" src={img} alt="img" />
+                <img className="profile-img-cover" src={image} alt="img" />
               </td>
 
               <td className="proflie-width ">
                 <h3>{name}</h3>
                 <FontAwesomeIcon icon={faStar} className="sitter-icon mr-1" />
-                {starnum}
+                {score}
                 <br />
                 <p className="evaluation-font">{evaluation}</p>
                 <br />
