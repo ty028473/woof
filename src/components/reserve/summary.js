@@ -7,14 +7,14 @@ function SitterSummary(props) {
   return (
     <>
       {summaryData &&
-        summaryData.map(({ description, license, id }) => (
+        summaryData.map(({ introduction, skill, id }) => (
           <table key={id} className="mt-3 my-2 summary-list-styled">
             <tr>
               <td>
                 <h3>簡介</h3>
-                <p>{description}</p>
+                <p>{introduction}</p>
                 <h3>技能</h3>
-                <p>{license}</p>
+                <p>{skill}</p>
               </td>
             </tr>
           </table>

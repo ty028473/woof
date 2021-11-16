@@ -2,11 +2,11 @@
   {
     "id": 1,
     "name": "林頤宣",
-    "img": "./images/sitter/AdobeStock_62255314 (1).jpeg",
+    "image": "./images/sitter/AdobeStock_62255314 (1).jpeg",
 
     "evaluation": "55則評價",
     "district": "北投區",
 
-    "starnum": 2
+    "score": 2
   }
 ]

@@ -10,20 +10,20 @@ export default function SitterInfo(props) {
   return (
     <div className="container ">
       {sitterData &&
-        sitterData.map(({ photo, name, price, description, starnum, id }) => (
+        sitterData.map(({ image, name, price, introduction, score, id }) => (
           <div key={id} className="row mb-2">
             <div className="col-5">
-              <img className="sitter-img" src={photo} />
+              <img className="sitter-img" src={image} alt={'img'} />
             </div>
             <div className="col-7">
               <h5 className="sitter-title">{name}</h5>
               <h6 className="sitter-description mb-0">{price}</h6>
-              <h6 className="sitter-description mb-2">{description}</h6>
+              <h6 className="sitter-description mb-2">{introduction}</h6>
 
               <div className="sitter-price-price">
                 <div className="filters">
                   <FontAwesomeIcon icon={faStar} className="sitter-icon" />
-                  <div>{starnum}</div>
+                  <div>{score}</div>
                 </div>
               </div>
               <Link
