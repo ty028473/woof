@@ -8,13 +8,13 @@ import Header from '../../components/reserve/Header'
 import Filters from '../../components/reserve/Filters'
 import MyComponent from '../../components/reserve/Map'
 
-import NavBar from '../../components/golbal/NavBar'
+import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../../components/golbal/Footer'
 
 export default function App() {
   return (
     <>
-      <NavBar />
+      <NewNavBar />
       <Header />
 
       <Filters />

@@ -2,40 +2,50 @@
   {
     "id": 1,
     "name": "林頤宣",
-    "photo": "./images/sitter/AdobeStock_62255314 (1).jpeg",
-    "description": "之前有帶多隻毛孩外出的經驗及長時間.....",
+    "image": "./images/sitter/AdobeStock_62255314 (1).jpeg",
+    "introduction": "之前有帶多隻毛孩外出的經驗及長時間.....",
 
     "price": "500~1000/步行 4hr",
 
     "district": "北投區",
-    "starnum": 3
+    "score": 3
   },
   {
     "id": 2,
     "name": "林頤宣",
-    "photo": "./images/sitter/AdobeStock_62255314 (1).jpeg",
-    "description": "之前有帶多隻毛孩外出的經驗及長時間.....",
+    "image": "./images/sitter/AdobeStock_62255314 (1).jpeg",
+    "introduction": "之前有帶多隻毛孩外出的經驗及長時間.....",
 
     "price": "500~1000/步行 4hr",
-    "starnum": 3,
+    "score": 3,
     "district": "北投區"
   },
   {
     "id": 3,
     "name": "林頤宣",
-    "photo": "./images/sitter/AdobeStock_62255314 (1).jpeg",
-    "description": "之前有帶多隻毛孩外出的經驗及長時間.....",
+    "image": "./images/sitter/AdobeStock_62255314 (1).jpeg",
+    "introduction": "之前有帶多隻毛孩外出的經驗及長時間.....",
 
     "price": "500~1000/步行 4hr",
-    "starnum": 2,
+    "score": 2,
     "district": "北投區"
   },
   {
     "id": 4,
     "name": "林頤宣",
-    "photo": "./images/sitter/AdobeStock_62255314 (1).jpeg",
-    "description": "之前有帶多隻毛孩外出的經驗及長時間.....",
-    "starnum": 4,
+    "image": "./images/sitter/AdobeStock_62255314 (1).jpeg",
+    "introduction": "之前有帶多隻毛孩外出的經驗及長時間.....",
+    "score": 4,
+    "price": "500~1000/步行 4hr",
+
+    "district": "北投區"
+  },
+  {
+    "id": 5,
+    "name": "林頤宣",
+    "image": "./images/sitter/AdobeStock_62255314 (1).jpeg",
+    "introduction": "之前有帶多隻毛孩外出的經驗及長時間.....",
+    "score": 4,
     "price": "500~1000/步行 4hr",
 
     "district": "北投區"
