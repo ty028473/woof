@@ -3,7 +3,7 @@ import ViewApp from '../../components/calendar2/calendarView'
 import SitterDetail from '../../components/reserve/personal'
 import SitterSummary from '../../components/reserve/summary'
 import { Form } from 'react-bootstrap'
-import NavBar from '../../components/golbal/NavBar'
+import NewNavBar from '../../components/golbal/NewNavBar'
 import Board from '../../components/reserve/ImgBoard'
 import Evalution from '../../components/reserve/EvaluationBoard'
 import Footer from '../../components/golbal/Footer'
@@ -17,7 +17,7 @@ function Reservecalendar(props) {
   // console.log(obj)
   return (
     <>
-      <NavBar />
+      <NewNavBar />
       <div className="container">
         <div className="row d-flex justify-content-center mx-0">
           <div className="col-6 my-4 ">
