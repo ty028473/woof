@@ -5,6 +5,22 @@ $block-radious: 20px;
 $block-background: #fff;
 $hr-color: #c7c7c7;
 
+// test
+.row-2 {
+  display: flex;
+  justify-content: space-between;
+}
+.col-2-2 {
+  flex: 2;
+}
+.block-2 {
+  background-color: #e0e0e0;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+}
+// test -end
+
 .height {
   // height: 100vh;
 }
