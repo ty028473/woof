@@ -5,32 +5,54 @@ import GoogleButton from 'react-google-button'
 import NavBar from '../../components/golbal/NavBar'
 import Footer from '../../components/golbal/Footer'
 import axios from 'axios'
+import {withRouter,useHistory} from 'react-router-dom'
+
 
 function Login(props) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const login = () => {
-    axios
-      .post('http://localhost:8801/api/auth/login', {
-        email: email,
-        password: password,
-      })
-      .then((response) => {
-        alert('登入成功')
-        console.log(response)
-      })
-      .catch((e) => {
-        if (e.response.data === Array(0)) {
-          alert('帳號或密碼錯誤！')
-        } else if (email === '') {
-          alert('請輸入帳號!')
-        } else {
-          alert('請輸入密碼!')
-        }
-      })
+  const [loginForm, setLoginForm] = useState({
+    email: '',
+    password: '',
+  })
+  let history= useHistory()
+  let id =JSON.parse(localStorage.getItem('id'))
+  if (id){
+    history.push("/")
+
+  }
+
+  function handleChange(e) {
+    let newMember = { ...loginForm }
+    newMember[e.target.name] = e.target.value
+    setLoginForm(newMember)
+    console.log(loginForm)
+
+    // 逗點後面的值會蓋掉前面的
+    // setMember(...member, [e.target.name]:e.target.value)
+  }
+  async function handleSubmit(e) {
+
+    // 關掉預設行為
+    e.preventDefault()
+    try {
+      
+      // 用 post 送出資料 (member 已經是 json 格式可以直接送出)
+      let res = await axios.post(
+        'http://localhost:8801/api/auth/login',
+        loginForm
+      )
+      console.log(res)
+      if (res.data.code === "0") {
+        localStorage.setItem('id', JSON.stringify(res.data.returnMember))
+        alert("登入成功")
+        history.push("/")
+      }
+    } catch (err) {
+      console.log('handleSubmitErr', err)
+    }
   }
 
   return (
+    
     <>
       <NavBar />
       <div className="container">
@@ -44,60 +66,65 @@ function Login(props) {
           </div>
           <div className="col-5 login-block">
             <ul className="login-list-styled">
-              <li>
-                <h5>會員登入</h5>
-              </li>
-              <li>
-                <div class=" input-group">
-                  <input
-                    type="email"
-                    class="form-control"
-                    placeholder="Email"
-                    onChange={(e) => setEmail(e.target.value)}
+              <form onSubmit={handleSubmit}>
+                <li>
+                  <h5>會員登入</h5>
+                </li>
+                <li>
+                  <div class=" input-group">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      name="email"
+                      value={loginForm.email}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </li>
+                <li>
+                  <div class=" input-group">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="密碼"
+                      name="password"
+                      value={loginForm.password}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </li>
+                <li>
+                  <button
+                    type="submit"
+                    className="col btn btn-primary  btn-woof"
+                  >
+                    登入
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    className="col btn btn-secondary btn-woof"
+                  >
+                    註冊
+                  </button>
+                </li>
+                <li className="text-center">
+                  <a href="#/" alt="忘記密碼">
+                    忘記密碼?
+                  </a>
+                </li>
+                <li>
+                  <GoogleButton
+                    type="light"
+                    label="使用Google登入"
+                    onClick={() => {
+                      console.log('Google button clicked')
+                    }}
                   />
-                </div>
-              </li>
-              <li>
-                <div class=" input-group">
-                  <input
-                    type="password"
-                    class="form-control"
-                    placeholder="密碼"
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-              </li>
-              <li>
-                <button
-                  type="submit"
-                  className="col btn btn-primary  btn-woof"
-                  onClick={login}
-                >
-                  登入
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  className="col btn btn-secondary btn-woof"
-                >
-                  註冊
-                </button>
-              </li>
-              <li className="text-center">
-                <a href="#/" alt="忘記密碼">
-                  忘記密碼?
-                </a>
-              </li>
-              <li>
-                <GoogleButton
-                  type="light"
-                  label="使用Google登入"
-                  onClick={() => {
-                    console.log('Google button clicked')
-                  }}
-                />
-              </li>
+                </li>
+              </form>
             </ul>
           </div>
         </div>

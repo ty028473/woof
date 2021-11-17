@@ -4,6 +4,7 @@ import '../../styles/signup.scss'
 import NavBar from '../../components/golbal/NavBar'
 import Footer from '../../components/golbal/Footer'
 import axios from 'axios'
+import {withRouter,useHistory} from 'react-router-dom'
 
 function Signup(props) {
   const [signForm, setSignForm] = useState({
@@ -15,6 +16,12 @@ function Signup(props) {
     phone: '',
     date: '',
   })
+  let history= useHistory()
+  let id =JSON.parse(localStorage.getItem('id'))
+  if (id){
+    history.push("/")
+
+  }
 
   function handleChange(e) {
     let newMember = { ...signForm }
