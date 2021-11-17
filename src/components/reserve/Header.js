@@ -34,7 +34,7 @@ export default function Header(props) {
         <div>
           <img
             className="header-img"
-            src="../resources/AdobeStock_257446250.jpeg 
+            src="../images/resources/AdobeStock_257446250.jpeg 
             "
             alt="pic1"
           />
@@ -42,14 +42,14 @@ export default function Header(props) {
         <div>
           <img
             className="header-img"
-            src="../resources/AdobeStock_173443769 (1).jpeg"
+            src="../images/resources/AdobeStock_173443769 (1).jpeg"
             alt="pic2"
           />
         </div>
         <div>
           <img
             className="header-img"
-            src="../resources/AdobeStock_317438568.jpeg"
+            src="../images/resources/AdobeStock_317438568.jpeg"
             alt="pic3"
           />
         </div>
