@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../styles/golbal.scss'
 import '../../styles/home.scss'
-import NavBar from '../../components/golbal/NavBar'
+import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../../components/golbal/Footer'
 import Evaluation from '../../components/home/Evaluation'
 import Advantage from '../../components/home/Advantage'
@@ -12,7 +12,7 @@ import { ReactComponent as MyArrow } from './myArrow.svg'
 function Home(props) {
   return (
     <>
-      <NavBar />
+      <NewNavBar />
       <ScrollToTop smooth component={<MyArrow />} />
       <div className="container relative">
         {/* 1-立即預約 */}
