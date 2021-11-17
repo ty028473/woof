@@ -1,12 +1,22 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ProductContext } from '../../contexts/ProductContext'
+import axios from 'axios'
 
 const ProductForm = () => {
   const { dispatch } = useContext(ProductContext)
   // 從這邊抓資料庫的值
   const [district, setDistrict] = useState('')
   const [address, setAddress] = useState('')
-  const [pet_id, setPet_id] = useState('')
+  const [petIdsFromServer, setPetIdsFromServer] = useState([])
+  const [selectedPetId, setSelectedPetId] = useState([])
+
+  useEffect(() => {
+    axios
+      .get('./api/pet.json')
+      .then((res) => setPetIdsFromServer(res.data))
+      .catch((err) => console.log(err))
+  }, [])
+
   const [start, setStart] = useState('')
   const [end, setEnd] = useState('')
   const [title, setTitle] = useState('')
@@ -15,11 +25,11 @@ const ProductForm = () => {
     // console.log(title, author);
     dispatch({
       type: 'ADD_PRODUCT',
-      product: { district, address, pet_id, start, end, title },
+      product: { district, address, petIdsFromServer, start, end, title },
     })
     setDistrict('')
     setAddress('')
-    setPet_id('')
+    setPetIdsFromServer([])
     setStart('')
     setEnd('')
     setTitle('')
@@ -58,21 +68,19 @@ const ProductForm = () => {
       </div>
       <div className="col-2 ">
         <div class="input-group mb-3">
-          {/* <select class="custom-select">
-            <option selected>寵物名稱</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select> */}
-          <input
+          <select
             className="form-control"
-            type="text"
-            placeholder="寵物名稱"
-            value={pet_id}
-            onChange={(e) => {
-              setPet_id(e.target.value)
-            }}
-          />
+            onChange={(e) => setPetIdsFromServer(e.target.value)}
+          >
+            {petIdsFromServer.length >0 &&
+              petIdsFromServer.map((pet) => {
+                return (
+                  <option key={pet.id} value={pet.name}>
+                    {pet.name}
+                  </option>
+                )
+              })}
+          </select>
         </div>
       </div>
       <div className="col-3 ">
@@ -136,76 +144,6 @@ const ProductForm = () => {
           立即預約
         </button>
       </div>
-
-      {/* <input
-        className="form-control col-2"
-        type="text"
-        placeholder="地區"
-        value={district}
-        onChange={(e) => {
-          setDistrict(e.target.value)
-        }}
-        disabled="disabled"
-      />
-      <input
-        className="form-control col-2"
-        type="text"
-        placeholder="交易地點"
-        value={address}
-        onChange={(e) => {
-          setAddress(e.target.value)
-        }}
-        required
-      />
-      <input
-        className="form-control col-2"
-        type="text"
-        placeholder="寵物名稱"
-        value={pet_id}
-        onChange={(e) => {
-          setPet_id(e.target.value)
-        }}
-      />
-      <input
-        className="form-control col-2"
-        type="text"
-        placeholder="開始時間"
-        value={start}
-        onChange={(e) => {
-          setStart(e.target.value)
-        }}
-        disabled="disabled"
-      />
-      <input
-        className="form-control col-2"
-        type="text"
-        placeholder="結束時間"
-        value={end}
-        onChange={(e) => {
-          setEnd(e.target.value)
-        }}
-        disabled="disabled"
-      />
-      <input
-        className="form-control col-2"
-        type="text"
-        placeholder="價格"
-        value={title}
-        onChange={(e) => {
-          setTitle(e.target.value)
-        }}
-        // disabled="disabled"
-      />
-      <button
-        className="btn btn-primary btn-woof"
-        type="submit"
-        value="add product"
-        onClick={() => {
-          alert('預約成功！')
-        }}
-      >
-        立即預約
-      </button> */}
     </form>
   )
 }
