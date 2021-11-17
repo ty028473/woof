@@ -2,14 +2,14 @@ import React from 'react'
 import Conversation from '../../components/chat/Conversation'
 import Message from '../../components/chat/Message'
 import Footer from '../../components/golbal/Footer'
-import NavBar from '../../components/golbal/NavBar'
+import NewNavBar from '../../components/golbal/NewNavBar'
 import "../../styles/chat.scss"
 
 
 function chatroom(props) {
   return (
     <>
-      <NavBar />
+      <NewNavBar />
       <div className="container ">
       <div className="messenger mb-4 mt-4">
       

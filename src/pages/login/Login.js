@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import '../../styles/golbal.scss'
 import '../../styles/login.scss'
 import GoogleButton from 'react-google-button'
-import NavBar from '../../components/golbal/NavBar'
+import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../../components/golbal/Footer'
 import axios from 'axios'
 import {withRouter,useHistory} from 'react-router-dom'
@@ -54,7 +54,7 @@ function Login(props) {
   return (
     
     <>
-      <NavBar />
+      <NewNavBar />
       <div className="container">
         <div className="row login-bg-block shadow">
           <div className="col-5">
