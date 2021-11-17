@@ -10,11 +10,11 @@ const center = {
   lat: 25.03746,
   lng: 121.564558,
 }
-
+//金緯度根據地址轉換、
 function MyComponent() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: '',
+    googleMapsApiKey: `${process.env.REACT_APP_API_KEY}`,
   })
 
   const [map, setMap] = React.useState(null)

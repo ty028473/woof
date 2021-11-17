@@ -1,5 +1,6 @@
 $primary: #087bdc;
 $danger: #d34f4f;
+$secondary: #fac42e;
 $block-radious-cart: 20px 20px 0px 0px;
 $block-radious: 20px;
 $block-background: #fff;
@@ -38,10 +39,13 @@ $hr-color: #c7c7c7;
   background-color: $block-background;
   border-radius: $block-radious;
 }
-
+.sitter-icon {
+  color: $secondary;
+  // margin-right: 5px;
+}
 .board-pic img {
   border-radius: 10%;
-  margin: 10px;
+  // margin: 10px;
   width: 300px;
   height: 300px;
   object-fit: cover;

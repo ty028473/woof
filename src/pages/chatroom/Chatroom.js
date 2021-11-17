@@ -2,12 +2,14 @@ import React from 'react'
 import Conversation from '../../components/chat/Conversation'
 import Message from '../../components/chat/Message'
 import Footer from '../../components/golbal/Footer'
-import NavBar from '../../components/golbal/NavBar'
 import { useContext, useEffect, useRef, useState } from 'react'
 import { AuthContext } from '../../components/context/AuthContext'
 import axios from 'axios'
 import { io } from 'socket.io-client'
 import '../../styles/chat.scss'
+import NewNavBar from '../../components/golbal/NewNavBar'
+import "../../styles/chat.scss"
+
 
 function Chatroom() {
   const [conversations, setConversations] = useState([])
@@ -86,7 +88,7 @@ function Chatroom() {
   }, [messages])
   return (
     <>
-      <NavBar />
+      <NewNavBar />
       <div className="container ">
         <div className="messenger mb-4 mt-4">
           <div className="chatMenu">
