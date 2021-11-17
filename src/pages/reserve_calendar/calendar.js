@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ViewApp from '../../components/calendar2/calendarView'
 import SitterDetail from '../../components/reserve/personal'
 import SitterSummary from '../../components/reserve/summary'
@@ -7,36 +7,40 @@ import NavBar from '../../components/golbal/NavBar'
 import Board from '../../components/reserve/ImgBoard'
 import Evalution from '../../components/reserve/EvaluationBoard'
 import Footer from '../../components/golbal/Footer'
-import ProductContextProvider from '../../contexts/ProductContext'
 
 function Reservecalendar(props) {
+  const [obj, setObj] = useState({
+    start: '',
+    end: '',
+    title: '',
+  })
+  // console.log(obj)
   return (
     <>
-      <ProductContextProvider>
-        <NavBar />
-        <div className="container">
-          <div className="row d-flex justify-content-center mx-0">
-            <div className="col-6 my-4 ">
-              <SitterDetail />
-            </div>
-            <div className="col-6 my-2 ">
-              <SitterSummary />
-            </div>
+      <NavBar />
+      <div className="container">
+        <div className="row d-flex justify-content-center mx-0">
+          <div className="col-6 my-4 ">
+            <SitterDetail />
+          </div>
+          <div className="col-6 my-2 ">
+            <SitterSummary />
           </div>
         </div>
-        <div className="container">
-          <div className="row d-flex justify-content-between">
-            <div className="col-12  ">
-              <h3>保母日曆</h3>
-            </div>
+      </div>
+      <div className="container">
+        <div className="row d-flex justify-content-between">
+          <div className="col-12  ">
+            <h3>保母日曆</h3>
           </div>
         </div>
-        <div className="container">
-          <div className="row d-flex justify-content-beteeen calendar-bg">
-            <div className="col-12 my-4  ">
-              <ViewApp />
-            </div>
-            <div className="col-5 ">
+      </div>
+      <div className="container">
+        <div className="row d-flex justify-content-beteeen calendar-bg">
+          <div className="col-12 my-4  ">
+            <ViewApp setObj={setObj} />
+          </div>
+          <div className="col-5 ">
             <div className="container">
               <div className="row">
                 <div className="col-4 ">
@@ -62,11 +66,11 @@ function Reservecalendar(props) {
             <div className="container">
               <div className="row">
                 <div className="col-6 ">
-                  <p>開始時間：08:00</p>
-                  <p>結束時間：12:00</p>
+                  <p>開始時間：{obj.start.toLocaleString()}</p>
+                  <p>結束時間：{obj.end.toLocaleString()}</p>
                 </div>
                 <div className="col-6 ">
-                  <p>金額：500</p>
+                  <p>金額：{obj.title}</p>
                 </div>
               </div>
             </div>
@@ -77,12 +81,11 @@ function Reservecalendar(props) {
               立即預約
             </button>
           </div>
-          </div>
         </div>
-        <Board />
-        <Evalution />
-        <Footer />
-      </ProductContextProvider>
+      </div>
+      <Board />
+      <Evalution />
+      <Footer />
     </>
   )
 }
