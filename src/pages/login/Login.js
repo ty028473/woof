@@ -1,11 +1,35 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import '../../styles/golbal.scss'
 import '../../styles/login.scss'
 import GoogleButton from 'react-google-button'
 import NavBar from '../../components/golbal/NavBar'
 import Footer from '../../components/golbal/Footer'
+import axios from 'axios'
 
 function Login(props) {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const login = () => {
+    axios
+      .post('http://localhost:8801/api/auth/login', {
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        alert('登入成功')
+        console.log(response)
+      })
+      .catch((e) => {
+        if (e.response.data === Array(0)) {
+          alert('帳號或密碼錯誤！')
+        } else if (email === '') {
+          alert('請輸入帳號!')
+        } else {
+          alert('請輸入密碼!')
+        }
+      })
+  }
+
   return (
     <>
       <NavBar />
@@ -29,6 +53,7 @@ function Login(props) {
                     type="email"
                     class="form-control"
                     placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
               </li>
@@ -38,11 +63,16 @@ function Login(props) {
                     type="password"
                     class="form-control"
                     placeholder="密碼"
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
               </li>
               <li>
-                <button type="button" className="col btn btn-primary  btn-woof">
+                <button
+                  type="submit"
+                  className="col btn btn-primary  btn-woof"
+                  onClick={login}
+                >
                   登入
                 </button>
               </li>
