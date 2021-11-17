@@ -85,7 +85,6 @@ function Reservecalendar(props) {
       </div>
       <Board />
       <Evalution />
-
       <Footer />
     </>
   )

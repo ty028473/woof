@@ -1,15 +1,18 @@
 import React from 'react'
-
-import NavBar from '../../components/golbal/NavBar'
 import Footer from '../../components/golbal/Footer'
 import AboutTop from '../../components/about/AboutTop'
 import AboutDown from '../../components/about/AboutDown'
+import NewNavBar from '../../components/golbal/NewNavBar'
 
 function About(props) {
-  return <><NavBar/>
-  <AboutTop/>
-  <AboutDown/>
-  <Footer/></>
+  return (
+    <>
+      <NewNavBar />
+      <AboutTop />
+      <AboutDown />
+      <Footer />
+    </>
+  )
 }
 
 export default About
