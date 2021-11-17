@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import { BsFillCartFill } from 'react-icons/bs'
+import { ProductContext } from '../../contexts/ProductContext'
 import '../../styles/golbal.scss'
 import '../../styles/navbar-footer.scss'
 
 function NavBar(props) {
+  const { products } = useContext(ProductContext)
   return (
     <>
       <Navbar fixed="top" sticky="top" bg="secondary" variant="dark">
@@ -27,13 +29,11 @@ function NavBar(props) {
           </Nav.Link>
         </Nav>
         <Nav className="mr-right flex-right">
-          {/* <a className="icon-cart" href="/productList">
-            <BsFillCartFill />
-          </a> */}
-          <a className="icon-cart" href="#/cart">
-            <BsFillCartFill className="mr-2"/>
-            {props.countCartItems ? (
-              <button className="badge">{props.countCartItems}</button>
+          <a className="icon-cart" href="http://localhost:3001/cart">
+            <BsFillCartFill className="mr-2" />
+
+            {products.length ? (
+              <button className="badge">{products.length}</button>
             ) : (
               ''
             )}

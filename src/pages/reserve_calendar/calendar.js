@@ -7,34 +7,36 @@ import NavBar from '../../components/golbal/NavBar'
 import Board from '../../components/reserve/ImgBoard'
 import Evalution from '../../components/reserve/EvaluationBoard'
 import Footer from '../../components/golbal/Footer'
+import ProductContextProvider from '../../contexts/ProductContext'
 
 function Reservecalendar(props) {
   return (
     <>
-      <NavBar />
-      <div className="container">
-        <div className="row d-flex justify-content-center mx-0">
-          <div className="col-6 my-4 ">
-            <SitterDetail />
-          </div>
-          <div className="col-6 my-2 ">
-            <SitterSummary />
-          </div>
-        </div>
-      </div>
-      <div className="container">
-        <div className="row d-flex justify-content-between">
-          <div className="col-12  ">
-            <h3>保母日曆</h3>
+      <ProductContextProvider>
+        <NavBar />
+        <div className="container">
+          <div className="row d-flex justify-content-center mx-0">
+            <div className="col-6 my-4 ">
+              <SitterDetail />
+            </div>
+            <div className="col-6 my-2 ">
+              <SitterSummary />
+            </div>
           </div>
         </div>
-      </div>
-      <div className="container">
-        <div className="row d-flex justify-content-beteeen calendar-bg">
-          <div className="col-12 my-4  ">
-            <ViewApp />
+        <div className="container">
+          <div className="row d-flex justify-content-between">
+            <div className="col-12  ">
+              <h3>保母日曆</h3>
+            </div>
           </div>
-          <div className="col-5 ">
+        </div>
+        <div className="container">
+          <div className="row d-flex justify-content-beteeen calendar-bg">
+            <div className="col-12 my-4  ">
+              <ViewApp />
+            </div>
+            <div className="col-5 ">
             <div className="container">
               <div className="row">
                 <div className="col-4 ">
@@ -75,11 +77,12 @@ function Reservecalendar(props) {
               立即預約
             </button>
           </div>
+          </div>
         </div>
-      </div>
-      <Board />
-      <Evalution />
-      <Footer />
+        <Board />
+        <Evalution />
+        <Footer />
+      </ProductContextProvider>
     </>
   )
 }
