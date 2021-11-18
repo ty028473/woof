@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import '../../styles/golbal.scss'
 import '../../styles/home.scss'
 import NewNavBar from '../../components/golbal/NewNavBar'
@@ -7,7 +8,7 @@ import Evaluation from '../../components/home/Evaluation'
 import Advantage from '../../components/home/Advantage'
 import ScrollToTop from 'react-scroll-to-top'
 import { ReactComponent as MyArrow } from './myArrow.svg'
-// color="#087bdc"
+import MyComponent2 from '../../components/reserve/Map2'
 
 function Home(props) {
   return (
@@ -27,12 +28,14 @@ function Home(props) {
             <br />
             眾多優質寵物保母、即時查看自己毛孩的位置。
           </h3>
-          <button
-            type="button"
-            className="col-4 mt-4 btn btn-primary btn-lg btn-woof"
-          >
-            立即預約!!
-          </button>
+          <Link to="/ReserveMap">
+            <button
+              type="button"
+              className="col-4 mt-4 btn btn-primary btn-lg btn-woof"
+            >
+              立即預約!!
+            </button>
+          </Link>
         </div>
         <img
           className="intro-1-img"
@@ -72,8 +75,8 @@ function Home(props) {
                 alt="立即預約"
               />
             </div>
-            <div className=" map text-center">
-              <h1>我是MAP</h1>
+            <div className="map">
+              <MyComponent2 />
             </div>
           </div>
         </div>
@@ -88,12 +91,14 @@ function Home(props) {
           <Evaluation />
 
           <section className="text-center">
-            <button
-              type="button"
-              className="col-4 btn btn-primary btn-lg btn-woof eva-btn-margin"
-            >
-              找尋保母去!!
-            </button>
+            <Link to="/ReserveMap">
+              <button
+                type="button"
+                className="col-4 btn btn-primary btn-lg btn-woof eva-btn-margin"
+              >
+                找尋保母去!!
+              </button>
+            </Link>
           </section>
         </div>
         {/* 4-加入我們 */}
@@ -109,12 +114,14 @@ function Home(props) {
             <br />
             以確保客戶權益以及保母服務品質！
           </h5>
-          <button
-            type="button"
-            className="col-4 mt-4 btn btn-primary btn-lg btn-woof"
-          >
-            成為保母
-          </button>
+          <Link to="/joinus">
+            <button
+              type="button"
+              className="col-4 mt-4 btn btn-primary btn-lg btn-woof"
+            >
+              成為保母
+            </button>
+          </Link>
         </div>
         <img
           className="join-us-img"
@@ -131,12 +138,14 @@ function Home(props) {
               <li>地圖快速找最近的保母</li>
             </ul>
           </h2>
-          <button
-            type="button"
-            className="col-4 mt-4 btn btn-primary btn-lg btn-woof align-right"
-          >
-            成為保母
-          </button>
+          <Link to="/ReserveMap">
+            <button
+              type="button"
+              className="col-4 mt-4 btn btn-primary btn-lg btn-woof align-right"
+            >
+              體驗看看！
+            </button>
+          </Link>
         </div>
         <img
           className="calendar-img"
