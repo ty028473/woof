@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ProductContext } from '../../contexts/ProductContext'
-import axios from 'axios'
+// import axios from 'axios'
 
 const ProductForm = () => {
   const { dispatch } = useContext(ProductContext)
@@ -8,15 +8,15 @@ const ProductForm = () => {
   const [district, setDistrict] = useState('')
   const [address, setAddress] = useState('')
   const [petIdsFromServer, setPetIdsFromServer] = useState([])
-  const [selectedPetId, setSelectedPetId] = useState('')
+  // const [selectedPetId, setSelectedPetId] = useState('')
 
   // 寵物id外接資料
-  useEffect(() => {
-    axios
-      .get('./api/pet.json')
-      .then((res) => setPetIdsFromServer(res.data))
-      .catch((err) => console.log(err))
-  }, [])
+  // useEffect(() => {
+  //   axios
+  //     .get('./api/pet.json')
+  //     .then((res) => setPetIdsFromServer(res.data))
+  //     .catch((err) => console.log(err))
+  // }, [])
 
   const [start, setStart] = useState('')
   const [end, setEnd] = useState('')
@@ -30,7 +30,7 @@ const ProductForm = () => {
         district,
         address,
         petIdsFromServer,
-        selectedPetId,
+        // selectedPetId,
         start,
         end,
         title,
@@ -39,7 +39,7 @@ const ProductForm = () => {
     setDistrict('')
     setAddress('')
     setPetIdsFromServer('')
-    setSelectedPetId('')
+    // setSelectedPetId('')
     setStart('')
     setEnd('')
     setTitle('')
@@ -78,7 +78,7 @@ const ProductForm = () => {
       </div>
       <div className="col-2 ">
         <div class="input-group mb-3">
-          <select
+          {/* <select
             className="form-control"
             value={selectedPetId}
             onChange={(e) => setSelectedPetId(e.target.value)}
@@ -95,7 +95,7 @@ const ProductForm = () => {
                   </option>
                 )
               })}
-          </select>
+          </select> */}
         </div>
       </div>
       <div className="col-3 ">

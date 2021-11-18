@@ -6,12 +6,27 @@ import ProductDetails from './ProductDetails'
 
 function ProductList(props) {
   const { products } = useContext(ProductContext)
+  const { searchTerm } = props
 
   return products.length ? (
     <>
-      {products.map((product) => {
+      {products
+        .filter((val) => {
+          if (searchTerm == '') {
+            return val
+          } else if (
+            val.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            val.address.toLowerCase().includes(searchTerm.toLowerCase())
+          ) {
+            return val
+          }
+        })
+        .map((product) => {
+          return <ProductDetails product={product} key={product.id} />
+        })}
+      {/* {products.map((product) => {
         return <ProductDetails product={product} key={product.id} />
-      })}
+      })} */}
       {/* <ToDoOrder /> */}
     </>
   ) : (
