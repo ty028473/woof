@@ -23,6 +23,7 @@
     "fullcalendar": "^5.10.1",
     "helmet": "^4.6.0",
     "leaflet": "^1.7.1",
+    "moment": "^2.29.1",
     "mongoose": "^6.0.12",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",

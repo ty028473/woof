@@ -1,10 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import GlobalJsx from '../../components/member/GlobalJsx'
 // css
 import styles from '../../styles/member.module.scss'
 import userGlobal from '../../styles/user-global.module.scss'
 
+import axios from 'axios'
+import moment from 'moment'
 function Member() {
+  const [memberData, setMemberData] = useState({})
+
+  useEffect(() => {
+    async function getMemberData() {
+      let res = await axios.get('http://localhost:3001/api/member')
+      console.log('res', res.data.birthday)
+      let a = moment(res.data.birthday).utc(8).format('YYYY/MM/DD')
+      console.log(a)
+      setMemberData(res.data)
+    }
+    getMemberData()
+  }, [])
+
   return (
     <>
       <GlobalJsx>
@@ -40,6 +55,10 @@ function Member() {
                         type="text"
                         className="form-control"
                         placeholder="Username"
+                        value={memberData.name}
+                        onChange={(e) => {
+                          setMemberData({ ...memberData, name: e.target.value })
+                        }}
                       />
                     </div>
                   </li>
@@ -49,6 +68,10 @@ function Member() {
                         type="text"
                         className="form-control"
                         placeholder="Username"
+                        value={memberData.phone}
+                        onChange={(e) => {
+                          setMemberData(e.target.value)
+                        }}
                       />
                     </div>
                   </li>
@@ -58,13 +81,25 @@ function Member() {
                         type="date"
                         className="form-control"
                         placeholder="生日"
+                        value="2018-07-22"
+                        onChange={(e) => {
+                          setMemberData(e.target.value)
+                        }}
                       />
                     </div>
                   </li>
                   <li className="my-4">
                     <div className="input-group my-4">
-                      <select className="custom-select">
-                        <option selected>性別</option>
+                      <select
+                        className="custom-select"
+                        value={memberData.gender}
+                        onChange={(e) => {
+                          setMemberData({
+                            ...memberData,
+                            gender: e.target.value,
+                          })
+                        }}
+                      >
                         <option value="1">男</option>
                         <option value="2">女</option>
                         <option value="3">不顯示</option>
