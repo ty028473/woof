@@ -1,5 +1,6 @@
 import React from 'react'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
+console.log(process.env.REACT_APP_API_KEY)
 
 const containerStyle = {
   width: '1100px',
@@ -11,13 +12,12 @@ const center = {
   lng: 121.564558,
 }
 //金緯度根據地址轉換、
-function MyComponent2() {
+
+function HomeMap() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: `${process.env.REACT_APP_API_KEY}`,
-    // googleMapsApiKey: ${process.env.REACT_APP_API_KEY},
   })
-  console.log(process.env.REACT_APP_API_KEY)
 
   const [map, setMap] = React.useState(null)
 
@@ -47,4 +47,4 @@ function MyComponent2() {
   )
 }
 
-export default React.memo(MyComponent2)
+export default React.memo(HomeMap)

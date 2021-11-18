@@ -8,7 +8,7 @@ import Evaluation from '../../components/home/Evaluation'
 import Advantage from '../../components/home/Advantage'
 import ScrollToTop from 'react-scroll-to-top'
 import { ReactComponent as MyArrow } from './myArrow.svg'
-import MyComponent2 from '../../components/reserve/Map2'
+import HomeMap from '../../components/reserve/Map2'
 
 function Home(props) {
   return (
@@ -76,7 +76,7 @@ function Home(props) {
               />
             </div>
             <div className="map">
-              <MyComponent2 />
+              <HomeMap />
             </div>
           </div>
         </div>
