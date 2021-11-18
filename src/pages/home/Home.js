@@ -7,6 +7,8 @@ import Evaluation from '../../components/home/Evaluation'
 import Advantage from '../../components/home/Advantage'
 import ScrollToTop from 'react-scroll-to-top'
 import { ReactComponent as MyArrow } from './myArrow.svg'
+import NewNavBar from '../../components/golbal/NewNavBar'
+import HomeMap from '../../components/reserve/Map2'
 // color="#087bdc"
 
 function Home(props) {
@@ -74,6 +76,7 @@ function Home(props) {
             </div>
             <div className=" map text-center">
               <h1>我是MAP</h1>
+              <HomeMap />
             </div>
           </div>
         </div>
