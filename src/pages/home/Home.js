@@ -9,8 +9,24 @@ import Advantage from '../../components/home/Advantage'
 import ScrollToTop from 'react-scroll-to-top'
 import { ReactComponent as MyArrow } from './myArrow.svg'
 import HomeMap from '../../components/reserve/Map2'
+import { fadeIn, fadeInRight, fadeInDown } from 'react-animations'
+import Radium, { StyleRoot } from 'radium'
 
 function Home(props) {
+  const styles = {
+    fadeIn: {
+      animation: 'x 4s',
+      animationName: Radium.keyframes(fadeIn, 'fadeIn'),
+    },
+    fadeInRight: {
+      animation: 'x 2s',
+      animationName: Radium.keyframes(fadeInRight, 'fadeInRight'),
+    },
+    fadeInDown: {
+      animation: 'x 2s',
+      animationName: Radium.keyframes(fadeInDown, 'fadeInDown'),
+    },
+  }
   return (
     <>
       <NewNavBar />
@@ -18,12 +34,14 @@ function Home(props) {
       <div className="container relative">
         {/* 1-立即預約 */}
         <div className="col  intro-1 intro-height p-top">
-          <h1>
-            總是擔心毛小孩沒人照顧嗎？
-            <br />
-            Woof 提供您適合的寵物保母！
-          </h1>
-          <h3 className="mt-2">
+          <StyleRoot>
+            <h1 style={styles.fadeInDown}>
+              總是擔心毛小孩沒人照顧嗎？
+              <br />
+              Woof 提供您適合的寵物保母！
+            </h1>
+          </StyleRoot>
+          <h3 className="mt-3">
             價格透明化、客戶真實評價回饋，
             <br />
             眾多優質寵物保母、即時查看自己毛孩的位置。
@@ -37,11 +55,20 @@ function Home(props) {
             </button>
           </Link>
         </div>
+
         <img
           className="intro-1-img"
-          src="../../../images/home/intro-1.png"
-          alt="立即預約"
+          src="../../../images/home/intro-1-bg.png"
+          alt="飼主牽狗場景"
         />
+        <StyleRoot>
+          <img
+            className="intro-1-img"
+            src="../../../images/home/intro-1-person.png"
+            alt="飼主牽狗"
+            style={styles.fadeInRight}
+          />
+        </StyleRoot>
         {/* 2-如何預約 */}
         <div className="col intro-1 intro-height ">
           <div className="row mt-5">
