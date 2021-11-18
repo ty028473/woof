@@ -28,23 +28,15 @@ function Footer(props) {
             <div class="col-sm">
               <p>訂閱電子信箱</p>
               <p>將最新的優惠訊息直達你信箱！</p>
-              <div className="input-group mb-3">
+              <div className="row">
                 <input
-                  type="text"
-                  className="form-control"
+                  type="email"
+                  className="ml-1 col-9 form-control"
                   placeholder="請輸入您的email"
-                  aria-label="請輸入您的email"
-                  aria-describedby="button-addon2"
                 />
-                <div className="input-group-append">
-                  <button
-                    className="btn btn-secondary btn-woof down"
-                    type="button"
-                    id="button-addon2"
-                  >
-                    訂閱
-                  </button>
-                </div>
+                <button className="ml-2 col-2 btn btn-secondary btn-woof" type="button">
+                  訂閱
+                </button>
               </div>
             </div>
           </div>

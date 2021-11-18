@@ -1,5 +1,6 @@
 import React from 'react'
 import FullCalendar, { formatDate } from '@fullcalendar/react'
+import '../../styles/calender.scss'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
@@ -26,7 +27,27 @@ export default class DemoApp extends React.Component {
             editable={true}
             selectable={true}
             selectMirror={true}
-            dayMaxEvents={true}
+            eventTimeFormat={{
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: false,
+            }}
+            allDaySlot={false}
+            dayMaxEvents={false}
+            slotMinTime="08:00:00"
+            slotMaxTime="20:00:00"
+            slotLabelInterval="04:00:00"
+            slotDuration="04:00:00"
+            slotLabelFormat={function (date) {
+              if (date.date.minute == 0)
+                return (
+                  date.date.hour.toString().padStart(2, '0') +
+                  ':00' +
+                  ' + ' +
+                  '4hr'
+                )
+              return date.date.minute
+            }}
             weekends={this.state.weekendsVisible}
             initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
             select={this.handleDateSelect}
@@ -79,7 +100,7 @@ export default class DemoApp extends React.Component {
   }
 
   handleDateSelect = (selectInfo) => {
-    let title = prompt('Please enter a new title for your event')
+    let title = prompt('請輸入售價')
     let calendarApi = selectInfo.view.calendar
 
     calendarApi.unselect() // clear date selection
@@ -98,9 +119,7 @@ export default class DemoApp extends React.Component {
   handleEventClick = (clickInfo) => {
     if (
       // eslint-disable-next-line no-restricted-globals
-      confirm(
-        `Are you sure you want to delete the event '${clickInfo.event.title}'`
-      )
+      confirm(`確認刪除這筆資料嗎？ 金額'${clickInfo.event.title}'`)
     ) {
       clickInfo.event.remove()
     }

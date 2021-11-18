@@ -6,7 +6,6 @@ import ProductItemDetail from '../../components/cart/ProductItemDetail'
 import ToCheckout from '../../components/cart/ToCheckout'
 
 function OrderCheck(props) {
-
   return (
     <>
       <NavBar />

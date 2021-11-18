@@ -1,5 +1,6 @@
 import React from 'react'
 import NavBar from '../golbal/NavBar'
+import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../golbal/Footer'
 import AsideNavbar from './AsideNavbar'
 import AsideNavbarSitter from './AsideNavbarSitter'
@@ -25,7 +26,7 @@ function GlobalJsx(props) {
   return (
     <>
       {/* navbar區塊 */}
-      <NavBar />
+      <NewNavBar />
       {/* 主要區塊 */}
       <div className="container">
         <div className="row m-5">

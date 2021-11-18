@@ -5,28 +5,29 @@ function Board(props) {
   return (
     <>
       <div className="container">
-        <div className="row d-flex justify-content-between my-2">
+        <div className="row d-flex justify-content-between ">
           <div className="col-12  ">
             <h3>照片牆</h3>
           </div>
         </div>
       </div>
-
-      {imageData &&
-        imageData.map(({ img, id }) => (
-          <div className="container ">
-            <div
-              className="row d-flex justify-content-between  my-2 calendar-bg"
-              key={id}
-            >
-              <div className="col-12  board-pic ">
-                <img src={img} alt="..." class="img-thumbnail img-fluid " />
-                <img src={img} alt="..." class="img-thumbnail img-fluid " />
-                <img src={img} alt="..." class="img-thumbnail img-fluid " />
+      <div className="container ">
+        <div className="row d-flex  my-2 calendar-bg  justify-content-between">
+          {imageData &&
+            imageData.map(({ image, id }) => (
+              <div
+                className="col-4  board-pic d-flex justify-content-center"
+                key={id}
+              >
+                <img
+                  src={image}
+                  alt="..."
+                  class="img-thumbnail img-fluid m-2 "
+                />
               </div>
-            </div>
-          </div>
-        ))}
+            ))}{' '}
+        </div>
+      </div>
     </>
   )
 }

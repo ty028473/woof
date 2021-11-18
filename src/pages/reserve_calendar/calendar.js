@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ViewApp from '../../components/calendar2/calendarView'
 import SitterDetail from '../../components/reserve/personal'
 import SitterSummary from '../../components/reserve/summary'
 import { Form } from 'react-bootstrap'
-import NavBar from '../../components/golbal/NavBar'
+import NewNavBar from '../../components/golbal/NewNavBar'
 import Board from '../../components/reserve/ImgBoard'
 import Evalution from '../../components/reserve/EvaluationBoard'
 import Footer from '../../components/golbal/Footer'
 
 function Reservecalendar(props) {
+  const [obj, setObj] = useState({
+    start: '',
+    end: '',
+    title: '',
+  })
+  // console.log(obj)
   return (
     <>
-      <NavBar />
+      <NewNavBar />
       <div className="container">
         <div className="row d-flex justify-content-center mx-0">
           <div className="col-6 my-4 ">
@@ -32,7 +38,7 @@ function Reservecalendar(props) {
       <div className="container">
         <div className="row d-flex justify-content-beteeen calendar-bg">
           <div className="col-12 my-4  ">
-            <ViewApp />
+            <ViewApp setObj={setObj} />
           </div>
           <div className="col-5 ">
             <div className="container">
@@ -60,11 +66,11 @@ function Reservecalendar(props) {
             <div className="container">
               <div className="row">
                 <div className="col-6 ">
-                  <p>開始時間：08:00</p>
-                  <p>結束時間：12:00</p>
+                  <p>開始時間：{obj.start.toLocaleString()}</p>
+                  <p>結束時間：{obj.end.toLocaleString()}</p>
                 </div>
                 <div className="col-6 ">
-                  <p>金額：500</p>
+                  <p>金額：{obj.title}</p>
                 </div>
               </div>
             </div>
