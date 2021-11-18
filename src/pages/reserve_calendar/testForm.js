@@ -1,5 +1,6 @@
 import '../../styles/golbal.scss'
-import ProductForm from '../../components/cart/ProductForm'
+// import ProductForm from '../../components/cart/ProductForm'
+import ProductForm2 from '../../components/cart/ProductForm2'
 import ProductContextProvider from '../../contexts/ProductContext'
 import NavBar from '../../components/golbal/NavBar'
 
@@ -7,7 +8,10 @@ function testForm(props) {
   return (
     <ProductContextProvider>
       <NavBar />
-      <ProductForm />
+      <div className="container">
+        {/* <ProductForm /> */}
+        <ProductForm2 />
+      </div>
     </ProductContextProvider>
   )
 }

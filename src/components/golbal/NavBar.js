@@ -29,7 +29,7 @@ function NavBar(props) {
           </Nav.Link>
         </Nav>
         <Nav className="mr-right flex-right">
-          <a className="icon-cart" href="http://localhost:3001/cart">
+          <a className="icon-cart" href="http://localhost:3000/cart">
             <BsFillCartFill className="mr-2" />
 
             {products.length ? (

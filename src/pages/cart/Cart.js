@@ -2,7 +2,7 @@ import '../../styles/golbal.scss'
 import NavBar from '../../components/golbal/NavBar'
 import Footer from '../../components/golbal/Footer'
 import ProductList from '../../components/cart/ProductList'
-// import ProductForm from '../../components/cart/ProductForm'
+import ProductForm from '../../components/cart/ProductForm'
 import ProductContextProvider from '../../contexts/ProductContext'
 
 function Cart(props) {
@@ -34,7 +34,7 @@ function Cart(props) {
             <td>操作</td>
           </tr>
         </table>
-        {/* <ProductForm /> */}
+        <ProductForm />
         <ProductList />
       </div>
       <Footer />

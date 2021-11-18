@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import ViewApp from '../../components/calendar2/calendarView'
 import SitterDetail from '../../components/reserve/personal'
 import SitterSummary from '../../components/reserve/summary'
-import { Form } from 'react-bootstrap'
-import NewNavBar from '../../components/golbal/NewNavBar'
+// import { Form } from 'react-bootstrap'
+import NavBar from '../../components/golbal/NavBar'
 import Board from '../../components/reserve/ImgBoard'
 import Evalution from '../../components/reserve/EvaluationBoard'
 import Footer from '../../components/golbal/Footer'
+import ProductForm2 from '../../components/cart/ProductForm2'
+import ProductContextProvider from '../../contexts/ProductContext'
 
 function Reservecalendar(props) {
   const [obj, setObj] = useState({
@@ -16,8 +18,8 @@ function Reservecalendar(props) {
   })
   // console.log(obj)
   return (
-    <>
-      <NewNavBar />
+    <ProductContextProvider>
+      <NavBar />
       <div className="container">
         <div className="row d-flex justify-content-center mx-0">
           <div className="col-6 my-4 ">
@@ -40,7 +42,8 @@ function Reservecalendar(props) {
           <div className="col-12 my-4  ">
             <ViewApp setObj={setObj} />
           </div>
-          <div className="col-5 ">
+          <ProductForm2 obj={obj} />
+          {/* <div className="col-5 ">
             <div className="container">
               <div className="row">
                 <div className="col-4 ">
@@ -80,13 +83,13 @@ function Reservecalendar(props) {
             <button type="button" className=" btn btn-primary btn-woof ">
               立即預約
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
       <Board />
       <Evalution />
       <Footer />
-    </>
+    </ProductContextProvider>
   )
 }
 
