@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import '../../styles/golbal.scss'
 import '../../styles/home.scss'
 import NewNavBar from '../../components/golbal/NewNavBar'
@@ -7,9 +8,25 @@ import Evaluation from '../../components/home/Evaluation'
 import Advantage from '../../components/home/Advantage'
 import ScrollToTop from 'react-scroll-to-top'
 import { ReactComponent as MyArrow } from './myArrow.svg'
-// color="#087bdc"
+import HomeMap from '../../components/reserve/Map2'
+import { fadeIn, fadeInRight, fadeInDown } from 'react-animations'
+import Radium, { StyleRoot } from 'radium'
 
 function Home(props) {
+  const styles = {
+    fadeIn: {
+      animation: 'x 4s',
+      animationName: Radium.keyframes(fadeIn, 'fadeIn'),
+    },
+    fadeInRight: {
+      animation: 'x 2s',
+      animationName: Radium.keyframes(fadeInRight, 'fadeInRight'),
+    },
+    fadeInDown: {
+      animation: 'x 2s',
+      animationName: Radium.keyframes(fadeInDown, 'fadeInDown'),
+    },
+  }
   return (
     <>
       <NewNavBar />
@@ -17,28 +34,41 @@ function Home(props) {
       <div className="container relative">
         {/* 1-立即預約 */}
         <div className="col  intro-1 intro-height p-top">
-          <h1>
-            總是擔心毛小孩沒人照顧嗎？
-            <br />
-            Woof 提供您適合的寵物保母！
-          </h1>
-          <h3 className="mt-2">
+          <StyleRoot>
+            <h1 style={styles.fadeInDown}>
+              總是擔心毛小孩沒人照顧嗎？
+              <br />
+              Woof 提供您適合的寵物保母！
+            </h1>
+          </StyleRoot>
+          <h3 className="mt-3">
             價格透明化、客戶真實評價回饋，
             <br />
             眾多優質寵物保母、即時查看自己毛孩的位置。
           </h3>
-          <button
-            type="button"
-            className="col-4 mt-4 btn btn-primary btn-lg btn-woof"
-          >
-            立即預約!!
-          </button>
+          <Link to="/ReserveMap">
+            <button
+              type="button"
+              className="col-4 mt-4 btn btn-primary btn-lg btn-woof"
+            >
+              立即預約!!
+            </button>
+          </Link>
         </div>
+
         <img
           className="intro-1-img"
-          src="../../../images/home/intro-1.png"
-          alt="立即預約"
+          src="../../../images/home/intro-1-bg.png"
+          alt="飼主牽狗場景"
         />
+        <StyleRoot>
+          <img
+            className="intro-1-img"
+            src="../../../images/home/intro-1-person.png"
+            alt="飼主牽狗"
+            style={styles.fadeInRight}
+          />
+        </StyleRoot>
         {/* 2-如何預約 */}
         <div className="col intro-1 intro-height ">
           <div className="row mt-5">
@@ -72,8 +102,8 @@ function Home(props) {
                 alt="立即預約"
               />
             </div>
-            <div className=" map text-center">
-              <h1>我是MAP</h1>
+            <div className="map">
+              <HomeMap />
             </div>
           </div>
         </div>
@@ -88,12 +118,14 @@ function Home(props) {
           <Evaluation />
 
           <section className="text-center">
-            <button
-              type="button"
-              className="col-4 btn btn-primary btn-lg btn-woof eva-btn-margin"
-            >
-              找尋保母去!!
-            </button>
+            <Link to="/ReserveMap">
+              <button
+                type="button"
+                className="col-4 btn btn-primary btn-lg btn-woof eva-btn-margin"
+              >
+                找尋保母去!!
+              </button>
+            </Link>
           </section>
         </div>
         {/* 4-加入我們 */}
@@ -109,12 +141,14 @@ function Home(props) {
             <br />
             以確保客戶權益以及保母服務品質！
           </h5>
-          <button
-            type="button"
-            className="col-4 mt-4 btn btn-primary btn-lg btn-woof"
-          >
-            成為保母
-          </button>
+          <Link to="/joinus">
+            <button
+              type="button"
+              className="col-4 mt-4 btn btn-primary btn-lg btn-woof"
+            >
+              成為保母
+            </button>
+          </Link>
         </div>
         <img
           className="join-us-img"
@@ -131,12 +165,14 @@ function Home(props) {
               <li>地圖快速找最近的保母</li>
             </ul>
           </h2>
-          <button
-            type="button"
-            className="col-4 mt-4 btn btn-primary btn-lg btn-woof align-right"
-          >
-            成為保母
-          </button>
+          <Link to="/ReserveMap">
+            <button
+              type="button"
+              className="col-4 mt-4 btn btn-primary btn-lg btn-woof align-right"
+            >
+              體驗看看！
+            </button>
+          </Link>
         </div>
         <img
           className="calendar-img"
