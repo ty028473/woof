@@ -14,7 +14,7 @@ export default class ViewApp extends React.Component {
   render() {
     return (
       <div className="demo-app">
-        {this.renderSidebar()}
+        {/* {this.renderSidebar()} */}
         <div className="demo-app-main">
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -25,9 +25,29 @@ export default class ViewApp extends React.Component {
             }}
             initialView="timeGridWeek"
             editable={false}
-            selectable={true}
+            selectable={false}
             selectMirror={true}
+            allDaySlot={false}
             dayMaxEvents={true}
+            eventTimeFormat={{
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: false,
+            }}
+            slotMinTime="08:00:00"
+            slotMaxTime="20:00:00"
+            slotLabelInterval="04:00:00"
+            slotDuration="04:00:00"
+            slotLabelFormat={function (date) {
+              if (date.date.minute == 0)
+                return (
+                  date.date.hour.toString().padStart(2, '0') +
+                  ':00' +
+                  ' + ' +
+                  '4hr'
+                )
+              return date.date.minute
+            }}
             weekends={this.state.weekendsVisible}
             initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
             // select={this.handleDateSelect}
@@ -83,7 +103,7 @@ export default class ViewApp extends React.Component {
     alert(
       '確定預約:價錢 ' +
         clickInfo.event.title +
-        '    ' +
+        '   ' +
         clickInfo.event.start.toLocaleString() +
         '至' +
         clickInfo.event.end.toLocaleString()

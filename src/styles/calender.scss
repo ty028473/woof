@@ -58,3 +58,31 @@ $hr-color: #c7c7c7;
   object-fit: cover;
   object-position: center;
 }
+//calendar
+
+.fc .fc-timegrid-slot {
+  /* a <td> */
+  height: 10.5em;
+  border-bottom: 0; /* each cell owns its top border */
+}
+.fc .fc-timegrid-slot-label-cushion {
+  display: inline-block;
+  white-space: wrap;
+}
+.fc .fc-timegrid-slot-label {
+  vertical-align: middle;
+}
+.fc {
+  /* the calendar root */
+  max-width: 1100px;
+  max-height: 650px;
+}
+.fc-event-main i {
+  font-style: inherit;
+  display: block;
+  color: $secondary;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Noto Sans TC', sans-serif;
+  margin: 5px;
+}

@@ -17,8 +17,8 @@ export const INITIAL_EVENTS = [
   {
     id: createEventId(),
     title: '700',
-    start: todayStr + 'T12:00:00',
-    end: todayStr + 'T16:00:00',
+    start: '2021-11-19' + 'T16:00:00',
+    end: '2021-11-19' + 'T20:00:00',
   },
 ]
 
