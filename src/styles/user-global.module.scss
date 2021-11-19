@@ -57,7 +57,11 @@
 // 有使用到input的標題行高
 .title_font {
   line-height: 38px;
-  font-weight: 500;
+  font-weight: 700;
+
+  label {
+    margin: 0;
+  }
 }
 
 // 有使用到input的內容行高
