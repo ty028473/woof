@@ -13,7 +13,7 @@ import About from './pages/about/About'
 import Joinus from './pages/joinus/Joinus'
 import Calendar from './pages/reserve_calendar/calendar'
 // 測試用
-import TestForm from "./pages/reserve_calendar/testForm"
+import TestForm from './pages/reserve_calendar/testForm'
 
 // 購物車
 import OrderCheck from './pages/cart/OrderCheck'
@@ -46,78 +46,78 @@ function App() {
   return (
     <Router>
       <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/signup">
-            <Signup />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/Reservecalendar">
-            <Calendar />
-          </Route>
-          <Route path="/testForm">
-            <TestForm />
-          </Route>
-          <Route path="/ReserveMap">
-            <ReserveMap />
-          </Route>
-          <Route path="/orderCheck">
-            <OrderCheck />
-          </Route>
-          <Route path="/cart">
-            <Cart />
-          </Route>
-          <Route path="/joinus">
-            <Joinus />
-          </Route>
-          <Route path="/member/pets/add">
-            <PetsAdd />
-          </Route>
-          <Route path="/member/pets">
-            <Pets />
-          </Route>
-          <Route path="/member/record/carryout">
-            <RecordCarryOut />
-          </Route>
-          <Route path="/member/record/complete">
-            <RecordComplete />
-          </Route>
-          <Route path="/member/record/cancel">
-            <RecordCancel />
-          </Route>
-          <Route path="/member/collection">
-            <Collection />
-          </Route>
-          <Route path="/member/changepwd">
-            <ChangePwd />
-          </Route>
-          <Route path="/member">
-            <Member />
-          </Route>
-          <Route path="/petsitter/schedule">
-            <Schedule />
-          </Route>
-          <Route path="/petsitter/album">
-            <Album />
-          </Route>
-          <Route path="/petsitter">
-            <PetSitter />
-          </Route>
-          <Route path="/petsitterrecord">
-            <PetSitterRecord />
-          </Route>
-          <Route path="/chatroom">
-            <Chatroom />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-          <Route path="*">
-            <NotFoundPage />
-          </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/signup">
+          <Signup />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/reserveMap/:reserveId">
+          <Calendar />
+        </Route>
+        <Route path="/testForm">
+          <TestForm />
+        </Route>
+        <Route path="/reserveMap">
+          <ReserveMap />
+        </Route>
+        <Route path="/orderCheck">
+          <OrderCheck />
+        </Route>
+        <Route path="/cart">
+          <Cart />
+        </Route>
+        <Route path="/joinus">
+          <Joinus />
+        </Route>
+        <Route path="/member/pets/add">
+          <PetsAdd />
+        </Route>
+        <Route path="/member/pets">
+          <Pets />
+        </Route>
+        <Route path="/member/record/carryout">
+          <RecordCarryOut />
+        </Route>
+        <Route path="/member/record/complete">
+          <RecordComplete />
+        </Route>
+        <Route path="/member/record/cancel">
+          <RecordCancel />
+        </Route>
+        <Route path="/member/collection">
+          <Collection />
+        </Route>
+        <Route path="/member/changepwd">
+          <ChangePwd />
+        </Route>
+        <Route path="/member">
+          <Member />
+        </Route>
+        <Route path="/petsitter/schedule">
+          <Schedule />
+        </Route>
+        <Route path="/petsitter/album">
+          <Album />
+        </Route>
+        <Route path="/petsitter">
+          <PetSitter />
+        </Route>
+        <Route path="/petsitterrecord">
+          <PetSitterRecord />
+        </Route>
+        <Route path="/chatroom">
+          <Chatroom />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+        <Route path="*">
+          <NotFoundPage />
+        </Route>
       </Switch>
     </Router>
   )
