@@ -55,13 +55,13 @@ function App() {
         <Route path="/about">
           <About />
         </Route>
-        <Route path="/ReserveMap/:reserveId">
+        <Route path="/reserveMap/:reserveId">
           <Calendar />
         </Route>
         <Route path="/testForm">
           <TestForm />
         </Route>
-        <Route path="/ReserveMap">
+        <Route path="/reserveMap">
           <ReserveMap />
         </Route>
         <Route path="/orderCheck">

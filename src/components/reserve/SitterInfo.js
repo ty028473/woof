@@ -11,7 +11,7 @@ export default function SitterInfo(props) {
   const [sitterData, setSitterState] = useState([])
 
   useEffect(async () => {
-    let res = await axios.get('http://localhost:8801/api/Reserve/')
+    let res = await axios.get('http://localhost:8801/api/reserve/')
 
     setSitterState(res.data)
     console.log(res.data)

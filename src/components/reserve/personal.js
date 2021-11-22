@@ -11,7 +11,7 @@ function SitterDetail(props) {
   const [personalData, setPersonalState] = useState()
   const { reserveId } = useParams()
   useEffect(async () => {
-    let res = await axios.get(`http://localhost:8801/api/Reserve/${reserveId}`)
+    let res = await axios.get(`http://localhost:8801/api/reserve/${reserveId}`)
 
     setPersonalState(res.data)
   }, [])
