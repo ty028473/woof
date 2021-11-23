@@ -13,7 +13,7 @@ function Member() {
   // 抓取資料
   useEffect(() => {
     async function getMemberData() {
-      let res = await axios.get(`${API_URL}/member`)
+      let res = await axios.get(`${API_URL}/member`, { withCredentials: true })
       setMemberData(res.data)
     }
     getMemberData()
@@ -28,7 +28,7 @@ function Member() {
   async function handleSubmit(e) {
     e.preventDefault()
     try {
-      let req = await axios.post(`${API_URL}/member/auth`, memberData)
+      let req = await axios.post(`${API_URL}/member/updateMember`, memberData)
     } catch (e) {
       console.log(e)
     }
