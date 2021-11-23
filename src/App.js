@@ -12,11 +12,9 @@ import Signup from './pages/login/Signup'
 import About from './pages/about/About'
 import Joinus from './pages/joinus/Joinus'
 import Calendar from './pages/reserve_calendar/calendar'
-// 測試用
-import TestForm from './pages/reserve_calendar/testForm'
 
 // 購物車
-import OrderCheck from './pages/cart/OrderCheck'
+import OrderCheck from './pages/order/OrderCheck'
 import Cart from './pages/cart/Cart'
 
 // 會員
@@ -57,9 +55,6 @@ function App() {
         </Route>
         <Route path="/Reservecalendar">
           <Calendar />
-        </Route>
-        <Route path="/testForm">
-          <TestForm />
         </Route>
         <Route path="/ReserveMap">
           <ReserveMap />

@@ -6,13 +6,21 @@ export const ProductReducer = (state, action) => {
       return [
         ...state,
         {
-          district: action.product.district,
-          address: action.product.address,
-          pet_id: action.product.petIdsFromServer,
-          start: action.product.start,
-          end: action.product.end,
-          title: action.product.title,
           id: uuidv1(),
+          // time_id: {
+          //   pet_sitter_id: action.product.time.pet_sitter_id,
+          //   district: action.product.time.district,
+          //   start: action.product.time.start,
+          //   end: action.product.time.end,
+          //   title: action.product.time.title,
+          // },
+          pet_sitter_id: action.product.time.pet_sitter_id,
+          district: action.product.time.district,
+          start: action.product.time.start,
+          end: action.product.time.end,
+          title: action.product.time.title,
+          address: action.product.address,
+          pet_id: action.product.selectedPetId,
         },
       ]
     case 'REMOVE_PRODUCT':

@@ -11,6 +11,7 @@ const ProductContextProvider = (props) => {
   useEffect(() => {
     localStorage.setItem('products', JSON.stringify(products))
   }, [products])
+
   return (
     <ProductContext.Provider value={{ products, dispatch }}>
       {props.children}

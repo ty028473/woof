@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ViewApp from '../../components/calendar2/calendarView'
 import SitterDetail from '../../components/reserve/personal'
 import SitterSummary from '../../components/reserve/summary'
@@ -7,7 +7,7 @@ import NavBar from '../../components/golbal/NavBar'
 import Board from '../../components/reserve/ImgBoard'
 import Evalution from '../../components/reserve/EvaluationBoard'
 import Footer from '../../components/golbal/Footer'
-import ProductForm2 from '../../components/cart/ProductForm2'
+import ProductForm from '../../components/cart/ProductForm'
 import ProductContextProvider from '../../contexts/ProductContext'
 
 function Reservecalendar(props) {
@@ -15,6 +15,8 @@ function Reservecalendar(props) {
     start: '',
     end: '',
     title: '',
+    pet_sitter_id: '2',
+    district: '北投區',
   })
   // console.log(obj)
   return (
@@ -42,48 +44,7 @@ function Reservecalendar(props) {
           <div className="col-12 my-4  ">
             <ViewApp setObj={setObj} />
           </div>
-          <ProductForm2 obj={obj} />
-          {/* <div className="col-5 ">
-            <div className="container">
-              <div className="row">
-                <div className="col-4 ">
-                  <Form.Control type="text" placeholder="北投區" readOnly />
-                </div>
-                <div className="col-8 ">
-                  <Form.Control type="text" placeholder="交易地點" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-2 ">
-            <div class="input-group mb-3">
-              <select class="custom-select">
-                <option selected>寵物名稱</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-          </div>
-          <div className="col-3 ">
-            <div className="container">
-              <div className="row">
-                <div className="col-6 ">
-                  <p>開始時間：{obj.start.toLocaleString()}</p>
-                  <p>結束時間：{obj.end.toLocaleString()}</p>
-                </div>
-                <div className="col-6 ">
-                  <p>金額：{obj.title}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-2 ">
-            <button type="button" className=" btn btn-primary btn-woof ">
-              立即預約
-            </button>
-          </div> */}
+          <ProductForm obj={obj} />
         </div>
       </div>
       <Board />

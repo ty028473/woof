@@ -34,9 +34,9 @@ const ProductDetails = ({ product }) => {
             {product.pet_id}
           </td>
           <td>
-            {product.start} ~
-            <br />
-            {product.end}
+            {new Date(`${product.start}`).toLocaleString()}
+            <div className="text-center">|</div>
+            {new Date(`${product.end}`).toLocaleString()}
           </td>
           <td className="price-color">${product.title}</td>
           <td>

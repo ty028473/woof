@@ -1,12 +1,42 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { ProductContext } from '../../contexts/ProductContext'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 function ToDoOrder(props) {
   const { products } = useContext(ProductContext)
   const { total } = props
-  const [point, setPoint] = useState(90)
+  const [point, setPoint] = useState(0)
   const [usePoint, setUsePoint] = useState(0)
   let sum = total(products) - usePoint
+  const totalInsert = { use_bonus: usePoint, total_sum: sum }
+
+  // 抓取 member_id =1 的 bonus
+  useEffect((e) => {
+    async function memberBonus() {
+      try {
+        let res = await axios.get(
+          'http://localhost:8801/api/orders/member/bonus'
+        )
+        setPoint(res.data[0].total_bonus)
+      } catch (e) {
+        alert('獲取資料失敗')
+      }
+    }
+    memberBonus()
+  }, [])
+
+  // 寫入訂單 (接 local 資料) totalInsert -> 主訂單 / products -> 子訂單
+  async function handleSubmit(e) {
+    try {
+      let res = await axios.post(
+        'http://localhost:8801/api/orders/order_insert',
+        [products, totalInsert]
+      )
+    } catch (e) {
+      alert('獲取資料失敗')
+    }
+  }
 
   return (
     <>
@@ -62,9 +92,15 @@ function ToDoOrder(props) {
               <span className="price-color">${sum}</span>
             </div>
             <div className="py-4 px-5 bd-highlight col-2">
-              <button type="button" className="btn btn-primary btn-woof">
-                去結帳
-              </button>
+              <Link to="/OrderCheck">
+                <button
+                  type="button"
+                  className="btn btn-primary btn-woof"
+                  onClick={handleSubmit}
+                >
+                  去結帳
+                </button>
+              </Link>
             </div>
           </div>
         </div>
