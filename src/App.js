@@ -56,7 +56,10 @@ function App() {
         <Route path="/Reservecalendar">
           <Calendar />
         </Route>
-        <Route path="/ReserveMap">
+        <Route path="/reserveMap/:reserveId">
+          <Calendar />
+        </Route>
+        <Route path="/reserveMap">
           <ReserveMap />
         </Route>
         <Route path="/orderCheck">
