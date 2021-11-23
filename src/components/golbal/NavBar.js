@@ -1,3 +1,4 @@
+import { BrowserRouter as Link } from 'react-router-dom'
 import React, { useContext } from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
 import { BsFillCartFill } from 'react-icons/bs'
@@ -29,7 +30,7 @@ function NavBar(props) {
           </Nav.Link>
         </Nav>
         <Nav className="mr-right flex-right">
-          <a className="icon-cart" href="http://localhost:3001/cart">
+          <Nav.Link className="icon-cart" href="/cart">
             <BsFillCartFill className="mr-2" />
 
             {products.length ? (
@@ -37,7 +38,7 @@ function NavBar(props) {
             ) : (
               ''
             )}
-          </a>
+          </Nav.Link>
           <Nav.Link className="nav-title" href="/login">
             登入
           </Nav.Link>

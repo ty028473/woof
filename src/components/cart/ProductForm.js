@@ -2,14 +2,29 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ProductContext } from '../../contexts/ProductContext'
 import axios from 'axios'
 
-const ProductForm = () => {
+const ProductForm = (props) => {
   const { dispatch } = useContext(ProductContext)
-  // 從這邊抓資料庫的值
-  const [district, setDistrict] = useState('')
-  const [address, setAddress] = useState('')
-  const [petIdsFromServer, setPetIdsFromServer] = useState([])
-  const [selectedPetId, setSelectedPetId] = useState([])
+  const { obj, pet_sitter_id, district } = props
+  let start = obj.start.toLocaleString()
+  let end = obj.end.toLocaleString()
+  let title = obj.title
 
+  // 從這邊抓資料庫的值
+  const [time, setTime] = useState({
+    start: start,
+    end: end,
+    title: title,
+    pet_sitter_id: '', //當前頁面id
+    district: '', //當前頁面保母id找到服務地區
+  })
+  useEffect(() => {
+    setTime(obj, pet_sitter_id, district)
+  }, [obj, pet_sitter_id, district])
+
+  const [address, setAddress] = useState('')
+  const [petIdsFromServer, setPetIdsFromServer] = useState([]) // 從 server 來的資料
+
+  // 寵物 id 從 server 來的資料
   useEffect(() => {
     axios
       .get('./api/pet.json')
@@ -17,25 +32,27 @@ const ProductForm = () => {
       .catch((err) => console.log(err))
   }, [])
 
-  const [start, setStart] = useState('')
-  const [end, setEnd] = useState('')
-  const [title, setTitle] = useState('')
+  const [selectedPetId, setSelectedPetId] = useState('') // 存入localstroge
   const handleSubmit = (e) => {
     e.preventDefault()
     // console.log(title, author);
     dispatch({
       type: 'ADD_PRODUCT',
-      product: { district, address, petIdsFromServer, start, end, title },
+      product: {
+        time,
+        address,
+        petIdsFromServer,
+        selectedPetId,
+      },
     })
-    setDistrict('')
+    setTime('')
     setAddress('')
-    setPetIdsFromServer([])
-    setStart('')
-    setEnd('')
-    setTitle('')
+    setPetIdsFromServer('')
+    alert('預約成功！')
+    // setSelectedPetId('') // 這個好像不需要去做更新
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="row" onSubmit={handleSubmit}>
       <div className="col-5 ">
         <div className="container">
           <div className="row">
@@ -44,10 +61,10 @@ const ProductForm = () => {
                 className="form-control"
                 type="text"
                 placeholder="地區"
-                value={district}
-                onChange={(e) => {
-                  setDistrict(e.target.value)
-                }}
+                value={time.district}
+                // onChange={(e) => {
+                //   setTime(e.target.value)
+                // }}
                 disabled="disabled"
               />
             </div>
@@ -70,12 +87,17 @@ const ProductForm = () => {
         <div class="input-group mb-3">
           <select
             className="form-control"
-            onChange={(e) => setPetIdsFromServer(e.target.value)}
+            value={selectedPetId}
+            onChange={(e) => setSelectedPetId(e.target.value)}
           >
-            {petIdsFromServer.length >0 &&
+            {petIdsFromServer.length > 0 &&
               petIdsFromServer.map((pet) => {
                 return (
-                  <option key={pet.id} value={pet.name}>
+                  <option
+                    key={pet.id}
+                    value={pet.name}
+                    onChange={(e) => setPetIdsFromServer(e.target.value)}
+                  >
                     {pet.name}
                   </option>
                 )
@@ -83,63 +105,36 @@ const ProductForm = () => {
           </select>
         </div>
       </div>
+
       <div className="col-3 ">
         <div className="container">
           <div className="row">
             <div className="col-6 ">
               <p>
                 開始時間：
-                <input
-                  className="form-control"
-                  type="text"
-                  placeholder="開始時間"
-                  value={start}
-                  onChange={(e) => {
-                    setStart(e.target.value)
-                  }}
-                  disabled="disabled"
-                />
+                {obj.start.toLocaleString()}
               </p>
+
               <p>
                 結束時間：
-                <input
-                  className="form-control"
-                  type="text"
-                  placeholder="結束時間"
-                  value={end}
-                  onChange={(e) => {
-                    setEnd(e.target.value)
-                  }}
-                  disabled="disabled"
-                />
+                {obj.end.toLocaleString()}
               </p>
             </div>
             <div className="col-6 ">
               <p>
                 金額：
-                <input
-                  className="form-control"
-                  type="text"
-                  placeholder="價格"
-                  value={title}
-                  onChange={(e) => {
-                    setTitle(e.target.value)
-                  }}
-                  // disabled="disabled"
-                />
+                {obj.title}
               </p>
             </div>
           </div>
         </div>
       </div>
+
       <div className="col-2 ">
         <button
           className="btn btn-primary btn-woof"
           type="submit"
           value="add product"
-          onClick={() => {
-            alert('預約成功！')
-          }}
         >
           立即預約
         </button>

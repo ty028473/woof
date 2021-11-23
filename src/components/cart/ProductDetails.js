@@ -4,22 +4,18 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ToDoOrder from './ToDoOrder'
 
-// 計算總價
-const total = (product) => {
-  let sum = 0
-  for (let i = 0; i < product.length; i++) {
-    sum += parseInt(product[i].title)
-  }
-  return sum
-}
-
-// console.log(parseInt(product.title))
-// let total = 0
-// total += parseInt(product.title)
-// console.log(sum)
-
 const ProductDetails = ({ product }) => {
   const { dispatch } = useContext(ProductContext)
+
+  // 計算總價
+  const total = (product) => {
+    let sum = 0
+    for (let i = 0; i < product.length; i++) {
+      sum += parseInt(product[i].title)
+    }
+    return sum
+  }
+
   return (
     <>
       <table className="my-3 table-list-styled shadow">
@@ -38,9 +34,9 @@ const ProductDetails = ({ product }) => {
             {product.pet_id}
           </td>
           <td>
-            {product.start} ~
-            <br />
-            {product.end}
+            {new Date(`${product.start}`).toLocaleString()}
+            <div className="text-center">|</div>
+            {new Date(`${product.end}`).toLocaleString()}
           </td>
           <td className="price-color">${product.title}</td>
           <td>

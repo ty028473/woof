@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import '../../styles/golbal.scss'
-import NavBar from '../../components/golbal/NavBar'
+import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../../components/golbal/Footer'
-import ProductItemDetail from '../../components/cart/ProductItemDetail'
-import ToCheckout from '../../components/cart/ToCheckout'
+import ProductItemDetail from '../../components/order/ProductItemDetail'
+import ToCheckout from '../../components/order/ToCheckout'
 
 function OrderCheck(props) {
   return (
     <>
-      <NavBar />
+      <NewNavBar />
       <div className="container ">
         <h3 className="mt-5">結帳</h3>
         <div className="d-flex justify-content-between">
