@@ -53,9 +53,6 @@ function App() {
         <Route path="/about">
           <About />
         </Route>
-        <Route path="/Reservecalendar">
-          <Calendar />
-        </Route>
         <Route path="/reserveMap/:reserveId">
           <Calendar />
         </Route>

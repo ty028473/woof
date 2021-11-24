@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { ProductContext } from '../../contexts/ProductContext'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { API_URL } from '../../configs/Config'
 
 function ToDoOrder(props) {
   const { products } = useContext(ProductContext)
@@ -15,9 +16,7 @@ function ToDoOrder(props) {
   useEffect((e) => {
     async function memberBonus() {
       try {
-        let res = await axios.get(
-          'http://localhost:8801/api/orders/member/bonus'
-        )
+        let res = await axios.get(`${API_URL}/orders/member/bonus`)
         setPoint(res.data[0].total_bonus)
       } catch (e) {
         alert('獲取資料失敗')
@@ -29,12 +28,26 @@ function ToDoOrder(props) {
   // 寫入訂單 (接 local 資料) totalInsert -> 主訂單 / products -> 子訂單
   async function handleSubmit(e) {
     try {
-      let res = await axios.post(
-        'http://localhost:8801/api/orders/order_insert',
-        [products, totalInsert]
-      )
+      let res = await axios.post(`${API_URL}/orders/order_insert`, [
+        products,
+        totalInsert,
+      ])
+      console.log(products,totalInsert)
     } catch (e) {
       alert('獲取資料失敗')
+    }
+  }
+
+  // 判斷折抵點數是否超過應有點數
+  function CheckPoints(e) {
+    if (usePoint > point) {
+      alert('您的點數不足！請重新輸入折抵點數～')
+      setUsePoint(0)
+    } else if (usePoint > 100) {
+      alert('最多只能折抵100元！！！')
+      setUsePoint(0)
+    } else {
+      setUsePoint(e.target.value)
     }
   }
 
@@ -77,8 +90,10 @@ function ToDoOrder(props) {
                   placeholder="預扣點數"
                   value={usePoint}
                   max="100"
-                  onChange={(e) => {
-                    setUsePoint(e.target.value)
+                  onChange={CheckPoints}
+                  onChangeText={(text) => {
+                    const newText = text.replace(/[^\d]+/, '')
+                    this.setState({ inputValue: newText })
                   }}
                 />
               </div>
