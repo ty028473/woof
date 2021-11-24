@@ -6,14 +6,14 @@ import '../../styles/calender.scss'
 import { faStar, faMapMarker } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
+import { API_URL } from '../../configs/Config'
 
 function SitterDetail(props) {
-  const [personalData, setPersonalState] = useState()
+  const [personalData, setPersonalData] = useState()
   const { reserveId } = useParams()
   useEffect(async () => {
-    let res = await axios.get(`http://localhost:8801/api/reserve/${reserveId}`)
-
-    setPersonalState(res.data)
+    let res = await axios.get(`${API_URL}/Reserve/${reserveId}`)
+    setPersonalData(res.data)
   }, [])
 
   return (
