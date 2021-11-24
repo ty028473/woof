@@ -1,10 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import axios from 'axios'
+import { API_URL } from '../../configs/config'
 // css
 import userGlobal from '../../styles/user-global.module.scss'
 
-function AsideNavbar(props) {
+function AsideNavbar() {
+  async function handleLogout() {
+    try {
+      await axios.get(`${API_URL}/auth/logout`, { withCredentials: true })
+    } catch (e) {
+      console.log(e)
+    }
+  }
   return (
     <>
       <div className="row flex-column text-center">
@@ -49,7 +57,9 @@ function AsideNavbar(props) {
             <Link to="/PetSitter">切換為保母身分</Link>
           </li>
           <li>
-            <Link to="/login">登出</Link>
+            <Link to="/login" onClick={handleLogout}>
+              登出
+            </Link>
           </li>
         </ul>
       </div>

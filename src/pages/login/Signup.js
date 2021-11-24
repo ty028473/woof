@@ -4,41 +4,29 @@ import '../../styles/signup.scss'
 import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../../components/golbal/Footer'
 import axios from 'axios'
-import {withRouter,useHistory} from 'react-router-dom'
+import { API_URL } from '../../configs/config'
 
-function Signup(props) {
+function Signup() {
   const [signForm, setSignForm] = useState({
     name: '',
     email: '',
     password: '',
     confirmPassword: '',
-    gender: '',
     phone: '',
-    date: '',
+    birthday: '',
+    gender: '',
   })
-  let history= useHistory()
-  let id =JSON.parse(localStorage.getItem('id'))
-  if (id){
-    history.push("/")
-
-  }
 
   function handleChange(e) {
-    let newMember = { ...signForm }
-    newMember[e.target.name] = e.target.value
-    setSignForm(newMember)
-    console.log(signForm)
-
-    // 逗點後面的值會蓋掉前面的
-    // setMember(...member, [e.target.name]:e.target.value)
+    setSignForm({ ...signForm, [e.target.name]: e.target.value })
   }
+
   async function handleSubmit(e) {
     // 關掉預設行為
     e.preventDefault()
     try {
-      console.log(signForm)
       // 用 post 送出資料 (member 已經是 json 格式可以直接送出)
-      let res = await axios.post('http://localhost:8801/api/auth/signup', signForm)
+      let req = await axios.post(`${API_URL}/auth/signup`, signForm)
     } catch (err) {
       console.log('handleSubmitErr', err)
     }
@@ -64,10 +52,10 @@ function Signup(props) {
                   如果您已經有帳號，請直接點擊登入
                 </li>
                 <li>
-                  <div class="input-group">
+                  <div className="from-group">
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       placeholder="姓名"
                       name="name"
                       value={signForm.name}
@@ -76,11 +64,11 @@ function Signup(props) {
                   </div>
                 </li>
                 <li>
-                  <div class=" input-group">
+                  <div className="from-group">
                     <input
                       type="email"
-                      class="form-control"
-                      placeholder="Email"
+                      className="form-control"
+                      placeholder="Email信箱"
                       name="email"
                       value={signForm.email}
                       onChange={handleChange}
@@ -88,10 +76,10 @@ function Signup(props) {
                   </div>
                 </li>
                 <li>
-                  <div class=" input-group">
+                  <div className="from-group">
                     <input
                       type="password"
-                      class="form-control"
+                      className="form-control"
                       placeholder="密碼"
                       name="password"
                       value={signForm.password}
@@ -100,10 +88,10 @@ function Signup(props) {
                   </div>
                 </li>
                 <li>
-                  <div class=" input-group">
+                  <div className="from-group">
                     <input
                       type="password"
-                      class="form-control"
+                      className="form-control"
                       placeholder="再次確認密碼"
                       name="confirmPassword"
                       value={signForm.confirmPassword}
@@ -112,33 +100,34 @@ function Signup(props) {
                   </div>
                 </li>
                 <li>
-                  <div class="input-group">
+                  <div className="from-group">
                     <input
-                      type="text"
-                      class="form-control"
+                      type="tel"
+                      className="form-control"
                       placeholder="電話號碼"
                       name="phone"
+                      pattern="09\d{2}\-?\d{3}\-?\d{3}"
                       value={signForm.phone}
                       onChange={handleChange}
                     />
                   </div>
                 </li>
                 <li>
-                  <div class="input-group">
+                  <div className="from-group">
                     <input
                       type="date"
-                      class="form-control"
+                      className="form-control"
                       placeholder="生日"
-                      name="date"
-                      value={signForm.date}
+                      name="birthday"
+                      value={signForm.birthday}
                       onChange={handleChange}
                     />
                   </div>
                 </li>
                 <li>
-                  <div class="input-group mb-3">
+                  <div className="from-group">
                     <select
-                      class="custom-select"
+                      className="custom-select"
                       name="gender"
                       value={signForm.gender}
                       onChange={handleChange}
@@ -152,7 +141,7 @@ function Signup(props) {
                 <li>
                   <button
                     type="submit"
-                    className="col btn btn-primary  btn-woof"
+                    className="col btn btn-primary btn-woof"
                   >
                     註冊
                   </button>

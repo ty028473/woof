@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import GlobalJsx from '../../components/member/GlobalJsx'
 import axios from 'axios'
-import { API_URL } from '../../configs/Config'
+import { API_URL } from '../../configs/config'
 
 // css
 import styles from '../../styles/member.module.scss'
