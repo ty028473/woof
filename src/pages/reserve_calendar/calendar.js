@@ -9,23 +9,45 @@ import Evalution from '../../components/reserve/EvaluationBoard'
 import Footer from '../../components/golbal/Footer'
 import ProductForm from '../../components/cart/ProductForm'
 import ProductContextProvider from '../../contexts/ProductContext'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
+import { API_URL } from '../../configs/Config'
 
 function Reservecalendar(props) {
+  const [personalData, setPersonalData] = useState({
+    pet_sitter_id: '',
+    district: '',
+  })
+  const { reserveId } = useParams()
+  // 抓取保母 id 的相關日曆時段以及資料
+  useEffect((e) => {
+    async function reserve() {
+      try {
+        let res = await axios.get(`${API_URL}/reserve/${reserveId}`)
+        setPersonalData(res.data)
+      } catch (e) {
+        alert('找不到此保母的時段資料')
+      }
+    }
+    reserve()
+  }, [])
+
   const [obj, setObj] = useState({
     start: '',
     end: '',
     title: '',
-    pet_sitter_id: '2',
-    district: '北投區',
   })
-  // console.log(obj)
+  // console.log('personalData', personalData)
   return (
     <ProductContextProvider>
       <NavBar />
       <div className="container">
         <div className="row d-flex justify-content-center mx-0">
           <div className="col-6 my-4 ">
-            <SitterDetail />
+            <SitterDetail
+              personalData={personalData}
+              setPersonalData={setPersonalData}
+            />
           </div>
           <div className="col-6 my-2 ">
             <SitterSummary />
@@ -44,7 +66,7 @@ function Reservecalendar(props) {
           <div className="col-12 my-4  ">
             <ViewApp setObj={setObj} />
           </div>
-          <ProductForm obj={obj} />
+          <ProductForm obj={obj} personalData={personalData} />
         </div>
       </div>
       <Board />

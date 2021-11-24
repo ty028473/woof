@@ -3,6 +3,7 @@ import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import AddCreditCard from './AddCreditCard'
 import CheckOutResult from './CheckOutResult'
 import axios from 'axios'
+import PaymentForm from './CreditCard'
 
 function ToCheckout(props) {
   const [addCreditCard, setAddCreditCard] = useState(false)
@@ -17,6 +18,7 @@ function ToCheckout(props) {
   }, [])
   return (
     <>
+      <PaymentForm />
       <div className="my-3 check-out shadow">
         <h5 className="py-2 px-5">付款方式</h5>
         <hr />
@@ -66,6 +68,7 @@ function ToCheckout(props) {
           </div>
         </div>
         {/* 信用卡資訊 */}
+
         <ul className="my-3 credit-card-list-styled">
           {creditCard &&
             creditCard.map((creditCard) => (
@@ -103,6 +106,7 @@ function ToCheckout(props) {
           </div>
         </ul>
         <hr />
+
         {/* 紅利折抵+總付款金額 */}
         <div className=" mt-3 d-flex bd-highlight ">
           <div className="py-2 px-5 flex-grow-1 bd-highlight"></div>
