@@ -1,14 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import GlobalJsx from '../../components/member/GlobalJsx'
 import axios from 'axios'
-import { API_URL } from '../../configs/config'
+import { API_URL, PUBLIC_URL } from '../../configs/Config'
 
 // css
 import styles from '../../styles/member.module.scss'
 import userGlobal from '../../styles/user-global.module.scss'
 
 function Member() {
-  const [memberData, setMemberData] = useState({})
+  const [memberData, setMemberData] = useState({
+    email: '',
+    image: '',
+  })
+  console.log('bbb', memberData)
+  const fileInputRef = useRef()
+  const [preview, setPreview] = useState('')
+  const [uploadImage, setuploadImage] = useState(null)
 
   // 抓取資料
   useEffect(() => {
@@ -24,18 +31,49 @@ function Member() {
     setMemberData({ ...memberData, [e.target.name]: e.target.value })
   }
 
+  function handleUpload(e) {
+    const file = e.target.files[0]
+
+    if (file && file.type.substr(0, 5) === 'image') {
+      setuploadImage(file)
+      setMemberData({ ...memberData, [e.target.name]: file })
+    } else {
+      setuploadImage(null)
+    }
+  }
+
+  useEffect(() => {
+    if (uploadImage) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setPreview(reader.result)
+      }
+      reader.readAsDataURL(uploadImage)
+    } else {
+      setPreview(null)
+    }
+  }, [uploadImage])
+
   // 送回後端
   async function handleSubmit(e) {
     e.preventDefault()
     try {
-      let req = await axios.post(`${API_URL}/member/updateMember`, memberData)
-    } catch (e) {
-      console.log(e)
+      let formData = new FormData()
+      formData.append('name', memberData.name)
+      formData.append('phone', memberData.phone)
+      formData.append('birthday', memberData.birthday)
+      formData.append('gender', memberData.gender)
+      formData.append('image', memberData.image)
+      let req = await axios.post(`${API_URL}/member/updateMember`, formData, {
+        withCredentials: true,
+      })
+    } catch (err) {
+      console.log(err)
     }
   }
   return (
     <>
-      <GlobalJsx>
+      <GlobalJsx memberData={memberData}>
         {/* 標題區塊 */}
         <section>
           <div>
@@ -140,16 +178,50 @@ function Member() {
                 </div>
                 <div className="col-4 text-center">
                   <div>
-                    <img
-                      src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
-                      className={userGlobal.img_cover_lg}
-                      alt="會員大頭像"
-                    />
+                    {uploadImage ? (
+                      <img
+                        src={preview}
+                        // src={`${PUBLIC_URL}${memberData.image}`}
+                        className={userGlobal.img_cover_lg}
+                        alt="會員大頭像"
+                      />
+                    ) : (
+                      <img
+                        src={`${PUBLIC_URL}${memberData.image}`}
+                        // src={`${PUBLIC_URL}${memberData.image}`}
+                        className={userGlobal.img_cover_lg}
+                        alt="會員大頭像"
+                      />
+                    )}
+
                     <br />
                     <br />
-                    <button type="button" className="btn btn-primary btn-woof">
-                      上傳圖片
-                    </button>
+                    <div className="from-group">
+                      {/* <label
+                        htmlFor="image"
+                        className="btn btn-primary btn-woof"
+                      >
+                        上傳圖片
+                      </label> */}
+                      <button
+                        className="btn btn-primary btn-woof"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          fileInputRef.current.click()
+                        }}
+                      >
+                        上傳圖片
+                      </button>
+                      <input
+                        id="image"
+                        name="image"
+                        type="file"
+                        accept="image/jpeg,image/png"
+                        className="d-none"
+                        onChange={handleUpload}
+                        ref={fileInputRef}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
