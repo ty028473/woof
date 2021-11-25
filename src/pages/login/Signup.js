@@ -4,7 +4,7 @@ import '../../styles/signup.scss'
 import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../../components/golbal/Footer'
 import axios from 'axios'
-import { API_URL } from '../../configs/config'
+import { API_URL } from '../../configs/Config'
 
 function Signup() {
   const [signForm, setSignForm] = useState({
