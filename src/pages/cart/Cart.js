@@ -1,11 +1,12 @@
 import '../../styles/golbal.scss'
+import { useState } from 'react'
 import NavBar from '../../components/golbal/NavBar'
 import Footer from '../../components/golbal/Footer'
 import ProductList from '../../components/cart/ProductList'
-// import ProductForm from '../../components/cart/ProductForm'
 import ProductContextProvider from '../../contexts/ProductContext'
 
 function Cart(props) {
+  const [searchTerm, setSearchTerm] = useState('')
   return (
     <ProductContextProvider>
       <NavBar />
@@ -17,12 +18,15 @@ function Cart(props) {
             <input
               className="form-control mr-sm-2"
               type="search"
-              placeholder="想找什麼呢？"
+              placeholder="從購物車找點什麼？"
               aria-label="Search"
+              onChange={(e) => {
+                setSearchTerm(e.target.value)
+              }}
             />
-            <button className="btn btn-info" type="submit">
+            {/* <button className="btn btn-info" type="submit">
               搜尋
-            </button>
+            </button> */}
           </form>
         </div>
         <table className="mt-3 table-title-styled shadow">
@@ -34,8 +38,7 @@ function Cart(props) {
             <td>操作</td>
           </tr>
         </table>
-        {/* <ProductForm /> */}
-        <ProductList />
+        <ProductList searchTerm={searchTerm} />
       </div>
       <Footer />
       <div className="footer-long"></div>

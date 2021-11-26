@@ -2,17 +2,26 @@ import React, { useContext } from 'react'
 import '../../styles/carts.scss'
 import { ProductContext } from '../../contexts/ProductContext'
 import ProductDetails from './ProductDetails'
-// import ToDoOrder from './ToDoOrder'
 
 function ProductList(props) {
   const { products } = useContext(ProductContext)
+  const { searchTerm } = props
 
   return products.length ? (
     <>
-      {products.map((product) => {
-        return <ProductDetails product={product} key={product.id} />
-      })}
-      {/* <ToDoOrder /> */}
+      {products
+        .filter((v) => {
+          if (searchTerm == '') {
+            return v
+          } else if (
+            v.address.toLowerCase().includes(searchTerm.toLowerCase())
+          ) {
+            return v
+          }
+        })
+        .map((product) => {
+          return <ProductDetails product={product} key={product.id} />
+        })}
     </>
   ) : (
     <section className="table-list-styled text-center my-3 shadow">
