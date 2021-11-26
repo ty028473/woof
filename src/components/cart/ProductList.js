@@ -7,7 +7,7 @@ import { BrowserRouter as Link } from 'react-router-dom'
 
 function ProductList(props) {
   const { products } = useContext(ProductContext)
-  const { searchTerm } = props
+  const { searchTerm, setShowProductList, setShowLoading } = props
 
   return products.length ? (
     <>
@@ -22,7 +22,14 @@ function ProductList(props) {
           }
         })
         .map((product) => {
-          return <ProductDetails product={product} key={product.id} />
+          return (
+            <ProductDetails
+              product={product}
+              key={product.id}
+              setShowProductList={setShowProductList}
+              setShowLoading={setShowLoading}
+            />
+          )
         })}
     </>
   ) : (

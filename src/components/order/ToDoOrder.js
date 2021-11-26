@@ -3,8 +3,8 @@ import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
 // import AddCreditCard from './AddCreditCard'
 import CheckOutResult from './CheckOutResult'
 import InsertCreditCard from './InsertCreditCard'
-// import axios from 'axios'
-// import { API_URL } from '../../configs/Config'
+import axios from 'axios'
+import { API_URL } from '../../configs/Config'
 
 function ToDoOrder(props) {
   const { orderCheck } = props
@@ -12,6 +12,22 @@ function ToDoOrder(props) {
   console.log(orderCheck)
   // const [addCreditCard, setAddCreditCard] = useState(false)
   const [checkOutResult, setCheckOutResult] = useState(false)
+
+  // 結帳訂單
+  const createOrder = async () => {
+    let orderId = sessionStorage.getItem('orderId')
+    let res = await axios.post(`${API_URL}/orders/order_update`, {
+      orderId: orderId,
+    })
+    if (res.data.code === '0') {
+      sessionStorage.removeItem('orderId')
+      setCheckOutResult(true)
+    }
+  }
+
+  if (orderCheck.length === 0) {
+    return <></>
+  }
   return (
     <>
       <div className="my-3 check-out shadow">
@@ -86,7 +102,7 @@ function ToDoOrder(props) {
           <div className="py-2 px-5 flex-grow-1 bd-highlight"></div>
           <div className="py-2 px-5 bd-highlight">折抵紅利點數</div>
           <div className="py-2 px-5 bd-highlight col-2">
-            {/* ${orderCheck[0].use_bonus} */}
+            ${orderCheck[0].use_bonus}
           </div>
         </div>
         <div className="d-flex bd-highlight ">
@@ -95,7 +111,7 @@ function ToDoOrder(props) {
             總付款金額 ({orderCheck.length}個商品):
           </div>
           <div className="py-2 px-5 bd-highlight col-2">
-            {/* <span className="price-color">${orderCheck[0].total_sum}</span> */}
+            <span className="price-color">${orderCheck[0].total_sum}</span>
           </div>
         </div>
 
@@ -106,7 +122,7 @@ function ToDoOrder(props) {
             <div className="blog__controller">
               <button
                 className="btn btn-primary btn-woof"
-                onClick={() => setCheckOutResult(true)}
+                onClick={createOrder}
               >
                 下訂單
               </button>

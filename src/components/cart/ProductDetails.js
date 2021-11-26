@@ -4,7 +4,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ToCheckout from './ToCheckout'
 
-const ProductDetails = ({ product }) => {
+const ProductDetails = ({ product, setShowProductList, setShowLoading }) => {
   const { dispatch } = useContext(ProductContext)
 
   // 計算總價
@@ -50,7 +50,12 @@ const ProductDetails = ({ product }) => {
           </td>
         </tr>
       </table>
-      <ToCheckout product={product} total={total} />
+      <ToCheckout
+        product={product}
+        total={total}
+        setShowProductList={setShowProductList}
+        setShowLoading={setShowLoading}
+      />
     </>
   )
 }

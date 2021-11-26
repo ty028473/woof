@@ -7,6 +7,9 @@ import ProductContextProvider from '../../contexts/ProductContext'
 
 function Cart(props) {
   const [searchTerm, setSearchTerm] = useState('')
+  const [showProductList, setShowProductList] = useState(true)
+  const [showLoading, setShowLoading] = useState(false)
+
   return (
     <ProductContextProvider>
       <NavBar />
@@ -49,7 +52,28 @@ function Cart(props) {
             <td>操作</td>
           </tr>
         </table>
-        <ProductList searchTerm={searchTerm} />
+        {showLoading ? (
+          <div
+            style={{
+              height: '300px',
+              width: '300px',
+              background: '#000',
+            }}
+          >
+            Loading...
+          </div>
+        ) : (
+          ''
+        )}
+        {showProductList ? (
+          <ProductList
+            searchTerm={searchTerm}
+            setShowProductList={setShowProductList}
+            setShowLoading={setShowLoading}
+          />
+        ) : (
+          ''
+        )}
       </div>
       <Footer />
       <div className="footer-long"></div>

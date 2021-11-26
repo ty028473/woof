@@ -5,19 +5,17 @@ import GoogleButton from 'react-google-button'
 import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../../components/golbal/Footer'
 import axios from 'axios'
-import {withRouter,useHistory} from 'react-router-dom'
-
+import { withRouter, useHistory } from 'react-router-dom'
 
 function Login(props) {
   const [loginForm, setLoginForm] = useState({
     email: '',
     password: '',
   })
-  let history= useHistory()
-  let id =JSON.parse(localStorage.getItem('id'))
-  if (id){
-    history.push("/")
-
+  let history = useHistory()
+  let id = JSON.parse(localStorage.getItem('id'))
+  if (id) {
+    history.push('/')
   }
 
   function handleChange(e) {
@@ -30,21 +28,20 @@ function Login(props) {
     // setMember(...member, [e.target.name]:e.target.value)
   }
   async function handleSubmit(e) {
-
     // 關掉預設行為
     e.preventDefault()
     try {
-      
       // 用 post 送出資料 (member 已經是 json 格式可以直接送出)
       let res = await axios.post(
         'http://localhost:8801/api/auth/login',
-        loginForm
+        loginForm,
+        { withCredentials: true }
       )
       console.log(res)
-      if (res.data.code === "0") {
+      if (res.data.code === '0') {
         localStorage.setItem('id', JSON.stringify(res.data.returnMember))
-        alert("登入成功")
-        history.push("/")
+        alert('登入成功')
+        history.push('/')
       }
     } catch (err) {
       console.log('handleSubmitErr', err)
@@ -52,7 +49,6 @@ function Login(props) {
   }
 
   return (
-    
     <>
       <NewNavBar />
       <div className="container">

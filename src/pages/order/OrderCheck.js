@@ -13,7 +13,9 @@ function OrderCheck(props) {
   useEffect((e) => {
     async function orderCheck() {
       try {
-        let res = await axios.get(`${API_URL}/orders/member/checkList`)
+        let res = await axios.get(`${API_URL}/orders/member/checkList`, {
+          withCredentials: true,
+        })
         setOrderCheck(res.data)
         console.log(res.data)
       } catch (e) {

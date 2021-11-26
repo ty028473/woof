@@ -1,8 +1,7 @@
 import React from 'react'
 import '../../styles/carts.scss'
 
-function ProductItemDetail(props) {
-  const {orderCheck} = props
+function ProductItemDetail({orderCheck}) {
   return (
     <>
       {orderCheck.length > 0 &&
