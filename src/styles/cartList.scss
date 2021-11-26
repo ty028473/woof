@@ -1,0 +1,23 @@
+$primary: #087bdc;
+$danger: #d34f4f;
+$block-radious-cart: 20px 20px 0px 0px;
+$block-radious: 20px;
+$block-background: #fff;
+$hr-color: #c7c7c7;
+
+.cart-list-styled {
+  width: 700px;
+  height: 100px;
+  background-color: $block-background;
+  border-radius: $block-radious;
+  table-layout: fixed;
+  word-break: break-all;
+}
+
+.img-cover-sm-square-cartList {
+  border-radius: 20%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  object-position: center;
+}

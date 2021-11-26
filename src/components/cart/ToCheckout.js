@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { ProductContext } from '../../contexts/ProductContext'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { BrowserRouter as hashHistory, Link } from 'react-router-dom'
 import { API_URL } from '../../configs/Config'
 
-function ToDoOrder(props) {
+function ToCheckout(props) {
   const { products } = useContext(ProductContext)
   const { total } = props
   const [point, setPoint] = useState(0)
@@ -32,7 +32,8 @@ function ToDoOrder(props) {
         products,
         totalInsert,
       ])
-      console.log(products,totalInsert)
+      console.log(products, totalInsert)
+      localStorage.removeItem('products')
     } catch (e) {
       alert('獲取資料失敗')
     }
@@ -124,4 +125,4 @@ function ToDoOrder(props) {
   )
 }
 
-export default ToDoOrder
+export default ToCheckout

@@ -16,6 +16,8 @@ import Calendar from './pages/reserve_calendar/calendar'
 // 購物車
 import OrderCheck from './pages/order/OrderCheck'
 import Cart from './pages/cart/Cart'
+// 購物車點擊右上測試
+import CartListTest from './pages/cart/CartListTest'
 
 // 會員
 import Member from './pages/member/Member'
@@ -64,6 +66,9 @@ function App() {
         </Route>
         <Route path="/cart">
           <Cart />
+        </Route>
+        <Route path="/CartListTest">
+          <CartListTest />
         </Route>
         <Route path="/joinus">
           <Joinus />

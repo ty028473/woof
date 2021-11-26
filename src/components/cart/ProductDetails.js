@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { ProductContext } from '../../contexts/ProductContext'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import ToDoOrder from './ToDoOrder'
+import ToCheckout from './ToCheckout'
 
 const ProductDetails = ({ product }) => {
   const { dispatch } = useContext(ProductContext)
@@ -50,7 +50,7 @@ const ProductDetails = ({ product }) => {
           </td>
         </tr>
       </table>
-      <ToDoOrder product={product} total={total} />
+      <ToCheckout product={product} total={total} />
     </>
   )
 }
