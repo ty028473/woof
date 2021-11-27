@@ -10,12 +10,13 @@ import { withRouter } from 'react-router-dom'
 import userGlobal from '../../styles/user-global.module.scss'
 
 function GlobalJsx(props) {
+  const { memberData } = props
   // 判斷navbar要顯示會員還是保母版本
   const splitUrl = props.match.url.split('/')
   const userExistUrl = splitUrl.indexOf('member')
   let controlMemberNavbar
   if (userExistUrl >= 0) {
-    controlMemberNavbar = <AsideNavbar />
+    controlMemberNavbar = <AsideNavbar memberData={memberData} />
   } else {
     controlMemberNavbar = <AsideNavbarSitter />
   }

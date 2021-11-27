@@ -1,48 +1,32 @@
 import React, { useState, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import '../../styles/golbal.scss'
 import '../../styles/login.scss'
 import GoogleButton from 'react-google-button'
 import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../../components/golbal/Footer'
 import axios from 'axios'
-import { withRouter, useHistory } from 'react-router-dom'
+import { API_URL } from '../../configs/Config'
 
-function Login(props) {
+function Login() {
   const [loginForm, setLoginForm] = useState({
     email: '',
     password: '',
   })
-  let history = useHistory()
-  let id = JSON.parse(localStorage.getItem('id'))
-  if (id) {
-    history.push('/')
-  }
 
   function handleChange(e) {
-    let newMember = { ...loginForm }
-    newMember[e.target.name] = e.target.value
-    setLoginForm(newMember)
-    console.log(loginForm)
-
-    // 逗點後面的值會蓋掉前面的
-    // setMember(...member, [e.target.name]:e.target.value)
+    setLoginForm({ ...loginForm, [e.target.name]: e.target.value })
   }
+
   async function handleSubmit(e) {
     // 關掉預設行為
     e.preventDefault()
     try {
       // 用 post 送出資料 (member 已經是 json 格式可以直接送出)
-      let res = await axios.post(
-        'http://localhost:8801/api/auth/login',
-        loginForm,
-        { withCredentials: true }
-      )
-      console.log(res)
-      if (res.data.code === '0') {
-        localStorage.setItem('id', JSON.stringify(res.data.returnMember))
-        alert('登入成功')
-        history.push('/')
-      }
+      // 有用到session就要加 withCredentials
+      let req = await axios.post(`${API_URL}/auth/login`, loginForm, {
+        withCredentials: true,
+      })
     } catch (err) {
       console.log('handleSubmitErr', err)
     }
@@ -67,10 +51,10 @@ function Login(props) {
                   <h5>會員登入</h5>
                 </li>
                 <li>
-                  <div class=" input-group">
+                  <div className="from-group">
                     <input
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       placeholder="Email"
                       name="email"
                       value={loginForm.email}
@@ -79,10 +63,10 @@ function Login(props) {
                   </div>
                 </li>
                 <li>
-                  <div class=" input-group">
+                  <div className="from-group">
                     <input
                       type="password"
-                      class="form-control"
+                      className="form-control"
                       placeholder="密碼"
                       name="password"
                       value={loginForm.password}
@@ -93,18 +77,15 @@ function Login(props) {
                 <li>
                   <button
                     type="submit"
-                    className="col btn btn-primary  btn-woof"
+                    className="col btn btn-primary btn-woof"
                   >
                     登入
                   </button>
                 </li>
                 <li>
-                  <button
-                    type="button"
-                    className="col btn btn-secondary btn-woof"
-                  >
+                  <Link to="/signup" className="col btn btn-secondary btn-woof">
                     註冊
-                  </button>
+                  </Link>
                 </li>
                 <li className="text-center">
                   <a href="#/" alt="忘記密碼">
