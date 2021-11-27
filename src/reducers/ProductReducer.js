@@ -7,9 +7,7 @@ export const ProductReducer = (state, action) => {
         ...state,
         {
           id: uuidv1(),
-          // pet_sitter_id: '',
           pet_sitter_id: action.product.time.pet_sitter_id,
-          // district: '',
           district: action.product.time.district,
           start: action.product.time.start,
           end: action.product.time.end,

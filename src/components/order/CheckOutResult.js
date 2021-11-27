@@ -9,7 +9,7 @@ const CheckOutResult = ({ onHide, show }) => (
     centered
     {...{ onHide, show }}
   >
-    <Modal.Header closeButton>
+    <Modal.Header >
       <Modal.Title id="contained-modal-title-vcenter">交易結果</Modal.Title>
     </Modal.Header>
     <Modal.Body className="show-grid">
@@ -17,23 +17,24 @@ const CheckOutResult = ({ onHide, show }) => (
         <Row>
           <Col>
             <Form.Text className="text-muted text-center">
-              <h5>交易成功！！</h5>
+              <h5>完成結帳！！</h5>
             </Form.Text>
           </Col>
         </Row>
         <Row className="add-credit-card-mt">
-          <Col xs={6}>
+          {/* <Col xs={6}>
             <Button
               className="col btn btn-info btn-woof"
               onClick={() => console.log('回會員系統')}
             >
               回會員系統
             </Button>
-          </Col>
-          <Col xs={6}>
+          </Col> */}
+          <Col>
             <Button
               className="col alert-linkbtn btn-primary btn-woof"
               onClick={() => console.log('繼續預約')}
+              href="http://localhost:3000/ReserveMap"
             >
               繼續預約
             </Button>

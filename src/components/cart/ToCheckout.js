@@ -1,22 +1,30 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { ProductContext } from '../../contexts/ProductContext'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import {
+  BrowserRouter as hashHistory,
+  Link,
+  useHistory,
+} from 'react-router-dom'
 import { API_URL } from '../../configs/Config'
 
-function ToDoOrder(props) {
+function ToCheckout(props) {
   const { products } = useContext(ProductContext)
-  const { total } = props
+  const { total, setShowProductList, setShowLoading } = props
   const [point, setPoint] = useState(0)
   const [usePoint, setUsePoint] = useState(0)
   let sum = total(products) - usePoint
   const totalInsert = { use_bonus: usePoint, total_sum: sum }
 
+  let history = useHistory()
+
   // 抓取 member_id =1 的 bonus
   useEffect((e) => {
     async function memberBonus() {
       try {
-        let res = await axios.get(`${API_URL}/orders/member/bonus`)
+        let res = await axios.get(`${API_URL}/orders/member/bonus`, {
+          withCredentials: true,
+        })
         setPoint(res.data[0].total_bonus)
       } catch (e) {
         alert('獲取資料失敗')
@@ -28,11 +36,23 @@ function ToDoOrder(props) {
   // 寫入訂單 (接 local 資料) totalInsert -> 主訂單 / products -> 子訂單
   async function handleSubmit(e) {
     try {
-      let res = await axios.post(`${API_URL}/orders/order_insert`, [
-        products,
-        totalInsert,
-      ])
-      console.log(products,totalInsert)
+      let res = await axios.post(
+        `${API_URL}/orders/order_insert`,
+        [products, totalInsert],
+        { withCredentials: true }
+      )
+      console.log(products, totalInsert)
+      localStorage.removeItem('products')
+      sessionStorage.setItem('orderId', res.data.orderId)
+
+      setTimeout(() => {
+        history.push('/OrderCheck')
+      }, 5000)
+      setShowProductList(false)
+      setShowLoading(true)
+
+      // window.location.reload()
+      // 動畫
     } catch (e) {
       alert('獲取資料失敗')
     }
@@ -107,15 +127,15 @@ function ToDoOrder(props) {
               <span className="price-color">${sum}</span>
             </div>
             <div className="py-4 px-5 bd-highlight col-2">
-              <Link to="/OrderCheck">
-                <button
-                  type="button"
-                  className="btn btn-primary btn-woof"
-                  onClick={handleSubmit}
-                >
-                  去結帳
-                </button>
-              </Link>
+              {/* <Link to="/OrderCheck"> */}
+              <button
+                type="button"
+                className="btn btn-primary btn-woof"
+                onClick={handleSubmit}
+              >
+                去結帳
+              </button>
+              {/* </Link> */}
             </div>
           </div>
         </div>
@@ -124,4 +144,4 @@ function ToDoOrder(props) {
   )
 }
 
-export default ToDoOrder
+export default ToCheckout
