@@ -6,7 +6,7 @@ import GoogleButton from 'react-google-button'
 import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../../components/golbal/Footer'
 import axios from 'axios'
-import { API_URL } from '../../configs/Config'
+import { API_URL } from '../../configs/Config1'
 
 function Login() {
   const [loginForm, setLoginForm] = useState({
