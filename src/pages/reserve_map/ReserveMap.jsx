@@ -10,13 +10,14 @@ import MyComponent from '../../components/reserve/Map'
 
 import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../../components/golbal/Footer'
-import { API_URL } from '../../configs/Config'
+import { API_URL } from '../../configs/config'
 import axios from 'axios'
 import dayjs from 'dayjs'
 
 const isSameOrAfter = require('dayjs/plugin/isSameOrAfter')
+const isSameOrBefore = require('dayjs/plugin/isSameOrBefore')
 dayjs.extend(isSameOrAfter)
-
+dayjs.extend(isSameOrBefore)
 export default function App() {
   const [sitterData, setSitterData] = useState([])
 
@@ -24,7 +25,6 @@ export default function App() {
     let res = await axios.get(`${API_URL}/Reserve/`)
 
     setSitterData(res.data)
-    console.log(res.data)
   }, [])
   // const [timeData, setTimeData] = useState([])
 
@@ -61,13 +61,20 @@ export default function App() {
   }
   const handleFilterStart = (start, field) => {
     const filteredData = sitterData.filter((item) => {
-      if (field === 'start' && dayjs(item.start).isSameOrAfter(dayjs(start))) {
+      if (field === 'start' && dayjs(item.start).isSameOrBefore(dayjs(start))) {
         return item
       }
     })
     setData(filteredData)
   }
-
+  const handleFilterEnd = (end, field) => {
+    const filteredData = sitterData.filter((item) => {
+      if (field === 'end' && dayjs(item.end).isSameOrAfter(dayjs(end))) {
+        return item
+      }
+    })
+    setData(filteredData)
+  }
   return (
     <>
       <NewNavBar />
@@ -76,9 +83,8 @@ export default function App() {
         onNameFilter={handleFilterName}
         onDistrictFilter={handleFilterDistricts}
         onStartFilter={handleFilterStart}
+        onEndFilter={handleFilterEnd}
       />
-
-      <Filters />
 
       <div className="container ">
         <div className="row">

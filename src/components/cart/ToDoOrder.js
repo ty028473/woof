@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { ProductContext } from '../../contexts/ProductContext'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { API_URL } from '../../configs/Config'
+import { API_URL } from '../../configs/config'
 
 function ToDoOrder(props) {
   const { products } = useContext(ProductContext)
@@ -32,7 +32,7 @@ function ToDoOrder(props) {
         products,
         totalInsert,
       ])
-      console.log(products,totalInsert)
+      console.log(products, totalInsert)
     } catch (e) {
       alert('獲取資料失敗')
     }

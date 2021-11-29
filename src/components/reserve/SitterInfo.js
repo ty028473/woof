@@ -26,7 +26,7 @@ const SitterInfo = ({ item }) => {
             </div>
           </div>
           <Link
-            to="/Reservecalendar"
+            to={`/reserveMap/${item.id}`}
             type="button"
             className="col-5 btn mt-1 btn-primary mx-2 btn-sm btn-woof"
           >

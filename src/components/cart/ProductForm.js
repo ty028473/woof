@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ProductContext } from '../../contexts/ProductContext'
 import axios from 'axios'
-import { API_URL } from '../../configs/Config'
+import { API_URL } from '../../configs/config'
 
 const ProductForm = (props) => {
   const { dispatch } = useContext(ProductContext)

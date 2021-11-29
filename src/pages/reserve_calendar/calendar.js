@@ -11,7 +11,7 @@ import ProductForm from '../../components/cart/ProductForm'
 import ProductContextProvider from '../../contexts/ProductContext'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { API_URL } from '../../configs/Config'
+import { API_URL } from '../../configs/config'
 
 function Reservecalendar(props) {
   const [personalData, setPersonalData] = useState({

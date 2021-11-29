@@ -11,11 +11,13 @@ const HeaderFilter = ({
   onNameFilter,
   onDistrictFilter,
   onStartFilter,
+  onEndFilter,
 }) => {
   const [filters, setFilters] = useState({
     districts: '',
     name: '',
     start: '',
+    end: '',
   })
 
   const handleInput = (field) => (e) => {
@@ -25,9 +27,6 @@ const HeaderFilter = ({
       [field]: value,
     })
     switch (field) {
-      case 'name':
-        onNameFilter(value)
-        break
       case 'district':
         onDistrictFilter(value)
         break
@@ -35,7 +34,12 @@ const HeaderFilter = ({
       case 'start':
         onStartFilter(value, 'start')
         break
-
+      case 'end':
+        onEndFilter(value, 'end')
+        break
+      case 'name':
+        onNameFilter(value)
+        break
       default:
         break
     }
@@ -98,19 +102,27 @@ const HeaderFilter = ({
             </div>
           </div>
 
-          <div className="col-5 ">
+          <div className="col-2 ">
             <div className="input-group">
               <input
                 type="date"
                 className="form-control"
                 id="startDate"
-                min="today"
                 onChange={handleInput('start')}
               />
             </div>
           </div>
-
-          <div className="col-4 ">
+          <div className="col-2 ">
+            <div className="input-group">
+              <input
+                type="date"
+                className="form-control"
+                id="endDate"
+                onChange={handleInput('end')}
+              />
+            </div>
+          </div>
+          <div className="col-2 ">
             <input
               id="name "
               type="text"
