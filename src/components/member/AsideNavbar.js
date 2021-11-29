@@ -1,11 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { API_URL } from '../../configs/config'
+import { API_URL, PUBLIC_URL } from '../../configs/Config'
 // css
 import userGlobal from '../../styles/user-global.module.scss'
 
-function AsideNavbar() {
+function AsideNavbar(props) {
+  const { memberData } = props
+  console.log('ccc', memberData)
   async function handleLogout() {
     try {
       await axios.get(`${API_URL}/auth/logout`, { withCredentials: true })
@@ -18,7 +20,8 @@ function AsideNavbar() {
       <div className="row flex-column text-center">
         <div className="col">
           <img
-            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
+            src={memberData && `${PUBLIC_URL}${memberData.image}`}
+            // src={`${PUBLIC_URL}${memberData.image}`}
             className={userGlobal.img_cover_sm}
             alt="會員小頭像"
           />

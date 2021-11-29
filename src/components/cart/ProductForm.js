@@ -3,9 +3,10 @@ import { ProductContext } from '../../contexts/ProductContext'
 import axios from 'axios'
 import { API_URL } from '../../configs/config'
 
-const ProductForm = (props) => {
+const ProductForm = ({ obj, personalData }) => {
   const { dispatch } = useContext(ProductContext)
-  const { obj, personalData } = props
+  // const { obj, personalData } = props
+  console.log(obj,personalData)
   let start = obj.start.toLocaleString()
   let end = obj.end.toLocaleString()
   let title = obj.title
@@ -37,7 +38,7 @@ const ProductForm = (props) => {
   useEffect((e) => {
     async function memberPets() {
       try {
-        let res = await axios.get(`${API_URL}/orders/member/pets`)
+        let res = await axios.get(`${API_URL}/orders/member/pets`,{withCredentials:true})
         setPetIdsFromServer(res.data)
         // console.log(res.data)
       } catch (e) {

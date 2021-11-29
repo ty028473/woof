@@ -1,24 +1,35 @@
 import React, { useState, useEffect } from 'react'
 import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
-import AddCreditCard from './AddCreditCard'
+// import AddCreditCard from './AddCreditCard'
 import CheckOutResult from './CheckOutResult'
+import InsertCreditCard from './InsertCreditCard'
 import axios from 'axios'
-import PaymentForm from './CreditCard'
+import { API_URL } from '../../configs/Config'
 
-function ToCheckout(props) {
-  const [addCreditCard, setAddCreditCard] = useState(false)
+function ToDoOrder(props) {
+  const { orderCheck } = props
+
+  console.log(orderCheck)
+  // const [addCreditCard, setAddCreditCard] = useState(false)
   const [checkOutResult, setCheckOutResult] = useState(false)
-  // 會員的信用卡
-  const [creditCard, setCreditCard] = React.useState([])
-  React.useEffect(() => {
-    axios
-      .get('./api/member.json')
-      .then((res) => setCreditCard(res.data))
-      .catch((err) => console.log(err))
-  }, [])
+
+  // 結帳訂單
+  const createOrder = async () => {
+    let orderId = sessionStorage.getItem('orderId')
+    let res = await axios.post(`${API_URL}/orders/order_update`, {
+      orderId: orderId,
+    })
+    if (res.data.code === '0') {
+      sessionStorage.removeItem('orderId')
+      setCheckOutResult(true)
+    }
+  }
+
+  if (orderCheck.length === 0) {
+    return <></>
+  }
   return (
     <>
-      <PaymentForm />
       <div className="my-3 check-out shadow">
         <h5 className="py-2 px-5">付款方式</h5>
         <hr />
@@ -68,29 +79,7 @@ function ToCheckout(props) {
           </div>
         </div>
         {/* 信用卡資訊 */}
-
-        <ul className="my-3 credit-card-list-styled">
-          {creditCard &&
-            creditCard.map((creditCard) => (
-              <li key={creditCard.user_id}>
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="exampleRadios"
-                    id="exampleRadios1"
-                    value="option1"
-                    checked
-                  />
-                  <label className="form-check-label" for="exampleRadios1">
-                    {creditCard.bank} {creditCard.number}
-                  </label>
-                </div>
-              </li>
-            ))}
-
-          <div className="blog__controller">
-            <Button
+        {/* <Button
               className="btn btn-primary btn-woof"
               onClick={() => setAddCreditCard(true)}
             >
@@ -102,35 +91,41 @@ function ToCheckout(props) {
                 onHide={() => setAddCreditCard(false)}
                 state="editing"
               />
-            )}
-          </div>
-        </ul>
+            )} */}
+        <InsertCreditCard />
+
         <hr />
 
         {/* 紅利折抵+總付款金額 */}
+
         <div className=" mt-3 d-flex bd-highlight ">
           <div className="py-2 px-5 flex-grow-1 bd-highlight"></div>
           <div className="py-2 px-5 bd-highlight">折抵紅利點數</div>
-          <div className="py-2 px-5 bd-highlight col-2">$0</div>
+          <div className="py-2 px-5 bd-highlight col-2">
+            ${orderCheck[0].use_bonus}
+          </div>
         </div>
         <div className="d-flex bd-highlight ">
           <div className="py-2 px-5 flex-grow-1 bd-highlight"></div>
-          <div className="py-2 px-5 bd-highlight">總付款金額 (1個商品):</div>
+          <div className="py-2 px-5 bd-highlight">
+            總付款金額 ({orderCheck.length}個商品):
+          </div>
           <div className="py-2 px-5 bd-highlight col-2">
-            <span className="price-color">$500</span>
+            <span className="price-color">${orderCheck[0].total_sum}</span>
           </div>
         </div>
+
         <div className="d-flex bd-highlight my-auto">
           <div className="py-2 px-5 flex-grow-1 bd-highlight"></div>
           <div className="py-2 px-5 bd-highlight "></div>
           <div className="py-2 px-5 bd-highlight col-2">
             <div className="blog__controller">
-              <Button
+              <button
                 className="btn btn-primary btn-woof"
-                onClick={() => setCheckOutResult(true)}
+                onClick={createOrder}
               >
                 下訂單
-              </Button>
+              </button>
               {checkOutResult && (
                 <CheckOutResult
                   show={checkOutResult}
@@ -146,4 +141,4 @@ function ToCheckout(props) {
   )
 }
 
-export default ToCheckout
+export default ToDoOrder

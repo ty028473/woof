@@ -39,6 +39,7 @@ function NavBar(props) {
               ''
             )}
           </Nav.Link>
+          
           <Nav.Link className="nav-title" href="/login">
             登入
           </Nav.Link>
