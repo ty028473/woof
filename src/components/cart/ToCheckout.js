@@ -7,6 +7,7 @@ import {
   useHistory,
 } from 'react-router-dom'
 import { API_URL } from '../../configs/Config'
+import swal from 'sweetalert'
 
 function ToCheckout(props) {
   const { products } = useContext(ProductContext)
@@ -61,10 +62,20 @@ function ToCheckout(props) {
   // 判斷折抵點數是否超過應有點數
   function CheckPoints(e) {
     if (usePoint > point) {
-      alert('您的點數不足！請重新輸入折抵點數～')
+      swal({
+        title: '您的點數不足！',
+        text: '請重新輸入折抵點數～',
+        icon: 'error',
+        button: '好!',
+      })
       setUsePoint(0)
     } else if (usePoint > 100) {
-      alert('最多只能折抵100元！！！')
+      swal({
+        title: '最多只能折抵100元！！！',
+        text: '請重新輸入折抵點數～',
+        icon: 'error',
+        button: '好!',
+      })
       setUsePoint(0)
     } else {
       setUsePoint(e.target.value)
