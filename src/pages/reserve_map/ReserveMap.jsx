@@ -10,7 +10,7 @@ import MyComponent from '../../components/reserve/Map'
 
 import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../../components/golbal/Footer'
-import { API_URL } from '../../configs/config'
+import { API_URL } from '../../configs/Config'
 import axios from 'axios'
 import dayjs from 'dayjs'
 
@@ -26,23 +26,12 @@ export default function App() {
 
     setSitterData(res.data)
   }, [])
-  // const [timeData, setTimeData] = useState([])
-
-  // useEffect(async () => {
-  //   let res = await axios.get(`${API_URL}/Reserve/time`)
-
-  //   setTimeData(res.data)
-  //   console.log(res.data)
-  // }, [])
-
   const [allData, setData] = useState(sitterData)
   //creat a function ,
   const districtDropDown = () => {
     return [...new Set(sitterData.map((item) => item.district))]
   }
-  // const timetDropDown = () => {
-  //   return [...new Set(timeData.map((item) => item.start))]
-  // }
+
   const handleFilterName = (name) => {
     const filteredData = sitterData.filter((item) => {
       if (item.name.toLocaleLowerCase().includes(name.toLocaleLowerCase())) {

@@ -4,8 +4,9 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
-
-export default class ViewApp extends React.Component {
+import { API_URL } from '../../configs/Config'
+import { withRouter } from 'react-router'
+class ViewApp extends React.Component {
   state = {
     weekendsVisible: true,
     currentEvents: [],
@@ -49,7 +50,17 @@ export default class ViewApp extends React.Component {
               return date.date.minute
             }}
             weekends={this.state.weekendsVisible}
-            initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+            initialEvents={{
+              url: `${API_URL}/calendar/${this.props.match.params.reserveId}`,
+              method: 'GET',
+              // extraParams: {
+              //   custom_param1: 'something',
+              //   custom_param2: 'somethingelse'
+              // },
+              failure: function () {
+                alert('there was an error while fetching events!')
+              },
+            }} // alternatively, use the `events` setting to fetch from a feed
             // select={this.handleDateSelect}
             eventContent={renderEventContent} // custom render function
             eventClick={this.handleEventClick}
@@ -166,3 +177,4 @@ function renderSidebarEvent(event) {
     </li>
   )
 }
+export default withRouter(ViewApp)
