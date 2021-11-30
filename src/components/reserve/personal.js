@@ -4,8 +4,10 @@ import '../../styles/calender.scss'
 import { faStar, faMapMarker } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+
 function SitterDetail(props) {
   const {personalData,setPersonalData} = props
+
 
   return (
     <>

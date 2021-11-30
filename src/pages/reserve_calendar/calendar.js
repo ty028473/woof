@@ -25,6 +25,9 @@ function Reservecalendar(props) {
       try {
         let res = await axios.get(`${API_URL}/reserve/${reserveId}`)
         setPersonalData(res.data)
+        // console.log('我要找保母ＩＤ', res.data.pet_sitter_id)
+        const findPetsitterId = res.data.pet_sitter_id
+        console.log('找到了', findPetsitterId)
       } catch (e) {
         alert('找不到此保母的時段資料')
       }
@@ -64,7 +67,7 @@ function Reservecalendar(props) {
       <div className="container">
         <div className="row d-flex justify-content-beteeen calendar-bg">
           <div className="col-12 my-4  ">
-            <ViewApp setObj={setObj} />
+            <ViewApp setObj={setObj} personalData={personalData} />
           </div>
           <ProductForm obj={obj} personalData={personalData} />
         </div>
