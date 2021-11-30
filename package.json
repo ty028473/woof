@@ -45,6 +45,7 @@
     "react-scripts": "4.0.3",
     "react-scroll-to-top": "^1.0.5",
     "react-slick": "^0.28.1",
+    "react-spinners": "^0.11.0",
     "reactstrap": "^9.0.0",
     "sass": "^1.43.4",
     "slick-carousel": "^1.8.1",
