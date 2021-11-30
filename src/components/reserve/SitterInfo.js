@@ -7,7 +7,7 @@ import '../../styles/reserve.scss'
 
 const SitterInfo = ({ item }) => {
   return (
-    <div className="container ">
+    <div className="container  mb-4">
       <div key={item.id} className="row mb-2">
         <div className="col-5">
           <img className="sitter-img" src={item.image} alt={'img'} />
@@ -17,7 +17,9 @@ const SitterInfo = ({ item }) => {
           <h6 className="sitter-description mb-0">
             {item.min}~{item.max}/步行 4hr
           </h6>
-          <h6 className="sitter-description mb-2">{item.introduction}</h6>
+          <h6 className="sitter-description mb-0 ellipsis">
+            {item.introduction}
+          </h6>
 
           <div className="sitter-price-price">
             <div className="filters">
