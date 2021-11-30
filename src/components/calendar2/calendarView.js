@@ -4,8 +4,10 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
+
 import { API_URL } from '../../configs/Config'
 import { withRouter } from 'react-router'
+import swal from 'sweetalert'
 class ViewApp extends React.Component {
   state = {
     weekendsVisible: true,
@@ -111,14 +113,18 @@ class ViewApp extends React.Component {
   }
 
   handleEventClick = (clickInfo) => {
-    alert(
-      '確定預約:價錢 ' +
+    swal({
+      title: '確認內容',
+      text:
+        '價格：' +
         clickInfo.event.title +
-        '   ' +
+        '開始時間：' +
         clickInfo.event.start.toLocaleString() +
-        '至' +
-        clickInfo.event.end.toLocaleString()
-    )
+        '結束時間：' +
+        clickInfo.event.end.toLocaleString(),
+      icon: 'success',
+      button: '好!',
+    })
     // this.setState({
     //   start: clickInfo.event.start,
     //   end: clickInfo.event.end,

@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useContext } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import '../../styles/golbal.scss'
 import '../../styles/login.scss'
 import GoogleButton from 'react-google-button'
@@ -8,12 +8,16 @@ import Footer from '../../components/golbal/Footer'
 import axios from 'axios'
 import { API_URL } from '../../configs/Config'
 
+// context
+import { UserContext } from '../../contexts/UserContext'
+
 function Login() {
+  const { setMemberSession } = useContext(UserContext)
   const [loginForm, setLoginForm] = useState({
     email: '',
     password: '',
   })
-
+  let history = useHistory()
   function handleChange(e) {
     setLoginForm({ ...loginForm, [e.target.name]: e.target.value })
   }
@@ -24,9 +28,15 @@ function Login() {
     try {
       // 用 post 送出資料 (member 已經是 json 格式可以直接送出)
       // 有用到session就要加 withCredentials
-      let req = await axios.post(`${API_URL}/auth/login`, loginForm, {
+      let res = await axios.post(`${API_URL}/auth/login`, loginForm, {
         withCredentials: true,
       })
+      localStorage.setItem('member', JSON.stringify(res.data))
+      const localMemberData = localStorage.getItem('member')
+      setMemberSession(JSON.parse(localMemberData))
+
+      // setMemberSession(res.data)
+      history.push('/')
     } catch (err) {
       console.log('handleSubmitErr', err)
     }

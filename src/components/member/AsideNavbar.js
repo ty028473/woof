@@ -5,9 +5,7 @@ import { API_URL, PUBLIC_URL } from '../../configs/Config'
 // css
 import userGlobal from '../../styles/user-global.module.scss'
 
-function AsideNavbar(props) {
-  const { memberData } = props
-  console.log('ccc', memberData)
+function AsideNavbar() {
   async function handleLogout() {
     try {
       await axios.get(`${API_URL}/auth/logout`, { withCredentials: true })
@@ -19,12 +17,12 @@ function AsideNavbar(props) {
     <>
       <div className="row flex-column text-center">
         <div className="col">
-          <img
+          {/* <img
             src={memberData && `${PUBLIC_URL}${memberData.image}`}
             // src={`${PUBLIC_URL}${memberData.image}`}
             className={userGlobal.img_cover_sm}
             alt="會員小頭像"
-          />
+          /> */}
         </div>
         <div className="col">
           <ul className={userGlobal.list_styled}>

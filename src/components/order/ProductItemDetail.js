@@ -1,7 +1,8 @@
 import React from 'react'
 import '../../styles/carts.scss'
+import { PUBLIC_URL } from '../../configs/Config'
 
-function ProductItemDetail({orderCheck}) {
+function ProductItemDetail({ orderCheck }) {
   return (
     <>
       {orderCheck.length > 0 &&
@@ -10,9 +11,9 @@ function ProductItemDetail({orderCheck}) {
             <table className="mt-3 table-list-styled shadow">
               <tr>
                 <td>
-                  <h6>{item.name}保母名稱</h6>
+                  <h6>{item.pet_sitter_name}</h6>
                   <img
-                    src={item.image}
+                    src={PUBLIC_URL + item.image}
                     className="img-cover-sm-square"
                     alt="保母頭像"
                   />
@@ -24,7 +25,7 @@ function ProductItemDetail({orderCheck}) {
                   <br />
                   <br />
                   寵物名稱： <br />
-                  {item.pet_id}
+                  {item.pet_name}
                 </td>
                 <td>
                   {item.start}

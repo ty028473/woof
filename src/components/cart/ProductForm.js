@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ProductContext } from '../../contexts/ProductContext'
 import axios from 'axios'
 import { API_URL } from '../../configs/Config'
+import swal from 'sweetalert'
 
 const ProductForm = ({ obj, personalData }) => {
   const { dispatch } = useContext(ProductContext)
@@ -70,7 +71,12 @@ const ProductForm = ({ obj, personalData }) => {
     setTime('')
     setAddress('')
     setPetIdsFromServer('')
-    alert('預約成功！')
+    swal({
+      title: '預約成功！',
+      text: '再去預約其他保母吧～～～',
+      icon: 'success',
+      button: '好!',
+    })
     setSelectedPetId('') // 這個好像不需要去做更新
   }
   return (
