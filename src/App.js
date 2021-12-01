@@ -74,6 +74,10 @@ function App() {
           <Route path="/cart">
             <Cart />
           </Route>
+          <Route path="/CartListTest">
+            <CartListTest />
+          </Route>
+
           <Route path="/joinus">
             <Joinus />
           </Route>

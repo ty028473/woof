@@ -9,15 +9,6 @@ function CartList(props) {
 
   return (
     <>
-      <div
-        style={{
-          height: '300px',
-          width: '300px',
-          background: '#000',
-        }}
-      >
-        Loading...
-      </div>
       <div className="row my-1 px-3 cart-list-styled shadow">
         <div className="col-2 my-auto">
           <h6>name</h6>
