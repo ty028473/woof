@@ -42,17 +42,6 @@ function OrderCheck(props) {
         <h3 className="mt-3">結帳</h3>
         <div className="d-flex justify-content-between">
           <h5>訂單明細</h5>
-          {/* <form className="form-inline my-lg-0">
-            <input
-              className="form-control mr-sm-2"
-              type="search"
-              placeholder="想找什麼呢？"
-              aria-label="Search"
-            />
-            <button className="btn btn-info" type="submit">
-              搜尋
-            </button>
-          </form> */}
         </div>
         <table className="mt-3 table-title-styled shadow">
           <tr>
