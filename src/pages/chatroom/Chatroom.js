@@ -3,138 +3,152 @@ import Conversation from '../../components/chat/Conversation'
 import Message from '../../components/chat/Message'
 import Footer from '../../components/golbal/Footer'
 import { useContext, useEffect, useRef, useState } from 'react'
-import { AuthContext } from '../../components/context/AuthContext'
 import axios from 'axios'
 import { io } from 'socket.io-client'
 import '../../styles/chat.scss'
 import NewNavBar from '../../components/golbal/NewNavBar'
-import "../../styles/chat.scss"
-
+import '../../styles/chat.scss'
+import { format, render, cancel, register } from 'timeago.js'
+import { PUBLIC_URL } from '../../configs/Config'
+import ScrollToBottom from 'react-scroll-to-bottom'
+import '../chatroom/chat.css'
+import moment from "moment"
 
 function Chatroom() {
-  const [conversations, setConversations] = useState([])
-  const [currentChat, setCurrentChat] = useState(null)
-  const [messages, setMessages] = useState([])
-  const [newMessages, setnewMessages] = useState('')
-  const [arrivalMessages, setArrivalMessages] = useState(null)
+  
   const socket = useRef()
-  const { user } = useContext(AuthContext)
-  const scrollRef = useRef()
   useEffect(() => {
-    socket.current = io('ws://localhost:8900')
-    socket.current.on('getMessage', (data) => {
-      setArrivalMessages({
-        sender: data.senderId,
-        text: data.text,
-        createdAt: Date.now(),
-      })
-    })
+    socket.current = io('http://localhost:8801')
   }, [])
-  useEffect(() => {
-    arrivalMessages &&
-      currentChat?.members.includes(arrivalMessages.sender) &&
-      setMessages((prev) => [...prev, arrivalMessages])
-  }, [arrivalMessages, currentChat])
+  const PF ="http://localhost:3000/images/"
 
-  useEffect(() => {
-    const getConversations = async () => {
-      try {
-        const res = await axios.get('/conversations/' + user._id)
-        setConversations(res.data)
-      } catch (err) {
-        console.log(err)
+  const [currentMessage, setCurrentMessage] = useState('')
+  const [messageList, setMessageList] = useState([
+    {
+      author: 'WOOF管理員',
+      avatar: '/images/global/logo-woof.png',
+      message: '歡迎來到Woof聊天室',
+      time: moment().format('YYYY/MM/DD HH:mm:ss'),
+    },
+    {
+      author: 'WOOF管理員',
+      avatar: '/images/global/logo-woof.png',
+      message: '預防詐騙請勿私下匯款 ... ',
+      time: moment().format('YYYY/MM/DD HH:mm:ss'),
+    },
+  ])
+  let user = JSON.parse(localStorage.getItem('id'))
+  const sendMessage = async () => {
+    let user = JSON.parse(localStorage.getItem('id'))
+    // let user = await axios.get('http://localhost:3001/api/users/userInfo');
+    if (currentMessage !== '' && user !== null) {
+      const PF ="http://localhost:3000/images/"
+      const messageData = {
+        author: user.name,
+        avatar:(user.image ? user.image: PF +"person/noAvatar.png"),
+        message: currentMessage,
+        time: moment().format('YYYY/MM/DD HH:mm:ss'),
       }
-    }
-    getConversations()
-  }, [user._id])
-
-  useEffect(() => {
-    const getMessages = async () => {
-      try {
-        const res = await axios.get('/messages/' + currentChat?._id)
-        setMessages(res.data)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    getMessages()
-  }, [currentChat])
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const message = {
-      sender: user._id,
-      text: newMessages,
-      conversationId: currentChat._id,
-    }
-    //判斷朋友
-    const receiverId = currentChat.members.find((member) => member !== user._id)
-    socket.current.emit('sendMessage', {
-      senderId: user._id,
-      receiverId,
-      text: newMessages,
-    })
-    try {
-      const res = await axios.post('/messages', message)
-      setMessages([...messages, res.data])
-      setnewMessages('')
-    } catch (err) {
-      console.log(err)
+      await socket.current.emit('send_message', messageData)
+      setMessageList((list) => [...list, messageData])
+      setCurrentMessage('')
     }
   }
 
   useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages])
+    // cb 的 data 為 後端廣播出來的 data
+    socket.current.on('receive_message', (data) => {
+      // 接到訊息後塞進 messageList
+      setMessageList((list) => [...list, data])
+    })
+  }, [])
+
   return (
     <>
       <NewNavBar />
       <div className="container ">
-        <div className="messenger mb-4 mt-4">
+        {/* <div className="messenger mb-4 mt-4">
           <div className="chatMenu">
             <div className="chatMenuWrapper">
               <h3>聊聊</h3>
               <input placeholder="搜尋你的朋友" className="chatMenuInput" />
-              {conversations.map((c) => (
-                <div onClick={() => setCurrentChat(c)}>
-                  <Conversation conversations={c} currentUser={user} />
-                </div>
-              ))}
+              <Conversation />
             </div>
           </div>
           <div className="chatBox">
             <div className="chatBoxWrapper">
-              {currentChat ? (
-                <>
-                  <div className="chatBoxTop">
-                    {messages.map((m) => (
-                      <div ref={scrollRef}>
-                        <Message message={m} own={m.sender === user._id} />
-                      </div>
-                    ))}
-                  </div>
-                  <div className="chatBoxBottom">
-                    <textarea
-                      className="chatMessageInput"
-                      placeholder="說點什麼"
-                      onChange={(e) => setnewMessages(e.target.value)}
-                      value={newMessages}
-                    ></textarea>
-                    <button
-                      className="btn btn-primary btn-woof chatSubmitButton"
-                      onClick={handleSubmit}
-                    >
-                      送出
-                    </button>
-                  </div>{' '}
-                </>
-              ) : (
-                <span className="noConversationText">選擇一個人聊天吧</span>
-              )}
+              <div className="chatBoxTop">
+                <Message />
+              </div>
+              <div className="chatBoxBottom">
+                <textarea
+                  className="chatMessageInput"
+                  placeholder="說點什麼"
+                ></textarea>
+                <button className="btn btn-primary btn-woof chatSubmitButton">
+                  送出
+                </button>
+              </div>{' '}
             </div>
+          </div>
+        </div> */}
+
+        <div className="chat-window">
+          <div className="chat-header">
+            <p className="text-center">WOOF聊天室</p>
+          </div>
+          <div className="chat-body">
+            <ScrollToBottom className="message-container">
+              {messageList.map((messageContent, id) => {
+                return (
+                  <div
+                    className="message d-flex"
+                    id={
+                      user && user.name === messageContent.author
+                        ? 'you'
+                        : 'other'
+                    }
+                    key={id}
+                  >
+                    <div>
+                      <div className="message-content">
+                        <p>{messageContent.message}</p>
+                      </div>
+                      <div className="message-meta">
+                        <p className="me-1" id="author">
+                          {messageContent.author}
+                        </p>
+                        <p className="ml-2" id="time">{messageContent.time}</p>
+                      </div>
+                    </div>
+                    <div className="chatAvatar">
+                      <img src={(messageContent.avatar? messageContent.avatar: PF +"person/noAvatar.png")} alt="" />
+                    </div>
+                  </div>
+                )
+              })}
+            </ScrollToBottom>
+          </div>
+          <div className="chat-footer">
+            <input
+              type="text"
+              value={currentMessage}
+              placeholder={
+                user ? '來說點什麼 ...' : '請先登入才能傳送訊息喔 ...'
+              }
+              onChange={(event) => {
+                setCurrentMessage(event.target.value)
+              }}
+              onKeyPress={(e) => {
+                e.key === 'Enter' && sendMessage()
+              }}
+              disabled={user ? false : true}
+            />
+            <button onClick={sendMessage}></button>
           </div>
         </div>
       </div>
+
       <Footer />
     </>
   )

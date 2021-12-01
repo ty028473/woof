@@ -49,7 +49,7 @@ function ToCheckout(props) {
 
       setTimeout(() => {
         history.push('/OrderCheck')
-      }, 5000)
+      }, 3000)
       setShowProductList(false)
       setShowLoading(true)
 
