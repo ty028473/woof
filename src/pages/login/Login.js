@@ -6,9 +6,15 @@ import GoogleButton from 'react-google-button'
 import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../../components/golbal/Footer'
 import axios from 'axios'
+import { io } from 'socket.io-client'
 import { API_URL } from '../../configs/Config'
 
 function Login() {
+  const socket = io('http://localhost:8801', {
+    autoConnect: false,
+    withCredentials: true,
+  })
+
   const [loginForm, setLoginForm] = useState({
     email: '',
     password: '',
@@ -24,9 +30,12 @@ function Login() {
     try {
       // 用 post 送出資料 (member 已經是 json 格式可以直接送出)
       // 有用到session就要加 withCredentials
-      let req = await axios.post(`${API_URL}/auth/login`, loginForm, {
+      let res = await axios.post(`${API_URL}/auth/login`, loginForm, {
         withCredentials: true,
       })
+      console.log(res)
+      localStorage.setItem("id", JSON.stringify(res.data.member))
+      socket.connect()
     } catch (err) {
       console.log('handleSubmitErr', err)
     }

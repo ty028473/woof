@@ -6,19 +6,19 @@ export default function Conversation({ conversations, currentUser }) {
   const [user, setUser] = useState(null)
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
-  useEffect(() => {
-    const friendId = conversations.members.find((m) => m !== currentUser._id)
+  // useEffect(() => {
+  //   const friendId = conversations.members.find((m) => m !== currentUser._id)
 
-    const getUser = async () => {
-      try {
-        const res = await axios('/users?userId=' + friendId)
-        setUser(res.data)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    getUser()
-  }, [conversations, currentUser])
+  //   const getUser = async () => {
+  //     try {
+  //       const res = await axios('/users?userId=' + friendId)
+  //       setUser(res.data)
+  //     } catch (err) {
+  //       console.log(err)
+  //     }
+  //   }
+  //   getUser()
+  // }, [conversations, currentUser])
   return (
     <div className="conversation">
       <img
@@ -30,7 +30,7 @@ export default function Conversation({ conversations, currentUser }) {
         }
         alt=""
       />
-      <span className="conversationName">{user?.username}</span>
+      <span className="conversationName">123</span>
     </div>
   )
 }
