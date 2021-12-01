@@ -6,6 +6,7 @@ import GoogleButton from 'react-google-button'
 import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../../components/golbal/Footer'
 import axios from 'axios'
+import { io } from 'socket.io-client'
 import { API_URL } from '../../configs/Config'
 
 // context
@@ -30,13 +31,15 @@ function Login() {
       // 有用到session就要加 withCredentials
       let res = await axios.post(`${API_URL}/auth/login`, loginForm, {
         withCredentials: true,
-      })
+      })  
+      localStorage.setItem("id", JSON.stringify(res.data.member))
       localStorage.setItem('member', JSON.stringify(res.data))
       const localMemberData = localStorage.getItem('member')
       setMemberSession(JSON.parse(localMemberData))
 
       // setMemberSession(res.data)
       history.push('/')
+
     } catch (err) {
       console.log('handleSubmitErr', err)
     }
