@@ -5,6 +5,8 @@ import '../../styles/golbal.scss'
 import '../../styles/cartList.scss'
 
 function CartList(props) {
+
+
   return (
     <>
       <div className="row my-1 px-3 cart-list-styled shadow">

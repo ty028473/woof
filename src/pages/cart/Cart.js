@@ -1,9 +1,11 @@
 import '../../styles/golbal.scss'
+import '../../styles/carts.scss'
 import { useState } from 'react'
 import NavBar from '../../components/golbal/NavBar'
 import Footer from '../../components/golbal/Footer'
 import ProductList from '../../components/cart/ProductList'
 import ProductContextProvider from '../../contexts/ProductContext'
+import SyncLoader from 'react-spinners/SyncLoader'
 
 function Cart(props) {
   const [searchTerm, setSearchTerm] = useState('')
@@ -52,15 +54,11 @@ function Cart(props) {
             <td>操作</td>
           </tr>
         </table>
+
         {showLoading ? (
-          <div
-            style={{
-              height: '300px',
-              width: '300px',
-              background: '#000',
-            }}
-          >
-            Loading...
+          <div className="text-center m-5">
+            <SyncLoader color={'#087bdc'} size={30} margin={10} />
+            <h2 className="loading-text mt-4">資料處理中...</h2>
           </div>
         ) : (
           ''

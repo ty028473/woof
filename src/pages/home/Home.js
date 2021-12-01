@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import '../../styles/golbal.scss'
 import '../../styles/home.scss'
 import NewNavBar from '../../components/golbal/NewNavBar'
+import ChatButton from '../../components/golbal/ChatButton'
 import Footer from '../../components/golbal/Footer'
 import Evaluation from '../../components/home/Evaluation'
 import Advantage from '../../components/home/Advantage'
@@ -31,6 +32,7 @@ function Home(props) {
     <>
       <NewNavBar />
       <ScrollToTop smooth component={<MyArrow />} />
+      <ChatButton />
       <div className="container relative">
         {/* 1-立即預約 */}
         <div className="col  intro-1 intro-height p-top">

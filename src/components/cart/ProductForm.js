@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ProductContext } from '../../contexts/ProductContext'
 import axios from 'axios'
 import { API_URL } from '../../configs/Config'
+import swal from 'sweetalert'
 
 const ProductForm = ({ obj, personalData }) => {
   const { dispatch } = useContext(ProductContext)
   // const { obj, personalData } = props
-  console.log(obj,personalData)
+  console.log(obj, personalData)
   let start = obj.start.toLocaleString()
   let end = obj.end.toLocaleString()
   let title = obj.title
@@ -38,7 +39,9 @@ const ProductForm = ({ obj, personalData }) => {
   useEffect((e) => {
     async function memberPets() {
       try {
-        let res = await axios.get(`${API_URL}/orders/member/pets`,{withCredentials:true})
+        let res = await axios.get(`${API_URL}/orders/member/pets`, {
+          withCredentials: true,
+        })
         setPetIdsFromServer(res.data)
         // console.log(res.data)
       } catch (e) {
@@ -68,7 +71,12 @@ const ProductForm = ({ obj, personalData }) => {
     setTime('')
     setAddress('')
     setPetIdsFromServer('')
-    alert('預約成功！')
+    swal({
+      title: '預約成功！',
+      text: '再去預約其他保母吧～～～',
+      icon: 'success',
+      button: '好!',
+    })
     setSelectedPetId('') // 這個好像不需要去做更新
   }
   return (

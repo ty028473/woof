@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useContext } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import '../../styles/golbal.scss'
 import '../../styles/login.scss'
 import GoogleButton from 'react-google-button'
@@ -9,17 +9,16 @@ import axios from 'axios'
 import { io } from 'socket.io-client'
 import { API_URL } from '../../configs/Config'
 
-function Login() {
-  const socket = io('http://localhost:8801', {
-    autoConnect: false,
-    withCredentials: true,
-  })
+// context
+import { UserContext } from '../../contexts/UserContext'
 
+function Login() {
+  const { setMemberSession } = useContext(UserContext)
   const [loginForm, setLoginForm] = useState({
     email: '',
     password: '',
   })
-
+  let history = useHistory()
   function handleChange(e) {
     setLoginForm({ ...loginForm, [e.target.name]: e.target.value })
   }
@@ -32,10 +31,15 @@ function Login() {
       // 有用到session就要加 withCredentials
       let res = await axios.post(`${API_URL}/auth/login`, loginForm, {
         withCredentials: true,
-      })
-      console.log(res)
+      })  
       localStorage.setItem("id", JSON.stringify(res.data.member))
-      socket.connect()
+      localStorage.setItem('member', JSON.stringify(res.data))
+      const localMemberData = localStorage.getItem('member')
+      setMemberSession(JSON.parse(localMemberData))
+
+      // setMemberSession(res.data)
+      history.push('/')
+
     } catch (err) {
       console.log('handleSubmitErr', err)
     }

@@ -10,14 +10,20 @@ import userGlobal from '../../styles/user-global.module.scss'
 function Member() {
   const [memberData, setMemberData] = useState({
     email: '',
+    name: '',
+    phone: '',
+    birthday: '',
+    gender: '',
     image: '',
   })
-  console.log('bbb', memberData)
+  console.log('Member', memberData)
+
+  // 圖片處理
   const fileInputRef = useRef()
   const [preview, setPreview] = useState('')
   const [uploadImage, setuploadImage] = useState(null)
 
-  // 抓取資料
+  // 抓取會員資料
   useEffect(() => {
     async function getMemberData() {
       let res = await axios.get(`${API_URL}/member`, { withCredentials: true })
@@ -64,16 +70,17 @@ function Member() {
       formData.append('birthday', memberData.birthday)
       formData.append('gender', memberData.gender)
       formData.append('image', memberData.image)
-      let req = await axios.post(`${API_URL}/member/updateMember`, formData, {
+      let res = await axios.post(`${API_URL}/member/updateMember`, formData, {
         withCredentials: true,
       })
+      window.location.reload()
     } catch (err) {
       console.log(err)
     }
   }
   return (
     <>
-      <GlobalJsx memberData={memberData}>
+      <GlobalJsx>
         {/* 標題區塊 */}
         <section>
           <div>
@@ -181,14 +188,12 @@ function Member() {
                     {uploadImage ? (
                       <img
                         src={preview}
-                        // src={`${PUBLIC_URL}${memberData.image}`}
                         className={userGlobal.img_cover_lg}
                         alt="會員大頭像"
                       />
                     ) : (
                       <img
                         src={`${PUBLIC_URL}${memberData.image}`}
-                        // src={`${PUBLIC_URL}${memberData.image}`}
                         className={userGlobal.img_cover_lg}
                         alt="會員大頭像"
                       />

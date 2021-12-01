@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NavBar from '../golbal/NavBar'
 import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../golbal/Footer'
@@ -10,16 +10,9 @@ import { withRouter } from 'react-router-dom'
 import userGlobal from '../../styles/user-global.module.scss'
 
 function GlobalJsx(props) {
-  const { memberData } = props
   // 判斷navbar要顯示會員還是保母版本
   const splitUrl = props.match.url.split('/')
   const userExistUrl = splitUrl.indexOf('member')
-  let controlMemberNavbar
-  if (userExistUrl >= 0) {
-    controlMemberNavbar = <AsideNavbar memberData={memberData} />
-  } else {
-    controlMemberNavbar = <AsideNavbarSitter />
-  }
 
   // 判斷要不要顯示RecordNavbar
   const recordExistUrl = splitUrl.indexOf('record')
@@ -34,7 +27,7 @@ function GlobalJsx(props) {
           {/* 左側navbar */}
           <aside className="col-2">
             {/* <AsideNavbar /> */}
-            {controlMemberNavbar}
+            {userExistUrl >= 0 ? <AsideNavbar /> : <AsideNavbarSitter />}
           </aside>
           {/* 右側content */}
           <main className="col-10">

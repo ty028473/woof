@@ -6,16 +6,16 @@ export default function SitterContainer(props) {
   return (
     <div>
       {filteredList.length > 0 ? (
-        filteredList.map((sitter) => {
+        filteredList.map((sitterData) => {
           return (
-            <div key={sitter.id}>
+            <div key={sitterData.id}>
               <SitterInfo
-                photo={sitter.photo}
-                name={sitter.name}
-                description={sitter.description}
-                district={sitter.district}
-                price={sitter.price}
-                star={sitter.star}
+                photo={sitterData.photo}
+                name={sitterData.name}
+                description={sitterData.description}
+                district={sitterData.district}
+                price={sitterData.price}
+                star={sitterData.star}
               />
             </div>
           )

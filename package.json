@@ -46,10 +46,12 @@
     "react-scroll-to-bottom": "^4.2.0",
     "react-scroll-to-top": "^1.0.5",
     "react-slick": "^0.28.1",
+    "react-spinners": "^0.11.0",
     "reactstrap": "^9.0.0",
     "sass": "^1.43.4",
     "slick-carousel": "^1.8.1",
     "socket.io-client": "^4.3.2",
+    "sweetalert": "^2.1.2",
     "timeago.js": "^4.0.2",
     "web-vitals": "^1.0.1"
   },
