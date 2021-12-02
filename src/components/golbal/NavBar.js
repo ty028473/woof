@@ -21,6 +21,7 @@ function NavBar() {
   async function handleLogout() {
     try {
       localStorage.removeItem('member')
+      localStorage.removeItem('id')
       await axios.get(`${API_URL}/auth/logout`, { withCredentials: true })
     } catch (e) {
       console.log(e)
