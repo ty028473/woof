@@ -146,7 +146,7 @@ function Chatroom() {
               }}
               disabled={user ? false : true}
             />
-            <button onClick={sendMessage}></button>
+            <button onClick={sendMessage}>送出</button>
           </div>
         </div>
       </div>
