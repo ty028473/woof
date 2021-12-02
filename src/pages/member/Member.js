@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import GlobalJsx from '../../components/member/GlobalJsx'
 import axios from 'axios'
+import swal from 'sweetalert'
 import { API_URL, PUBLIC_URL } from '../../configs/Config'
 
 // css
@@ -15,6 +16,9 @@ function Member() {
     birthday: '',
     gender: '',
     image: '',
+    totalBonus: 0,
+    useBonus: 0,
+    orderTimes: 0,
   })
   console.log('Member', memberData)
 
@@ -73,9 +77,27 @@ function Member() {
       let res = await axios.post(`${API_URL}/member/updateMember`, formData, {
         withCredentials: true,
       })
-      window.location.reload()
+      swal({
+        title: '會員資料修改成功',
+        text: ' ',
+        icon: 'success',
+        buttons: false,
+        timer: 1000,
+      })
+      // window.location.reload()
     } catch (err) {
-      console.log(err)
+      // 抓取錯誤訊息
+      const errorsData = err.response.data.errors
+      const errorsArray = errorsData.map((v) => v.msg)
+      const errorShow = errorsArray.join(' ')
+
+      swal({
+        title: errorShow,
+        text: ' ',
+        icon: 'error',
+        buttons: false,
+        timer: 1000,
+      })
     }
   }
   return (
@@ -195,7 +217,7 @@ function Member() {
                       <img
                         src={`${PUBLIC_URL}${memberData.image}`}
                         className={userGlobal.img_cover_lg}
-                        alt="會員大頭像"
+                        alt="會員預設頭像"
                       />
                     )}
 
@@ -239,15 +261,15 @@ function Member() {
             <div className={`row text-center p-5 ${styles.record_block}`}>
               <div className="col">
                 <h5>預約次數</h5>
-                <h5>5</h5>
+                <h5>{memberData.orderTimes}</h5>
               </div>
               <div className={`col ${styles.divider}`}>
-                <h5>累積紅利</h5>
-                <h5>30</h5>
+                <h5>剩餘紅利</h5>
+                <h5>{memberData.totalBonus}</h5>
               </div>
               <div className="col">
                 <h5>已折抵紅利</h5>
-                <h5>60</h5>
+                <h5>{memberData.useBonus}</h5>
               </div>
             </div>
           </div>
