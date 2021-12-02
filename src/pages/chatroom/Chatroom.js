@@ -27,14 +27,14 @@ function Chatroom() {
   const [currentMessage, setCurrentMessage] = useState('')
   const [messageList, setMessageList] = useState([
     {
-      author: 'WOOF管理員',
-      avatar: '/images/global/logo-woof.png',
+      author: 'Woof 汪汪管理員',
+      avatar: '/memberImg/woof_administrator.png',
       message: '歡迎來到Woof聊天室',
       time: moment().format('YYYY/MM/DD HH:mm:ss'),
     },
     {
-      author: 'WOOF管理員',
-      avatar: '/images/global/logo-woof.png',
+      author: 'Woof 汪汪管理員',
+      avatar: '/memberImg/woof_administrator.png',
       message: '預防詐騙請勿私下匯款 ... ',
       time: moment().format('YYYY/MM/DD HH:mm:ss'),
     },
@@ -44,14 +44,14 @@ function Chatroom() {
     let user = JSON.parse(localStorage.getItem('id'))
     // let user = await axios.get('http://localhost:3001/api/users/userInfo');
     if (currentMessage !== '' && user !== null) {
-      const PF ="http://localhost:3000/images/"
       const messageData = {
         author: user.name,
-        avatar:(user.image ? user.image: PF +"person/noAvatar.png"),
+        avatar:(user.image ? user.image  :  +"person/noAvatar.png"),
         message: currentMessage,
         time: moment().format('YYYY/MM/DD HH:mm:ss'),
       }
       await socket.current.emit('send_message', messageData)
+      
       setMessageList((list) => [...list, messageData])
       setCurrentMessage('')
     }
