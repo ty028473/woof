@@ -5,13 +5,26 @@ $block-radious: 20px;
 $block-background: #fff;
 $hr-color: #c7c7c7;
 
+hr{
+  color:#c7c7c7;
+}
+
 .cart-list-styled {
-  width: 700px;
+  width: 600px;
   height: 100px;
   background-color: $block-background;
   border-radius: $block-radious;
   table-layout: fixed;
   word-break: break-all;
+}
+
+.cart-list-item {
+  width: 600px;
+  height: 100px;
+  font-size: 10px;
+  table-layout: fixed;
+  word-break: break-all;
+  border-bottom: 2px solid #c7c7c7;
 }
 
 .img-cover-sm-square-cartList {
