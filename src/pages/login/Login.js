@@ -7,6 +7,7 @@ import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../../components/golbal/Footer'
 import axios from 'axios'
 import { io } from 'socket.io-client'
+import swal from 'sweetalert'
 import { API_URL } from '../../configs/Config'
 
 // context
@@ -14,11 +15,14 @@ import { UserContext } from '../../contexts/UserContext'
 
 function Login() {
   const { setMemberSession } = useContext(UserContext)
+
   const [loginForm, setLoginForm] = useState({
     email: '',
     password: '',
   })
+
   let history = useHistory()
+
   function handleChange(e) {
     setLoginForm({ ...loginForm, [e.target.name]: e.target.value })
   }
@@ -31,15 +35,33 @@ function Login() {
       // 有用到session就要加 withCredentials
       let res = await axios.post(`${API_URL}/auth/login`, loginForm, {
         withCredentials: true,
-      })  
-      localStorage.setItem("id", JSON.stringify(res.data.member))
-      localStorage.setItem('member', JSON.stringify(res.data))
-      const localMemberData = localStorage.getItem('member')
-      setMemberSession(JSON.parse(localMemberData))
+      })
 
-      // setMemberSession(res.data)
-      history.push('/')
+      if (res.data.code === '1001') {
+        // 聊天室用
+        localStorage.setItem('id', JSON.stringify(res.data.member))
 
+        //控制登入狀態
+        localStorage.setItem('member', JSON.stringify(res.data))
+        setMemberSession(true)
+        swal({
+          title: res.data.message,
+          text: ' ',
+          icon: 'success',
+          buttons: false,
+          timer: 2000,
+        }).then(() => {
+          history.push('/')
+        })
+      } else {
+        swal({
+          title: res.data.message,
+          text: ' ',
+          icon: 'error',
+          buttons: false,
+          timer: 2000,
+        })
+      }
     } catch (err) {
       console.log('handleSubmitErr', err)
     }
