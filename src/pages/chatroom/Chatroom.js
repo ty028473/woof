@@ -21,6 +21,8 @@ function Chatroom() {
     socket.current = io('http://localhost:8801')
   }, [])
   const PF ="http://localhost:3000/images/"
+  const NF ="http://localhost:8801"
+
 
   const [currentMessage, setCurrentMessage] = useState('')
   const [messageList, setMessageList] = useState([
@@ -122,7 +124,7 @@ function Chatroom() {
                       </div>
                     </div>
                     <div className="chatAvatar">
-                      <img src={(messageContent.avatar? messageContent.avatar: PF +"person/noAvatar.png")} alt="" />
+                      <img src={(messageContent.avatar? NF+messageContent.avatar: PF +"person/noAvatar.png")} alt="" />
                     </div>
                   </div>
                 )
