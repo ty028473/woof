@@ -1,19 +1,61 @@
 import React, { useState, useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import ReactDOM from 'react-dom'
+import GoogleLogin from 'react-google-login'
+
 import '../../styles/golbal.scss'
 import '../../styles/login.scss'
 import GoogleButton from 'react-google-button'
 import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../../components/golbal/Footer'
 import axios from 'axios'
-import { io } from 'socket.io-client'
 import swal from 'sweetalert'
 import { API_URL } from '../../configs/Config'
-
 // context
 import { UserContext } from '../../contexts/UserContext'
+import { Prev } from 'react-bootstrap/esm/PageItem'
 
 function Login() {
+  const responseGoogle = async(response) => {
+    console.log(response)
+    console.log(response.Au.pv)
+    let aaa ={email:response.Au.pv}
+    try {
+      // 用 post 送出資料 (member 已經是 json 格式可以直接送出)
+      // 有用到session就要加 withCredentials
+      let res = await axios.post(`${API_URL}/auth/googlelogin`, aaa, {
+        withCredentials: true,
+      })
+      if (res.data.code === '1001') {
+        // 聊天室用
+        localStorage.setItem('id', JSON.stringify(res.data.member))
+
+        //控制登入狀態
+        localStorage.setItem('member', JSON.stringify(res.data))
+        setMemberSession(true)
+        swal({
+          title: res.data.message,
+          text: ' ',
+          icon: 'success',
+          buttons: false,
+          timer: 2000,
+        }).then(() => {
+          history.push('/')
+        })
+      } else {
+        swal({
+          title: res.data.message,
+          text: ' ',
+          icon: 'error',
+          buttons: false,
+          timer: 2000,
+        })
+      }
+    }catch(e){
+      console.log(e)
+    }
+    
+  }
   const { setMemberSession } = useContext(UserContext)
 
   const [loginForm, setLoginForm] = useState({
@@ -127,14 +169,15 @@ function Login() {
                     忘記密碼?
                   </a>
                 </li>
-                <li>
-                  <GoogleButton
-                    type="light"
-                    label="使用Google登入"
-                    onClick={() => {
-                      console.log('Google button clicked')
-                    }}
+                <li>  
+                  <GoogleLogin
+                    clientId={process.env.REACT_APP_GOOGLE_LOGIN_KEY}
+                    buttonText="Login"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={'single_host_origin'}
                   />
+                  
                 </li>
               </form>
             </ul>

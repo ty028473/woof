@@ -7,7 +7,7 @@
 .chat-window .chat-header {
   height: 45px;
   border-radius: 6px 6px 0 0;
-  background: #263238a4;
+  background: #FAC42E;
   position: relative;
 }
 .chat-window .chat-header p {
@@ -102,7 +102,7 @@
 
 #other .message-content {
   justify-content: flex-start;
-  background-color: rgba(103, 86, 255, 0.678);
+  background-color: #FAC42E;
 }
 
 #other .message-meta {
