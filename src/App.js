@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './pages/home/Home'
@@ -40,13 +40,12 @@ import Chatroom from './pages/chatroom/Chatroom'
 
 import { UserContext } from './contexts/UserContext'
 function App() {
-  // 有值代表有登入
-  const [memberSession, setMemberSession] = useState(null)
+  // true代表有登入
+  const [memberSession, setMemberSession] = useState(false)
   console.log('App.js', memberSession)
   useLayoutEffect(() => {
     if (localStorage.getItem('member')) {
-      const localMemberData = localStorage.getItem('member')
-      setMemberSession(JSON.parse(localMemberData))
+      setMemberSession(true)
     }
   }, [])
   return (

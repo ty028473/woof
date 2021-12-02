@@ -70,15 +70,6 @@ function NavBar() {
           </Nav>
         ) : (
           <Nav className="mr-right flex-right">
-            <Nav.Link className="icon-cart" href="/cart">
-              <BsFillCartFill className="mr-2" />
-
-              {products.length ? (
-                <button className="badge">{products.length}</button>
-              ) : (
-                ''
-              )}
-            </Nav.Link>
             <Nav.Link className="nav-title" href="/login">
               登入
             </Nav.Link>
