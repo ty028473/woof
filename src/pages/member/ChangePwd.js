@@ -38,10 +38,6 @@ function ChangePwd() {
     } catch (err) {
       console.log(err.response)
       // 抓取錯誤訊息
-      const errorsData = err.response.data.errors
-      const errorsArray = errorsData.map((v) => v.msg)
-      const errorShow = errorsArray.join(' ')
-      console.log(errorShow)
 
       if (err.response.data.code === '3100') {
         swal({
@@ -52,6 +48,10 @@ function ChangePwd() {
           timer: 1000,
         })
       } else if (err.response.data.code === '3101') {
+        const errorsData = err.response.data.errors
+        const errorsArray = errorsData.map((v) => v.msg)
+        const errorShow = errorsArray.join(' ')
+
         swal({
           title: errorShow,
           text: ' ',
