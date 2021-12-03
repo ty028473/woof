@@ -16,10 +16,12 @@ import { UserContext } from '../../contexts/UserContext'
 import { Prev } from 'react-bootstrap/esm/PageItem'
 
 function Login() {
-  const responseGoogle = async(response) => {
+  const responseGoogle = async (response) => {
     console.log(response)
     console.log(response.Au.pv)
-    let aaa ={email:response.Au.pv}
+    console.log(response.Au.hf)
+
+    let aaa = { email: response.Au.pv, name: response.Au.hf }
     try {
       // 用 post 送出資料 (member 已經是 json 格式可以直接送出)
       // 有用到session就要加 withCredentials
@@ -51,10 +53,9 @@ function Login() {
           timer: 2000,
         })
       }
-    }catch(e){
+    } catch (e) {
       console.log(e)
     }
-    
   }
   const { setMemberSession } = useContext(UserContext)
 
@@ -169,15 +170,14 @@ function Login() {
                     忘記密碼?
                   </a>
                 </li>
-                <li>  
+                <li className="text-center">
                   <GoogleLogin
                     clientId={process.env.REACT_APP_GOOGLE_LOGIN_KEY}
-                    buttonText="Login"
+                    buttonText="使用您的Google帳號繼續"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
                     cookiePolicy={'single_host_origin'}
                   />
-                  
                 </li>
               </form>
             </ul>
