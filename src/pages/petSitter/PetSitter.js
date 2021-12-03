@@ -63,7 +63,6 @@ function PetSitter() {
         buttons: false,
         timer: 2000,
       })
-      // window.location.reload()
     } catch (err) {
       console.log(err)
     }
