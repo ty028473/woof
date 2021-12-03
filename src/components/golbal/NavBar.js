@@ -21,6 +21,7 @@ function NavBar() {
   async function handleLogout() {
     try {
       localStorage.removeItem('member')
+      localStorage.removeItem('id')
       await axios.get(`${API_URL}/auth/logout`, { withCredentials: true })
     } catch (e) {
       console.log(e)
@@ -70,15 +71,6 @@ function NavBar() {
           </Nav>
         ) : (
           <Nav className="mr-right flex-right">
-            <Nav.Link className="icon-cart" href="/cart">
-              <BsFillCartFill className="mr-2" />
-
-              {products.length ? (
-                <button className="badge">{products.length}</button>
-              ) : (
-                ''
-              )}
-            </Nav.Link>
             <Nav.Link className="nav-title" href="/login">
               登入
             </Nav.Link>

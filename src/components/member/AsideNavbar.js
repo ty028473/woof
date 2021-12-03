@@ -1,16 +1,44 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
-import { API_URL, PUBLIC_URL } from '../../configs/Config'
+import { Link, useHistory } from 'react-router-dom'
+import swal from 'sweetalert'
 // css
 import userGlobal from '../../styles/user-global.module.scss'
 
 function AsideNavbar() {
-  async function handleLogout() {
-    try {
-      await axios.get(`${API_URL}/auth/logout`, { withCredentials: true })
-    } catch (e) {
-      console.log(e)
+  let account = JSON.parse(localStorage.getItem('member')).member.email
+  let history = useHistory()
+
+  function handleIdentity() {
+    const localmember = JSON.parse(localStorage.getItem('member'))
+
+    if (!localmember.member.petSitterId) {
+      swal({
+        title: '您目前沒有保母身分',
+        text: '要去成為保母嗎?',
+        icon: 'warning',
+        buttons: {
+          cancel: {
+            text: '取消',
+            value: 'no',
+            visible: true,
+            className: 'btn btn-info btn-woof',
+            closeModal: true,
+          },
+          confirm: {
+            text: '前往',
+            value: 'yes',
+            visible: true,
+            className: 'btn btn-primary btn-woof',
+            closeModal: true,
+          },
+        },
+      }).then((value) => {
+        if (value === 'yes') {
+          history.push('/joinus')
+        }
+      })
+    } else {
+      history.push('/PetSitter')
     }
   }
   return (
@@ -26,7 +54,7 @@ function AsideNavbar() {
         </div>
         <div className="col">
           <ul className={userGlobal.list_styled}>
-            <li className="p-0">mockup01</li>
+            <li className="p-0">{account}</li>
             <li className="p-0">會員中心</li>
           </ul>
         </div>
@@ -55,12 +83,12 @@ function AsideNavbar() {
       <div className="mt-4 text-center">
         <ul className={userGlobal.member_nav}>
           <li>
-            <Link to="/PetSitter">切換為保母身分</Link>
-          </li>
-          <li>
-            <Link to="/login" onClick={handleLogout}>
-              登出
-            </Link>
+            {/* <Link to="/PetSitter" onClick={handleIdentity}>
+              切換為保母身分
+            </Link> */}
+            <a href="#/" onClick={handleIdentity}>
+              切換為保母身分
+            </a>
           </li>
         </ul>
       </div>

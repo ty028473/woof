@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Home from './pages/home/Home'
@@ -21,6 +21,7 @@ import ChangePwd from './pages/member/ChangePwd'
 // 會員 --> 寵物頁面
 import Pets from './pages/member/Pets'
 import PetsAdd from './pages/member/PetsAdd'
+import PetsUpdate from './pages/member/PetsUpdate'
 // 會員 --> 訂單紀錄頁面
 import RecordCarryOut from './pages/member/RecordCarryOut'
 import RecordComplete from './pages/member/RecordComplete'
@@ -40,13 +41,12 @@ import Chatroom from './pages/chatroom/Chatroom'
 
 import { UserContext } from './contexts/UserContext'
 function App() {
-  // 有值代表有登入
-  const [memberSession, setMemberSession] = useState(null)
+  // true代表有登入
+  const [memberSession, setMemberSession] = useState(false)
   console.log('App.js', memberSession)
   useLayoutEffect(() => {
     if (localStorage.getItem('member')) {
-      const localMemberData = localStorage.getItem('member')
-      setMemberSession(JSON.parse(localMemberData))
+      setMemberSession(true)
     }
   }, [])
   return (
@@ -80,6 +80,9 @@ function App() {
 
           <Route path="/joinus">
             <Joinus />
+          </Route>
+          <Route path="/member/pets/update">
+            <PetsUpdate />
           </Route>
           <Route path="/member/pets/add">
             <PetsAdd />

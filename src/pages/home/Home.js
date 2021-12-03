@@ -10,7 +10,7 @@ import Advantage from '../../components/home/Advantage'
 import ScrollToTop from 'react-scroll-to-top'
 import { ReactComponent as MyArrow } from './myArrow.svg'
 import HomeMap from '../../components/reserve/Map2'
-import { fadeIn, fadeInRight, fadeInDown } from 'react-animations'
+import { fadeIn, fadeInRight, fadeInDown,bounceIn } from 'react-animations'
 import Radium, { StyleRoot } from 'radium'
 
 function Home(props) {
@@ -27,6 +27,10 @@ function Home(props) {
       animation: 'x 2s',
       animationName: Radium.keyframes(fadeInDown, 'fadeInDown'),
     },
+    bounceIn: {
+      animation: 'x 6s',
+      animationName: Radium.keyframes(bounceIn, 'bounceIn'),
+    },
   }
   return (
     <>
@@ -42,20 +46,22 @@ function Home(props) {
               <br />
               Woof 提供您適合的寵物保母！
             </h1>
-          </StyleRoot>
-          <h3 className="mt-3">
-            價格透明化、客戶真實評價回饋，
-            <br />
-            眾多優質寵物保母、即時查看自己毛孩的位置。
-          </h3>
+
+            <h3 className="mt-3" style={styles.fadeInDown}>
+              價格透明化、客戶真實評價回饋，
+              <br />
+              眾多優質寵物保母、即時查看自己毛孩的位置。
+            </h3>
           <Link to="/ReserveMap">
             <button
               type="button"
               className="col-4 mt-4 btn btn-primary btn-lg btn-woof"
+              style={styles.bounceIn}
             >
               立即預約!!
             </button>
           </Link>
+          </StyleRoot>
         </div>
 
         <img
