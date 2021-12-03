@@ -6,7 +6,7 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 import { API_URL } from '../../configs/Config'
-
+import axios from 'axios'
 import moment from 'moment'
 import { withRouter } from 'react-router'
 
@@ -17,6 +17,8 @@ class DemoApp extends React.Component {
   }
 
   render() {
+    let sitter = JSON.parse(localStorage.getItem('id'))
+
     return (
       <div className="demo-app">
         <div className="demo-app-main">
@@ -54,7 +56,7 @@ class DemoApp extends React.Component {
             }}
             weekends={this.state.weekendsVisible}
             initialEvents={{
-              url: `${API_URL}/calendar/${this.props.match.params.reserveId}`,
+              url: `${API_URL}/calendar/sitter/${sitter.petSitterId}`,
               method: 'GET',
               // extraParams: {
               //   custom_param1: 'something',
@@ -68,14 +70,23 @@ class DemoApp extends React.Component {
             eventContent={renderEventContent} // custom render function
             eventClick={this.handleEventClick}
             eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
-            /* you can update a remote database when these fire:
-            eventAdd={function(){}}
-            eventChange={function(){}}
-            eventRemove={function(){}}
-            */
+            /* you can update a remote database when these fire:*/
+            eventAdd={function (event) {
+              axios.post({
+                url: `${API_URL}/calendar/sitter/time_insert`,
+
+                data: {
+                  start: moment(event.start).toDate(),
+                  end: moment(event.end).toDate(),
+                  title: event.title,
+                  pet_sitter_id: sitter.petSitterId,
+                },
+              })
+            }}
+            eventChange={function () {}}
+            eventRemove={function () {}}
           />
         </div>
-        {/* {this.renderSidebar()} */}
       </div>
     )
   }
@@ -118,7 +129,7 @@ class DemoApp extends React.Component {
     let calendarApi = selectInfo.view.calendar
 
     calendarApi.unselect() // clear date selection
-
+    axios.post(`${API_URL}/calendar/sitter/time_insert`)
     if (title) {
       calendarApi.addEvent({
         id: createEventId(),

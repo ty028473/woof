@@ -75,7 +75,7 @@ export default function App() {
         onEndFilter={handleFilterEnd}
       />
 
-      <div className="container ">
+      <div className="container mt-4">
         <div className="row">
           <div className="col-6 overflow">
             {allData.map((item) => (
