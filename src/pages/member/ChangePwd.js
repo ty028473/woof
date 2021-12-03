@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import GlobalJsx from '../../components/member/GlobalJsx'
 import axios from 'axios'
 import swal from 'sweetalert'
@@ -7,6 +8,7 @@ import { API_URL } from '../../configs/Config'
 import userGlobal from '../../styles/user-global.module.scss'
 
 function ChangePwd() {
+  let history = useHistory()
   const [passwordData, setPasswordData] = useState({
     password: '',
     newPassword: '',
@@ -34,14 +36,12 @@ function ChangePwd() {
         icon: 'success',
         buttons: false,
         timer: 1000,
+      }).then(() => {
+        history.push('/member')
       })
     } catch (err) {
       console.log(err.response)
       // 抓取錯誤訊息
-      const errorsData = err.response.data.errors
-      const errorsArray = errorsData.map((v) => v.msg)
-      const errorShow = errorsArray.join(' ')
-      console.log(errorShow)
 
       if (err.response.data.code === '3100') {
         swal({
@@ -52,6 +52,10 @@ function ChangePwd() {
           timer: 1000,
         })
       } else if (err.response.data.code === '3101') {
+        const errorsData = err.response.data.errors
+        const errorsArray = errorsData.map((v) => v.msg)
+        const errorShow = errorsArray.join(' ')
+
         swal({
           title: errorShow,
           text: ' ',
