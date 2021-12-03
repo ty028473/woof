@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import GlobalJsx from '../../components/member/GlobalJsx'
 import axios from 'axios'
 import swal from 'sweetalert'
@@ -7,6 +8,7 @@ import { API_URL } from '../../configs/Config'
 import userGlobal from '../../styles/user-global.module.scss'
 
 function ChangePwd() {
+  let history = useHistory()
   const [passwordData, setPasswordData] = useState({
     password: '',
     newPassword: '',
@@ -34,6 +36,8 @@ function ChangePwd() {
         icon: 'success',
         buttons: false,
         timer: 1000,
+      }).then(() => {
+        history.push('/member')
       })
     } catch (err) {
       console.log(err.response)

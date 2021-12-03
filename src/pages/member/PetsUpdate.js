@@ -73,25 +73,16 @@ function PetsUpdate(props) {
         withCredentials: true,
       })
       swal({
-        title: '寵物資料修改成功',
+        title: res.data.message,
         text: ' ',
         icon: 'success',
         buttons: false,
         timer: 1000,
+      }).then(() => {
+        history.push('/member/pets')
       })
     } catch (err) {
-      // 抓取錯誤訊息
-      const errorsData = err.response.data.errors
-      const errorsArray = errorsData.map((v) => v.msg)
-      const errorShow = errorsArray.join(' ')
-
-      swal({
-        title: errorShow,
-        text: ' ',
-        icon: 'error',
-        buttons: false,
-        timer: 1000,
-      })
+      console.log(err)
     }
   }
   return (
@@ -100,7 +91,7 @@ function PetsUpdate(props) {
         {/* 標題區塊 */}
         <section>
           <div>
-            <h3>新增寵物</h3>
+            <h3>更新寵物</h3>
             <p>讓保母更了解您的寵物</p>
           </div>
         </section>
