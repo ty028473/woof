@@ -37,7 +37,7 @@ function Member() {
   }, [])
 
   // 表單更新資料
-  function handleChage(e) {
+  function handleChange(e) {
     setMemberData({ ...memberData, [e.target.name]: e.target.value })
   }
 
@@ -158,7 +158,7 @@ function Member() {
                           type="text"
                           className="form-control"
                           value={memberData.name}
-                          onChange={handleChage}
+                          onChange={handleChange}
                         />
                       </div>
                     </li>
@@ -170,7 +170,7 @@ function Member() {
                           type="text"
                           className="form-control"
                           value={memberData.phone}
-                          onChange={handleChage}
+                          onChange={handleChange}
                         />
                       </div>
                     </li>
@@ -182,7 +182,7 @@ function Member() {
                           type="date"
                           className="form-control"
                           value={memberData.birthday}
-                          onChange={handleChage}
+                          onChange={handleChange}
                         />
                       </div>
                     </li>
@@ -193,7 +193,7 @@ function Member() {
                           name="gender"
                           className="form-control"
                           value={memberData.gender}
-                          onChange={handleChage}
+                          onChange={handleChange}
                         >
                           <option value="1">男</option>
                           <option value="2">女</option>
@@ -224,12 +224,6 @@ function Member() {
                     <br />
                     <br />
                     <div className="from-group">
-                      {/* <label
-                        htmlFor="image"
-                        className="btn btn-primary btn-woof"
-                      >
-                        上傳圖片
-                      </label> */}
                       <button
                         className="btn btn-primary btn-woof"
                         onClick={(e) => {

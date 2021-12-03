@@ -42,7 +42,7 @@ function PetSitter() {
     handleGender = '不顯示'
   }
   // 表單更新資料
-  function handleChage(e) {
+  function handleChange(e) {
     setpetSitterData({ ...petSitterData, [e.target.name]: e.target.value })
   }
   // 送回後端
@@ -188,7 +188,7 @@ function PetSitter() {
                             name="district"
                             className="form-control"
                             value={petSitterData.district}
-                            onChange={handleChage}
+                            onChange={handleChange}
                           >
                             <option value="台北市中正區">中正區</option>
                             <option value="台北市大同區">大同區</option>
@@ -214,7 +214,7 @@ function PetSitter() {
                           type="text"
                           className="form-control"
                           value={petSitterData.address}
-                          onChange={handleChage}
+                          onChange={handleChange}
                         />
                       </div>
                     </li>
@@ -226,7 +226,7 @@ function PetSitter() {
                           name="skill"
                           rows="2"
                           value={petSitterData.skill}
-                          onChange={handleChage}
+                          onChange={handleChange}
                         ></textarea>
                       </div>
                     </li>
@@ -238,7 +238,7 @@ function PetSitter() {
                           name="introduction"
                           rows="5"
                           value={petSitterData.introduction}
-                          onChange={handleChage}
+                          onChange={handleChange}
                         ></textarea>
                       </div>
                     </li>
