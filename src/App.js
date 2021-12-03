@@ -21,6 +21,7 @@ import ChangePwd from './pages/member/ChangePwd'
 // 會員 --> 寵物頁面
 import Pets from './pages/member/Pets'
 import PetsAdd from './pages/member/PetsAdd'
+import PetsUpdate from './pages/member/PetsUpdate'
 // 會員 --> 訂單紀錄頁面
 import RecordCarryOut from './pages/member/RecordCarryOut'
 import RecordComplete from './pages/member/RecordComplete'
@@ -79,6 +80,9 @@ function App() {
 
           <Route path="/joinus">
             <Joinus />
+          </Route>
+          <Route path="/member/pets/update">
+            <PetsUpdate />
           </Route>
           <Route path="/member/pets/add">
             <PetsAdd />

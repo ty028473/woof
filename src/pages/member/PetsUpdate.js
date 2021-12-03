@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, withRouter } from 'react-router-dom'
 import GlobalJsx from '../../components/member/GlobalJsx'
 import axios from 'axios'
 import swal from 'sweetalert'
@@ -7,16 +7,23 @@ import { API_URL, PUBLIC_URL } from '../../configs/Config'
 // css
 import userGlobal from '../../styles/user-global.module.scss'
 
-function PetsAdd() {
+function PetsUpdate(props) {
   let history = useHistory()
 
-  const [addPetData, setaddPetData] = useState({
+  const [updatePetData, setupdatePetData] = useState({
+    id: 0,
     name: '',
-    gender: 3,
-    birthday: 1900,
+    gender: 0,
+    birthday: 0,
     information: '',
     image: '',
   })
+  console.log(updatePetData)
+
+  // 讀取從Pets.js來的資料
+  useEffect(() => {
+    setupdatePetData(props.location.state.data)
+  }, [])
 
   // 圖片處理
   const fileInputRef = useRef()
@@ -25,7 +32,7 @@ function PetsAdd() {
 
   // 表單更新資料
   function handleChange(e) {
-    setaddPetData({ ...addPetData, [e.target.name]: e.target.value })
+    setupdatePetData({ ...updatePetData, [e.target.name]: e.target.value })
   }
 
   function handleUpload(e) {
@@ -33,7 +40,7 @@ function PetsAdd() {
 
     if (file && file.type.substr(0, 5) === 'image') {
       setuploadImage(file)
-      setaddPetData({ ...addPetData, [e.target.name]: file })
+      setupdatePetData({ ...updatePetData, [e.target.name]: file })
     } else {
       setuploadImage(null)
     }
@@ -56,24 +63,22 @@ function PetsAdd() {
     e.preventDefault()
     try {
       let formData = new FormData()
-      formData.append('name', addPetData.name)
-      formData.append('gender', addPetData.gender)
-      formData.append('birthday', addPetData.birthday)
-      formData.append('information', addPetData.information)
-      formData.append('image', addPetData.image)
-      let res = await axios.post(`${API_URL}/pet/insertPet`, formData, {
+      formData.append('id', updatePetData.id)
+      formData.append('name', updatePetData.name)
+      formData.append('gender', updatePetData.gender)
+      formData.append('birthday', updatePetData.birthday)
+      formData.append('information', updatePetData.information)
+      formData.append('image', updatePetData.image)
+      let res = await axios.post(`${API_URL}/pet/updatePet`, formData, {
         withCredentials: true,
       })
       swal({
-        title: '寵物資料新增成功',
+        title: '寵物資料修改成功',
         text: ' ',
         icon: 'success',
         buttons: false,
         timer: 1000,
-      }).then(() => {
-        history.push('/member/pets')
       })
-      // window.location.reload()
     } catch (err) {
       // 抓取錯誤訊息
       const errorsData = err.response.data.errors
@@ -130,7 +135,7 @@ function PetsAdd() {
                           name="name"
                           type="text"
                           className="form-control"
-                          value={addPetData.name}
+                          value={updatePetData.name}
                           onChange={handleChange}
                         />
                       </div>
@@ -141,7 +146,7 @@ function PetsAdd() {
                           id="gender"
                           name="gender"
                           className="form-control"
-                          value={addPetData.gender}
+                          value={updatePetData.gender}
                           onChange={handleChange}
                         >
                           <option value="1">公</option>
@@ -160,7 +165,7 @@ function PetsAdd() {
                           min="1900"
                           max="2099"
                           step="1"
-                          value={addPetData.birthday}
+                          value={updatePetData.birthday}
                           onChange={handleChange}
                         />
                       </div>
@@ -172,7 +177,7 @@ function PetsAdd() {
                           id="information"
                           name="information"
                           rows="2"
-                          value={addPetData.information}
+                          value={updatePetData.information}
                           onChange={handleChange}
                         ></textarea>
                       </div>
@@ -190,7 +195,7 @@ function PetsAdd() {
                       />
                     ) : (
                       <img
-                        src="https://img.ixintu.com/download/jpg/20201201/653c62f6204ba19a0c630206bee5923f_512_512.jpg!con"
+                        src={`${PUBLIC_URL}${updatePetData.image}`}
                         className={userGlobal.img_cover_lg}
                         alt="會員預設頭像"
                       />
@@ -229,4 +234,4 @@ function PetsAdd() {
   )
 }
 
-export default PetsAdd
+export default withRouter(PetsUpdate)
