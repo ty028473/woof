@@ -5,7 +5,7 @@ import swal from 'sweetalert'
 import userGlobal from '../../styles/user-global.module.scss'
 
 function AsideNavbar() {
-  let account = JSON.parse(localStorage.getItem('member')).member.email
+  let name = JSON.parse(localStorage.getItem('member')).member.name
   let history = useHistory()
 
   function handleIdentity() {
@@ -54,7 +54,7 @@ function AsideNavbar() {
         </div>
         <div className="col">
           <ul className={userGlobal.list_styled}>
-            <li className="p-0">{account}</li>
+            <li className="p-0">{name}</li>
             <li className="p-0">會員中心</li>
           </ul>
         </div>
@@ -74,9 +74,9 @@ function AsideNavbar() {
           <li>
             <Link to="/member/record/carryout">訂單紀錄</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/member/Collection">保母收藏</Link>
-          </li>
+          </li> */}
         </ul>
       </div>
       <hr />
