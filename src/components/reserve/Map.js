@@ -10,6 +10,7 @@ const center = {
   lat: 25.03746,
   lng: 121.564558,
 }
+console.log(center)
 //金緯度根據地址轉換、
 function MyComponent() {
   const { isLoaded } = useJsApiLoader({
