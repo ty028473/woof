@@ -1,0 +1,44 @@
+$frame-backgroundcolor: #ffffff;
+$right_navbar_color: #51535b;
+$right_navbar_hover_color: #087bdc;
+
+// RecordNavbar component
+.right_navbar_frame {
+  background-color: $frame-backgroundcolor;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.right_navbar_list_styled {
+  list-style-type: none;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  li {
+    padding: 20px;
+  }
+  a {
+    color: $right_navbar_color;
+    &:hover {
+      color: $right_navbar_hover_color;
+      text-decoration: solid $right_navbar_hover_color underline;
+      text-underline-offset: 20px;
+      text-decoration-thickness: 5px;
+    }
+  }
+}
+
+.record_button {
+  position: relative;
+
+  .record_button_position {
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+  }
+  .record_button_position_01 {
+    position: absolute;
+    top: 0;
+    right: 30px;
+  }
+}

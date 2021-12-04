@@ -1,0 +1,191 @@
+$primary: #087bdc;
+$secondary: #fac42e;
+$success: #6ba456;
+$info: #51535b;
+$danger: #d34f4f;
+
+$block-radious-cart: 20px 20px 0px 0px;
+$block-radious: 20px;
+$block-background: #fff;
+$hr-color: #c7c7c7;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.sticky-container {
+  /**
+      因为sticky需要外层容器高度，所以这里需要设置，
+      或者靠sticky元素的兄弟给父元素撑起高度
+      **/
+  height: 100px;
+}
+
+.sticky {
+  position: sticky;
+  top: 80px;
+}
+.center-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-img {
+  height: 300px;
+  object-fit: cover;
+}
+
+.header-container {
+  height: 300px;
+}
+.header-container label {
+  color: #000;
+}
+.header-title {
+  position: absolute;
+  padding: 5%;
+  color: $secondary;
+}
+.filter-title {
+  position: relative;
+  padding-top: 15%;
+  z-index: 1000;
+}
+.header-filtros {
+  position: absolute;
+  top: 4%;
+  z-index: 1000;
+  padding: 5%;
+  color: white;
+}
+
+.header-carousel {
+  height: 0;
+}
+
+.carousel .thumbs-wrapper {
+  display: none;
+}
+
+.filter-container {
+  background-color: transparent;
+  padding: 1%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-hidden {
+  visibility: hidden;
+}
+
+.input-filters {
+  padding: 10px;
+
+  height: 45px;
+}
+
+.results-container {
+  display: flex;
+  padding: 1% 2%;
+  box-shadow: inset 2px 2px 10px 2px #ccc;
+}
+
+.results-text {
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+.sitter-title {
+  padding: 0 5%;
+}
+
+.sitter-container {
+  flex-wrap: nowrap;
+  padding: 1%;
+}
+
+.sitter-card {
+  width: 340px;
+  border-radius: 25px;
+  margin: 10px;
+}
+
+.sitter-card h2 {
+  height: 3%;
+}
+.sitter-icon {
+  color: $secondary;
+  margin-right: 5px;
+}
+.sitter-img {
+  border-radius: 5%;
+  width: 200px;
+  height: 200px;
+  padding: 5px;
+  object-fit: cover;
+}
+
+.sitter-description {
+  text-align: justify;
+  padding: 0 5%;
+  height: 20%;
+}
+
+.filters {
+  padding: 2% 5%;
+  display: flex;
+  align-items: center;
+}
+
+.sitter-rooms-price {
+  display: inline-flex;
+}
+
+.sitter-price {
+  background: #209cee;
+  margin-left: 4%;
+  width: 30%;
+}
+
+.text-no-results {
+  padding: 5% 0;
+  border: 1px solid lightgrey;
+  border-radius: 25px;
+  box-shadow: 2px 2px 8px 2px rgba(155, 155, 155, 0.5);
+  text-align: center;
+  width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+  .filter-container {
+    flex-direction: column;
+  }
+  .filter-select {
+    width: 60%;
+  }
+  .input-filters {
+    width: 100%;
+  }
+}
+.icon-btn {
+  border: none;
+  font-size: 20px;
+  background-color: transparent;
+}
+.ROOT_CSS {
+  height: 300;
+  width: 400;
+}
+.overflow {
+  background: transparent;
+  width: 100%;
+  height: 650px;
+  overflow: scroll;
+}
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

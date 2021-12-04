@@ -1,0 +1,60 @@
+$primary: #087bdc;
+$danger: #d34f4f;
+$button-radious: 50px;
+
+// cart
+.badge {
+  background-color: $danger;
+  border: none;
+  color: #ffffff;
+  width: 1.5rem;
+  border-radius: $button-radious;
+}
+
+// navbar
+
+.logo-woof {
+  padding-left: 20px;
+  width: 120px;
+}
+.nav-title {
+  color: #fff !important;
+  font-size: 20px;
+  margin: 0px 10px;
+}
+Nav.Link:hover {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.icon-cart {
+  color: #fff !important;
+  font-size: 20px;
+  margin: auto 10px;
+}
+.icon-cart:hover {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+//footer
+
+.footer {
+  color: #fff;
+  width: 100%;
+  height: 274px;
+  background-color: $primary;
+  padding: 30px;
+  z-index: -1;
+}
+.icon-footer {
+  color: #fff;
+  font-size: 40px;
+  margin: auto 6px;
+}
+.icon-footer {
+  color: #fff;
+  font-size: 40px;
+  margin-right: 6px;
+}
+.line {
+  margin: 20px auto;
+  border: 0.5px solid #fff;
+}

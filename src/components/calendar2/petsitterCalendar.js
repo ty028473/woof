@@ -1,0 +1,150 @@
+import React from 'react'
+import FullCalendar from '@fullcalendar/react'
+import '../../styles/calender.scss'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import timeGridPlugin from '@fullcalendar/timegrid'
+import interactionPlugin from '@fullcalendar/interaction'
+import { createEventId } from './event-utils'
+import { API_URL } from '../../configs/Config'
+import axios from 'axios'
+
+import { withRouter } from 'react-router'
+
+class DemoApp extends React.Component {
+  state = {
+    weekendsVisible: true,
+    currentEvents: [],
+  }
+
+  render() {
+    let sitter = JSON.parse(localStorage.getItem('id'))
+
+    return (
+      <div className="demo-app">
+        <div className="demo-app-main">
+          <FullCalendar
+            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+            headerToolbar={{
+              left: 'prev,next today',
+              center: 'title',
+              right: 'timeGridWeek,timeGridDay',
+            }}
+            initialView="timeGridWeek"
+            editable={true}
+            selectable={true}
+            selectMirror={true}
+            eventTimeFormat={{
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: false,
+            }}
+            allDaySlot={false}
+            dayMaxEvents={true}
+            slotMinTime="08:00:00"
+            slotMaxTime="20:00:00"
+            slotLabelInterval="04:00:00"
+            slotDuration="04:00:00"
+            slotLabelFormat={function (date) {
+              if (date.date.minute == 0)
+                return (
+                  date.date.hour.toString().padStart(2, '0') +
+                  ':00' +
+                  ' + ' +
+                  '4hr'
+                )
+              return date.date.minute
+            }}
+            weekends={this.state.weekendsVisible}
+            initialEvents={{
+              url: `${API_URL}/calendar/sitter/${sitter.petSitterId}`,
+              method: 'GET',
+
+              failure: function () {
+                alert('there was an error while fetching events!')
+              },
+            }} // alternatively, use the `events` setting to fetch from a feed
+            select={this.handleDateSelect}
+            eventContent={renderEventContent} // custom render function
+            eventDrop={(info) => {
+              //<--- see from here
+              const { start, end } = info.oldEvent._instance.range
+              console.log(start, end)
+              const { start: newStart, end: newEnd } =
+                info.event._instance.range
+              console.log(newStart, newEnd)
+              if (new Date(start).getDate() === new Date(newStart).getDate()) {
+                info.revert()
+              }
+            }}
+            eventClick={this.handleEventClick}
+            eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
+            /* you can update a remote database when these fire:*/
+
+            eventAdd={(event) => this.handleEventAdd(event)}
+            // eventChange={(event) => this.handleEventDrop(event)}
+            eventRemove={(event) => this.handleEventRemove(event)}
+          />
+        </div>
+      </div>
+    )
+  }
+
+  handleWeekendsToggle = () => {
+    this.setState({
+      weekendsVisible: !this.state.weekendsVisible,
+    })
+  }
+  //新增時段
+  handleEventAdd = async (data) => {
+    console.log(data.event)
+    console.log(data.event._def.extendedProps.pet_sitter_id)
+    await axios.post(`${API_URL}/calendar/sitter/time_insert`, data.event)
+  }
+  handleDateSelect = (selectInfo) => {
+    let title = prompt('請輸入售價')
+    let calendarApi = selectInfo.view.calendar
+
+    calendarApi.unselect() // clear date selection
+
+    if (title) {
+      let sitter = JSON.parse(localStorage.getItem('id'))
+      calendarApi.addEvent({
+        id: createEventId(),
+        pet_sitter_id: sitter.petSitterId,
+        title,
+        start: selectInfo.startStr,
+        end: selectInfo.endStr,
+      })
+    }
+  }
+
+  //刪除時段
+  handleEventRemove = async (data) => {
+    await axios.post(`${API_URL}/calendar/sitter/time_removed`, data.event)
+  }
+  handleEventClick = (clickInfo) => {
+    // eslint-disable-next-line no-restricted-globals
+    let sitter = JSON.parse(localStorage.getItem('id'))
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm(`確認刪除這筆資料嗎？ 金額'${clickInfo.event.title}'`)) {
+      clickInfo.event.remove(sitter.petSitterId)
+    }
+  }
+
+  handleEvents = (events) => {
+    this.setState({
+      currentEvents: events,
+    })
+  }
+}
+
+function renderEventContent(eventInfo) {
+  return (
+    <>
+      <b>{eventInfo.timeText}</b>
+      <i>{eventInfo.event.title}</i>
+    </>
+  )
+}
+
+export default withRouter(DemoApp)
