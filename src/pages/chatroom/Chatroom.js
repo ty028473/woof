@@ -12,17 +12,15 @@ import { format, render, cancel, register } from 'timeago.js'
 import { PUBLIC_URL } from '../../configs/Config'
 import ScrollToBottom from 'react-scroll-to-bottom'
 import '../chatroom/chat.css'
-import moment from "moment"
+import moment from 'moment'
 
 function Chatroom() {
-  
   const socket = useRef()
   useEffect(() => {
     socket.current = io('http://localhost:8801')
   }, [])
-  const PF ="http://localhost:3000/images/"
-  const NF ="http://localhost:8801"
-
+  const PF = 'http://localhost:3000/images/'
+  const NF = 'http://localhost:8801'
 
   const [currentMessage, setCurrentMessage] = useState('')
   const [messageList, setMessageList] = useState([
@@ -46,12 +44,12 @@ function Chatroom() {
     if (currentMessage !== '' && user !== null) {
       const messageData = {
         author: user.name,
-        avatar:(user.image ? user.image  :  +"person/noAvatar.png"),
+        avatar: user.image ? user.image : +'person/noAvatar.png',
         message: currentMessage,
         time: moment().format('YYYY/MM/DD HH:mm:ss'),
       }
       await socket.current.emit('send_message', messageData)
-      
+
       setMessageList((list) => [...list, messageData])
       setCurrentMessage('')
     }
@@ -120,11 +118,20 @@ function Chatroom() {
                         <p className="me-1" id="author">
                           {messageContent.author}
                         </p>
-                        <p className="ml-2" id="time">{messageContent.time}</p>
+                        <p className="ml-2" id="time">
+                          {messageContent.time}
+                        </p>
                       </div>
                     </div>
                     <div className="chatAvatar">
-                      <img src={(messageContent.avatar? NF+messageContent.avatar: PF +"person/noAvatar.png")} alt="" />
+                      <img
+                        src={
+                          messageContent.avatar
+                            ? NF + messageContent.avatar
+                            : PF + 'person/noAvatar.png'
+                        }
+                        alt=""
+                      />
                     </div>
                   </div>
                 )
