@@ -53,63 +53,25 @@ class ViewApp extends React.Component {
             }}
             weekends={this.state.weekendsVisible}
             initialEvents={{
+              //抓取保母id事件
               url: `${API_URL}/calendar/${this.props.match.params.reserveId}`,
               method: 'GET',
-              // extraParams: {
-              //   custom_param1: 'something',
-              //   custom_param2: 'somethingelse'
-              // },
+
               failure: function () {
-                alert('there was an error while fetching events!')
+                swal({
+                  title: '失敗!',
+                  text: '找不到此保母!',
+                  icon: 'error',
+                })
               },
-            }} // alternatively, use the `events` setting to fetch from a feed
-            // select={this.handleDateSelect}
-            eventContent={renderEventContent} // custom render function
+            }}
+            eventContent={renderEventContent}
             eventClick={this.handleEventClick}
-            eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
-            /* you can update a remote database when these fire:
-            eventAdd={function(){}}
-            eventChange={function(){}}
-            eventRemove={function(){}}
-            */
+            eventsSet={this.handleEvents}
           />
         </div>
       </div>
     )
-  }
-
-  renderSidebar() {
-    return (
-      <div className="demo-app-sidebar">
-        <div className="demo-app-sidebar-section">
-          <h2>All Events ({this.state.currentEvents.length})</h2>
-          <ul>{this.state.currentEvents.map(renderSidebarEvent)}</ul>
-        </div>
-      </div>
-    )
-  }
-
-  handleWeekendsToggle = () => {
-    this.setState({
-      weekendsVisible: !this.state.weekendsVisible,
-    })
-  }
-
-  handleDateSelect = (selectInfo) => {
-    let title = prompt('Please enter a new title for your event')
-    let calendarApi = selectInfo.view.calendar
-
-    calendarApi.unselect() // clear date selection
-
-    if (title) {
-      calendarApi.addEvent({
-        id: createEventId(),
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay,
-      })
-    }
   }
 
   handleEventClick = (clickInfo) => {
@@ -125,11 +87,7 @@ class ViewApp extends React.Component {
       icon: 'success',
       button: '好!',
     })
-    // this.setState({
-    //   start: clickInfo.event.start,
-    //   end: clickInfo.event.end,
-    //   title: clickInfo.event.title,
-    // })
+
     this.props.setObj({
       start: clickInfo.event.start,
       end: clickInfo.event.end,
@@ -144,28 +102,12 @@ class ViewApp extends React.Component {
     })
   }
 }
-
 function renderEventContent(eventInfo) {
   return (
     <>
       <b>{eventInfo.timeText}</b>
       <i>{eventInfo.event.title}</i>
     </>
-  )
-}
-
-function renderSidebarEvent(event) {
-  return (
-    <li key={event.id}>
-      <b>
-        {formatDate(event.start, {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric',
-        })}
-      </b>
-      <i>{event.title}</i>
-    </li>
   )
 }
 export default withRouter(ViewApp)
