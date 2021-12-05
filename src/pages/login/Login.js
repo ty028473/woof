@@ -17,10 +17,6 @@ import { Prev } from 'react-bootstrap/esm/PageItem'
 
 function Login() {
   const responseGoogle = async (response) => {
-    console.log(response)
-    console.log(response.Au.pv)
-    console.log(response.Au.hf)
-
     let aaa = { email: response.Au.pv, name: response.Au.hf }
     try {
       // 用 post 送出資料 (member 已經是 json 格式可以直接送出)
@@ -42,7 +38,14 @@ function Login() {
           buttons: false,
           timer: 2000,
         }).then(() => {
-          history.push('/')
+          let user = JSON.parse(localStorage.getItem('id'))
+
+          if(user.image==null){
+            history.push('/member')
+
+          }else{
+            history.push('/')
+          }
         })
       } else {
         swal({
