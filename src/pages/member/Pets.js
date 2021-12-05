@@ -55,26 +55,11 @@ function Pets() {
 
         {petData[0].name === '' ? (
           <section>
-            <div className="row align-items-center">
-              <div className="col">
+            <div className={`row align-items-center ${userGlobal.no_data}`}>
+              <div className="col text-center">
                 <h3>您目前尚無寵物</h3>
               </div>
             </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
           </section>
         ) : (
           petData.map((v) => {
