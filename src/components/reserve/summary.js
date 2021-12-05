@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import summary from '../../local-json/summary.json'
+
 import '../../styles/calender.scss'
 import axios from 'axios'
 import { API_URL } from '../../configs/Config'
