@@ -79,7 +79,7 @@ class ViewApp extends React.Component {
       title: '確認內容',
       text:
         '價格：' +
-        +clickInfo.event.title +
+        clickInfo.event.title +
         '開始時間：' +
         clickInfo.event.start.toLocaleString() +
         '結束時間：' +
