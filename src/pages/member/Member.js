@@ -21,7 +21,7 @@ function Member() {
     orderTimes: 0,
   })
   console.log('Member', memberData)
-
+  console.log('null', typeof memberData.image)
   // 圖片處理
   const fileInputRef = useRef()
   const [preview, setPreview] = useState('')
@@ -100,6 +100,32 @@ function Member() {
       })
     }
   }
+  // 判斷圖片顯示
+  let showImg
+  if (uploadImage) {
+    showImg = (
+      <img src={preview} className={userGlobal.img_cover_lg} alt="會員大頭像" />
+    )
+  } else {
+    if (typeof memberData.image === 'object') {
+      showImg = (
+        <img
+          src="/images/person/noAvatar.png"
+          className={userGlobal.img_cover_lg}
+          alt="會員預設頭像"
+        />
+      )
+    } else {
+      showImg = (
+        <img
+          src={`${PUBLIC_URL}${memberData.image}`}
+          className={userGlobal.img_cover_lg}
+          alt="會員預設頭像"
+        />
+      )
+    }
+  }
+
   return (
     <>
       <GlobalJsx>
@@ -207,7 +233,7 @@ function Member() {
                 </div>
                 <div className="col-4 text-center">
                   <div>
-                    {uploadImage ? (
+                    {/* {uploadImage ? (
                       <img
                         src={preview}
                         className={userGlobal.img_cover_lg}
@@ -219,8 +245,8 @@ function Member() {
                         className={userGlobal.img_cover_lg}
                         alt="會員預設頭像"
                       />
-                    )}
-
+                    )} */}
+                    {showImg}
                     <br />
                     <br />
                     <div className="from-group">
@@ -255,15 +281,15 @@ function Member() {
             <div className={`row text-center p-5 ${styles.record_block}`}>
               <div className="col">
                 <h5>預約次數</h5>
-                <h5>{memberData.orderTimes}</h5>
+                <h5>{memberData.orderTimes ? memberData.orderTimes : 0}</h5>
               </div>
               <div className={`col ${styles.divider}`}>
                 <h5>剩餘紅利</h5>
-                <h5>{memberData.totalBonus}</h5>
+                <h5>{memberData.totalBonus ? memberData.totalBonus : 0}</h5>
               </div>
               <div className="col">
                 <h5>已折抵紅利</h5>
-                <h5>{memberData.useBonus}</h5>
+                <h5>{memberData.useBonus ? memberData.useBonus : 0}</h5>
               </div>
             </div>
           </div>
