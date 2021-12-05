@@ -48,7 +48,7 @@ function Evalution(props) {
                   <img
                     src={item.image}
                     className="evaluation-img-cover"
-                    alt="保母頭像"
+                    alt="飼主頭像"
                   />
                 </div>
                 <div className="col-9  my-2  ">
