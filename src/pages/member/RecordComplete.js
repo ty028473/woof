@@ -25,7 +25,7 @@ function RecordComplete() {
   ])
   console.log('memberRecordData', memberRecordData)
 
-  // 抓取會員訂單進行中資料
+  // 抓取會員訂單完成資料
   useEffect(() => {
     async function getMemberRecordData() {
       let res = await axios.get(`${API_URL}/memberRecord/complete`, {
@@ -39,14 +39,14 @@ function RecordComplete() {
     <>
       <GlobalJsx>
         <RecordGlobalJsx memberRecordData={memberRecordData}>
-          <button
+          {/* <button
             type="button"
             className={`btn btn-secondary btn-woof-Chat ${styles.record_button_position}`}
             onClick={() => setModalShow(true)}
           >
             評價
           </button>
-          <PopupEvaluate show={modalShow} onHide={() => setModalShow(false)} />
+          <PopupEvaluate show={modalShow} onHide={() => setModalShow(false)} /> */}
         </RecordGlobalJsx>
       </GlobalJsx>
     </>

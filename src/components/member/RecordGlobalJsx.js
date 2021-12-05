@@ -1,36 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { PUBLIC_URL } from '../../configs/Config'
+import PopupEvaluate from '../../components/member/PopupEvaluate'
+
 // css
 import styles from '../../styles/record.module.scss'
 import userGlobal from '../../styles/user-global.module.scss'
 
 function RecordGlobalJsx(props) {
   const { memberRecordData } = props
-  console.log('RecordGlobalJsx', memberRecordData)
+  const [modalShow, setModalShow] = useState(false)
+  const [oneData, setOneData] = useState(null)
+
   return (
     <>
       {memberRecordData[0].petName === '' ? (
         <section>
-          <div className="row align-items-center">
-            <div className="col">
+          <div className={`row align-items-center ${userGlobal.no_data}`}>
+            <div className="col text-center">
               <h3>您目前尚無訂單</h3>
             </div>
           </div>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
         </section>
       ) : (
         memberRecordData.map((v) => {
@@ -74,9 +63,26 @@ function RecordGlobalJsx(props) {
                     <li>{v.price}</li>
                   </ul>
                 </div>
-                <div className={`col-2 ${styles.record_button}`}>
-                  {props.children}
-                </div>
+                {v.order_status === 2 && (
+                  <div className={`col-2 ${styles.record_button}`}>
+                    {/* {props.children} */}
+                    <button
+                      type="button"
+                      className={`btn btn-secondary btn-woof-Chat ${styles.record_button_position}`}
+                      onClick={() => {
+                        setOneData(v)
+                        setModalShow(true)
+                      }}
+                    >
+                      評價
+                    </button>
+                    <PopupEvaluate
+                      oneData={oneData}
+                      show={modalShow}
+                      onHide={() => setModalShow(false)}
+                    />
+                  </div>
+                )}
               </div>
             </section>
           )

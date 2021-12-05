@@ -41,10 +41,12 @@ function PetSitter() {
   } else {
     handleGender = '不顯示'
   }
+
   // 表單更新資料
   function handleChange(e) {
     setpetSitterData({ ...petSitterData, [e.target.name]: e.target.value })
   }
+
   // 送回後端
   async function handleSubmit(e) {
     e.preventDefault()
