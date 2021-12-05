@@ -100,12 +100,28 @@
   top: 30px;
   right: 30px;
 }
+
 .icon_edit {
   position: absolute;
   top: 30px;
   right: 80px;
 }
+
 .icon_cursor {
   cursor: pointer;
   color: #51535b;
+}
+
+.no_data {
+  height: 500px;
+}
+
+// 評價
+input[type='radio'] {
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 200ms;
 }

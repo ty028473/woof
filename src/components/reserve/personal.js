@@ -1,13 +1,11 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import '../../styles/calender.scss'
 import { faStar, faMapMarker } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-
 function SitterDetail(props) {
-  const {personalData,setPersonalData} = props
-
+  const { personalData, setPersonalData } = props
 
   return (
     <>
@@ -34,23 +32,24 @@ function SitterDetail(props) {
               <FontAwesomeIcon icon={faMapMarker} className="mr-1" />
               {personalData && personalData.district}
               <br />
-              <button
+              {/* <button
                 type="button"
                 className="btn btn-primary btn-sm btn-woof mr-1 mt-2"
               >
                 收藏
-              </button>
+              </button> */}
             </td>
           </tr>
         </table>
       }
-
-      <button
-        type="button"
-        className="col-6 mt-3 btn btn-secondary btn-sm btn-woof"
-      >
-        聊聊
-      </button>
+      <Link to="/chatroom">
+        <button
+          type="button"
+          className="col-6 mt-3 btn btn-secondary btn-sm btn-woof"
+        >
+          聊聊
+        </button>
+      </Link>
     </>
   )
 }
