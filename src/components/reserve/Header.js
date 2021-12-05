@@ -44,7 +44,7 @@ const HeaderFilter = ({
         break
     }
   }
-
+  useEffect(() => {}, [filters])
   return (
     <div className="header-container">
       <Carousel

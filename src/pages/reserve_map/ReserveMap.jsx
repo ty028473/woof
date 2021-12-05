@@ -31,7 +31,9 @@ export default function App() {
   const districtDropDown = () => {
     return [...new Set(sitterData.map((item) => item.district))]
   }
-
+  useEffect(() => {
+    setData(sitterData)
+  }, [sitterData])
   const handleFilterName = (name) => {
     const filteredData = sitterData.filter((item) => {
       if (item.name.toLocaleLowerCase().includes(name.toLocaleLowerCase())) {
