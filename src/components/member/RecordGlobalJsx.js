@@ -8,8 +8,8 @@ import userGlobal from '../../styles/user-global.module.scss'
 
 function RecordGlobalJsx(props) {
   const { memberRecordData } = props
+  console.log('memberRecordData', memberRecordData)
   const [modalShow, setModalShow] = useState(false)
-  const [oneData, setOneData] = useState(null)
 
   return (
     <>
@@ -24,7 +24,7 @@ function RecordGlobalJsx(props) {
       ) : (
         memberRecordData.map((v) => {
           return (
-            <section className="m-3">
+            <section className="m-3" key={v.id}>
               <div className={`row ${userGlobal.data_block}`}>
                 <div className="col-3 text-center">
                   <h5 className={userGlobal.title_font}>
@@ -70,14 +70,17 @@ function RecordGlobalJsx(props) {
                       type="button"
                       className={`btn btn-secondary btn-woof-Chat ${styles.record_button_position}`}
                       onClick={() => {
-                        setOneData(v)
                         setModalShow(true)
+                        localStorage.removeItem('evaluationData')
+                        localStorage.setItem(
+                          'evaluationData',
+                          JSON.stringify(v)
+                        )
                       }}
                     >
                       評價
                     </button>
                     <PopupEvaluate
-                      oneData={oneData}
                       show={modalShow}
                       onHide={() => setModalShow(false)}
                     />
