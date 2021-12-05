@@ -7,6 +7,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 import { createEventId } from './event-utils'
 import { API_URL } from '../../configs/Config'
 import axios from 'axios'
+import swal from 'sweetalert'
 
 import { withRouter } from 'react-router'
 
@@ -38,6 +39,11 @@ class DemoApp extends React.Component {
               minute: '2-digit',
               hour12: false,
             }}
+            //停止拖曳日期效果
+            eventStartEditable={false}
+            //停止拉伸日期效果
+            eventDurationEditable={false}
+            eventEditable
             allDaySlot={false}
             dayMaxEvents={true}
             slotMinTime="08:00:00"
@@ -60,7 +66,12 @@ class DemoApp extends React.Component {
               method: 'GET',
 
               failure: function () {
-                alert('there was an error while fetching events!')
+                // alert('未連結到後端資料庫')
+                swal({
+                  title: '失敗!',
+                  text: '未連結到後端資料庫!',
+                  icon: 'error',
+                })
               },
             }} // alternatively, use the `events` setting to fetch from a feed
             select={this.handleDateSelect}
