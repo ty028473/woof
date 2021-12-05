@@ -77,6 +77,10 @@ function Member() {
       let res = await axios.post(`${API_URL}/member/updateMember`, formData, {
         withCredentials: true,
       })
+      if (res.data.code === '3000') {
+        // 聊天室用
+        localStorage.setItem('id', JSON.stringify(res.data.member))
+      }
       swal({
         title: '會員資料修改成功',
         text: ' ',
