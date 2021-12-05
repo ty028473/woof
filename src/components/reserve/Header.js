@@ -102,7 +102,7 @@ const HeaderFilter = ({
             </div>
           </div>
 
-          <div className="col-2 ">
+          <div className="col-3 ">
             <div className="input-group">
               <input
                 type="date"
@@ -112,7 +112,7 @@ const HeaderFilter = ({
               />
             </div>
           </div>
-          <div className="col-2 ">
+          <div className="col-3 ">
             <div className="input-group">
               <input
                 type="date"

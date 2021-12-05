@@ -136,21 +136,6 @@ class ViewApp extends React.Component {
       title: clickInfo.event.title,
     })
     clickInfo.el.style.backgroundColor = '#51535b'
-
-    // renderSidebarEvent((event) => {
-    //   return (
-    //     <li key={event.id}>
-    //       <b>
-    //         {formatDate(event.start, {
-    //           year: 'numeric',
-    //           month: 'short',
-    //           day: 'numeric',
-    //         })}
-    //       </b>
-    //       <i>{event.title}</i>
-    //     </li>
-    //   )
-    // })
   }
 
   handleEvents = (events) => {

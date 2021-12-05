@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import userGlobal from '../../styles/user-global.module.scss'
 
 function AsideNavbarSitter() {
-  let account = JSON.parse(localStorage.getItem('member')).member.email
+  let name = JSON.parse(localStorage.getItem('member')).member.name
   return (
     <>
       <div className="row flex-column text-center">
@@ -18,7 +18,7 @@ function AsideNavbarSitter() {
         </div>
         <div className="col">
           <ul className={userGlobal.list_styled}>
-            <li className="p-0">{account}</li>
+            <li className="p-0">{name}</li>
             <li className="p-0">保母會員中心</li>
           </ul>
         </div>
