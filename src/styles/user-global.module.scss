@@ -92,6 +92,21 @@
 // album用
 .album_card {
   width: 18rem;
+  position: relative;
+}
+
+.test {
+  background: rgba(8, 123, 220, 0.7);
+  text-align: center;
+  line-height: 120px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  transition: 2s;
+}
+.test:hover {
+  background: rgba(8, 123, 220, 1);
 }
 
 // pet用

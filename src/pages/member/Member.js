@@ -237,19 +237,7 @@ function Member() {
                 </div>
                 <div className="col-4 text-center">
                   <div>
-                    {/* {uploadImage ? (
-                      <img
-                        src={preview}
-                        className={userGlobal.img_cover_lg}
-                        alt="會員大頭像"
-                      />
-                    ) : (
-                      <img
-                        src={`${PUBLIC_URL}${memberData.image}`}
-                        className={userGlobal.img_cover_lg}
-                        alt="會員預設頭像"
-                      />
-                    )} */}
+                    {/* 判斷圖片顯示 */}
                     {showImg}
                     <br />
                     <br />
