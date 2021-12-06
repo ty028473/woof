@@ -13,7 +13,7 @@ function PetsAdd() {
   const [addPetData, setaddPetData] = useState({
     name: '',
     gender: 3,
-    birthday: 1900,
+    birthday: 2010,
     information: '',
     image: '',
   })
@@ -157,7 +157,7 @@ function PetsAdd() {
                           name="birthday"
                           type="number"
                           className="form-control"
-                          min="1900"
+                          min="2010"
                           max="2099"
                           step="1"
                           value={addPetData.birthday}
