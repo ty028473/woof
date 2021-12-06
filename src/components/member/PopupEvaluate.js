@@ -9,9 +9,6 @@ import swal from 'sweetalert'
 import userGlobal from '../../styles/user-global.module.scss'
 
 function Popup(props) {
-  const { oneData } = props
-  console.log('oneData', oneData)
-
   // 控制星星
   const [rating, setRating] = useState(null)
   const [hover, setHover] = useState(null)
@@ -22,10 +19,26 @@ function Popup(props) {
     content: '',
     score: 0,
   })
-  console.log(evaluation)
+  // console.log(evaluation)
+
+  let oneData = JSON.parse(localStorage.getItem('evaluationData'))
+  // console.log('ondeData', oneData)
+  useEffect(() => {
+    async function getOneData() {
+      setEvaluation({
+        ...evaluation,
+        pet_sitter_id: oneData.pet_sitter_id,
+      })
+      // setOneData(oneData)
+    }
+    getOneData()
+  }, [oneData.pet_sitter_id])
 
   function handleChange(e) {
-    setEvaluation({ ...evaluation, [e.target.name]: e.target.value })
+    setEvaluation({
+      ...evaluation,
+      [e.target.name]: e.target.value,
+    })
   }
 
   // 送回後端
@@ -67,19 +80,11 @@ function Popup(props) {
           <div className="row">
             <div className="col-4 text-center">
               <h5 className={userGlobal.title_font}>
-                {oneData && oneData.petSitterName}保母
+                {oneData.petSitterName}保母
               </h5>
-              <div class="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="pet_sitter_id"
-                  name="pet_sitter_id"
-                  value={oneData && oneData.pet_sitter_id}
-                ></input>
-              </div>
+
               <img
-                src={oneData && `${PUBLIC_URL}${oneData.petSitterImage}`}
+                src={`${PUBLIC_URL}${oneData.petSitterImage}`}
                 className={userGlobal.img_cover_square_sm}
                 alt="保母頭像"
               />
@@ -101,14 +106,14 @@ function Popup(props) {
                 className={`${userGlobal.list_styled} ${userGlobal.content_font}`}
               >
                 <br />
-                <li>{oneData && oneData.petName}</li>
+                <li>{oneData.petName}</li>
                 <li>
-                  {oneData && oneData.district}
-                  {oneData && oneData.address}
+                  {oneData.district}
+                  {oneData.address}
                 </li>
-                <li>{oneData && oneData.start}</li>
-                <li>{oneData && oneData.end}</li>
-                <li>{oneData && oneData.price}</li>
+                <li>{oneData.start}</li>
+                <li>{oneData.end}</li>
+                <li>{oneData.price}</li>
               </ul>
             </div>
           </div>

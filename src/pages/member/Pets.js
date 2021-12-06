@@ -152,17 +152,6 @@ function Pets() {
                       }}
                     />
                   </div>
-
-                  {/* <div className="col-3">
-                  <div className="row">
-                    <div className="col text-right">
-                      <FontAwesomeIcon icon={faEdit} size="lg" />
-                    </div>
-                    <div className="col text-left">
-                      <FontAwesomeIcon icon={faTrash} size="lg" />
-                    </div>
-                  </div>
-                </div> */}
                 </div>
               </section>
             )

@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
-import '../../styles/golbal.scss'
-import '../../styles/signup.scss'
+import { useHistory } from 'react-router-dom'
 import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../../components/golbal/Footer'
 import axios from 'axios'
+import swal from 'sweetalert'
 import { API_URL } from '../../configs/Config'
+
+// css
+import '../../styles/golbal.scss'
+import '../../styles/signup.scss'
 
 function Signup() {
   const [signForm, setSignForm] = useState({
@@ -16,7 +20,7 @@ function Signup() {
     birthday: '',
     gender: '',
   })
-
+  let history = useHistory()
   function handleChange(e) {
     setSignForm({ ...signForm, [e.target.name]: e.target.value })
   }
@@ -26,9 +30,43 @@ function Signup() {
     e.preventDefault()
     try {
       // 用 post 送出資料 (member 已經是 json 格式可以直接送出)
-      let req = await axios.post(`${API_URL}/auth/signup`, signForm)
+      let res = await axios.post(`${API_URL}/auth/signup`, signForm)
+      if (res.data.code === '0000') {
+        swal({
+          title: res.data.message,
+          text: ' ',
+          icon: 'success',
+          buttons: false,
+          timer: 1500,
+        }).then(() => {
+          history.push('/login')
+        })
+      } else if (res.data.code === '0002') {
+        swal({
+          title: res.data.message,
+          text: ' ',
+          icon: 'error',
+          buttons: false,
+          timer: 1500,
+        })
+      }
     } catch (err) {
-      console.log('handleSubmitErr', err)
+      console.log(err.response)
+      // 抓取錯誤訊息
+
+      if (err.response.data.code === '0003') {
+        const errorsData = err.response.data.errors
+        const errorsArray = errorsData.map((v) => v.msg)
+        const errorShow = errorsArray.join(' ')
+
+        swal({
+          title: errorShow,
+          text: ' ',
+          icon: 'error',
+          buttons: false,
+          timer: 1500,
+        })
+      }
     }
   }
 

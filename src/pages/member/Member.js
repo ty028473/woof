@@ -77,6 +77,10 @@ function Member() {
       let res = await axios.post(`${API_URL}/member/updateMember`, formData, {
         withCredentials: true,
       })
+      if (res.data.code === '3000') {
+        // 聊天室用
+        localStorage.setItem('id', JSON.stringify(res.data.member))
+      }
       swal({
         title: '會員資料修改成功',
         text: ' ',
@@ -233,19 +237,7 @@ function Member() {
                 </div>
                 <div className="col-4 text-center">
                   <div>
-                    {/* {uploadImage ? (
-                      <img
-                        src={preview}
-                        className={userGlobal.img_cover_lg}
-                        alt="會員大頭像"
-                      />
-                    ) : (
-                      <img
-                        src={`${PUBLIC_URL}${memberData.image}`}
-                        className={userGlobal.img_cover_lg}
-                        alt="會員預設頭像"
-                      />
-                    )} */}
+                    {/* 判斷圖片顯示 */}
                     {showImg}
                     <br />
                     <br />
