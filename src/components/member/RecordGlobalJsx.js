@@ -11,7 +11,8 @@ function RecordGlobalJsx(props) {
   const { memberRecordData } = props
   console.log('memberRecordData', memberRecordData)
   const [modalShow, setModalShow] = useState(false)
-
+  const [test, setTest] = useState({})
+  console.log('test', test)
   return (
     <>
       {memberRecordData[0].petName === '' ? (
@@ -49,7 +50,7 @@ function RecordGlobalJsx(props) {
                     <li>金額</li>
                   </ul>
                 </div>
-                <div className="col-4 text-left">
+                <div className="col-5 text-left">
                   <ul
                     className={`${userGlobal.list_styled} ${userGlobal.content_font}`}
                   >
@@ -65,33 +66,35 @@ function RecordGlobalJsx(props) {
                   </ul>
                 </div>
                 {v.order_status === 2 && (
-                  <div className={`col-3 ${styles.record_button}`}>
+                  <div className={`col-2 ${styles.record_button}`}>
                     {/* {props.children} */}
-                    <button
-                      type="button"
-                      className={`btn btn-secondary btn-woof-Chat ${styles.record_button_position}`}
-                      onClick={() => {
-                        setModalShow(true)
-                        localStorage.removeItem('evaluationData')
-                        localStorage.setItem(
-                          'evaluationData',
-                          JSON.stringify(v)
-                        )
-                      }}
-                    >
-                      評價
-                    </button>
-                    <PopupEvaluate
-                      show={modalShow}
-                      onHide={() => setModalShow(false)}
-                    />
+                    {console.log('v', v.evaluation_states)}
+                    {v.evaluation_states === 0 && (
+                      <div>
+                        <button
+                          type="button"
+                          className={`btn btn-secondary btn-woof-Chat ${styles.record_button_position}`}
+                          onClick={() => {
+                            setModalShow(true)
+                            setTest(v)
+                          }}
+                        >
+                          評價
+                        </button>
+                        <PopupEvaluate
+                          test={test}
+                          show={modalShow}
+                          onHide={() => setModalShow(false)}
+                        />
+                      </div>
+                    )}
                   </div>
                 )}
                 {v.order_status === 1 && (
-                  <div className={`col-3 ${styles.record_button}`}>
+                  <div className={`col-2 ${styles.record_button}`}>
                     {/* {props.children} */}
                     <button
-                      className={`btn btn-primary btn-woof ${styles.record_button_position_01}`}
+                      className={`btn btn-primary btn-woof ${styles.record_button_position}`}
                       onClick={async () => {
                         try {
                           let res = await axios.post(
@@ -118,7 +121,7 @@ function RecordGlobalJsx(props) {
                       完成
                     </button>
                     <button
-                      className={`btn btn-info btn-woof ${styles.record_button_position}`}
+                      className={`btn btn-info btn-woof ${styles.record_button_position_01}`}
                       onClick={async () => {
                         try {
                           let res = await axios.post(
