@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 // css
 import styles from '../../styles/record.module.scss'
 
-function RecordNavbar(props) {
+function PetSitterRecordNavbar(props) {
   // const [handleColor, setHandleColor] = props
   // console.log('0', props)
 
@@ -17,7 +17,7 @@ function RecordNavbar(props) {
             <li>
               <Link
                 exact
-                to="/member/record/carryout"
+                to="/petsitter/record/carryout"
                 // className={handleColor && styles.control_nav}
                 onClick={() => {
                   // setHandleColor(true)
@@ -31,7 +31,7 @@ function RecordNavbar(props) {
             <li>
               <Link
                 exact
-                to="/member/record/complete"
+                to="/petsitter/record/complete"
                 // className={handleColor1 && styles.control_nav}
                 onClick={() => {
                   // setHandleColor(false)
@@ -45,7 +45,7 @@ function RecordNavbar(props) {
             <li>
               <Link
                 exact
-                to="/member/record/cancel"
+                to="/petsitter/record/cancel"
                 // className={handleColor2 && styles.control_nav}
                 onClick={() => {
                   // setHandleColor(false)
@@ -63,4 +63,4 @@ function RecordNavbar(props) {
   )
 }
 
-export default RecordNavbar
+export default PetSitterRecordNavbar

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import GlobalJsx from '../../components/member/GlobalJsx'
 import axios from 'axios'
 import swal from 'sweetalert'
@@ -69,6 +69,26 @@ function PetSitter() {
       console.log(err)
     }
   }
+
+  // 判斷圖片顯示
+  let showImg
+  if (typeof petSitterData.image === 'object') {
+    showImg = (
+      <img
+        src="/images/person/noAvatar.png"
+        className={userGlobal.img_cover_lg}
+        alt="會員預設頭像"
+      />
+    )
+  } else {
+    showImg = (
+      <img
+        src={`${PUBLIC_URL}${petSitterData.image}`}
+        className={userGlobal.img_cover_lg}
+        alt="會員預設頭像"
+      />
+    )
+  }
   return (
     <>
       <GlobalJsx>
@@ -89,7 +109,7 @@ function PetSitter() {
                   <ul
                     className={`${userGlobal.list_styled} ${userGlobal.title_font}`}
                   >
-                    <li className="my-4">
+                    {/* <li className="my-4">
                       <label htmlFor="email">帳號</label>
                     </li>
                     <li className="my-4">
@@ -103,7 +123,7 @@ function PetSitter() {
                     </li>
                     <li className="my-4">
                       <label htmlFor="birthday">生日</label>
-                    </li>
+                    </li> */}
                     <li className="my-4">
                       <label htmlFor="district">居住區</label>
                     </li>
@@ -120,7 +140,7 @@ function PetSitter() {
                 </div>
                 <div className="col-6">
                   <ul className={userGlobal.list_styled}>
-                    <li className="my-4">
+                    {/* <li className="my-4">
                       <div className="from-group">
                         <input
                           id="email"
@@ -174,7 +194,7 @@ function PetSitter() {
                           value={petSitterData.birthday}
                         />
                       </div>
-                    </li>
+                    </li> */}
                     <li className="my-4">
                       <div className="from-group row">
                         <label
@@ -237,7 +257,7 @@ function PetSitter() {
                           className="form-control"
                           id="introduction"
                           name="introduction"
-                          rows="5"
+                          rows="2"
                           value={petSitterData.introduction}
                           onChange={handleChange}
                         ></textarea>
@@ -248,11 +268,8 @@ function PetSitter() {
                 </div>
                 <div className="col-4 text-center">
                   <div>
-                    <img
-                      src={`${PUBLIC_URL}${petSitterData.image}`}
-                      className={userGlobal.img_cover_lg}
-                      alt="會員大頭像"
-                    />
+                    {/* 判斷圖片顯示 */}
+                    {showImg}
                   </div>
                 </div>
               </div>
@@ -265,15 +282,17 @@ function PetSitter() {
             <div className={`row text-center p-5 ${styles.record_block}`}>
               <div className="col">
                 <h5>訂單筆數</h5>
-                <h5>5</h5>
+                <h5>{petSitterData.orderTimes}</h5>
               </div>
               <div className={`col ${styles.divider}`}>
                 <h5>累積金額</h5>
-                <h5>4200</h5>
+                <h5>{petSitterData.totalPrice}</h5>
               </div>
               <div className="col">
                 <h5>評價</h5>
-                <h5>4.2(90)</h5>
+                <h5>
+                  {petSitterData.avgScore}({petSitterData.evaluationTimes})
+                </h5>
               </div>
             </div>
           </div>

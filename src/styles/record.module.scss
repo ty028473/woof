@@ -28,6 +28,13 @@ $right_navbar_hover_color: #087bdc;
   }
 }
 
+.control_nav {
+  color: $right_navbar_hover_color;
+  text-decoration: solid $right_navbar_hover_color underline;
+  text-underline-offset: 20px;
+  text-decoration-thickness: 5px;
+}
+
 .record_button {
   position: relative;
 
@@ -38,7 +45,7 @@ $right_navbar_hover_color: #087bdc;
   }
   .record_button_position_01 {
     position: absolute;
-    bottom: 0;
-    right: 100px;
+    top: 0px;
+    right: 30px;
   }
 }

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import NavBar from '../golbal/NavBar'
 import NewNavBar from '../../components/golbal/NewNavBar'
 import Footer from '../golbal/Footer'
 import AsideNavbar from './AsideNavbar'
 import AsideNavbarSitter from './AsideNavbarSitter'
 import RecordNavbar from './RecordNavbar'
+import PetSitterRecordNavbar from './PetSitterRecordNavbar'
 import { withRouter } from 'react-router-dom'
 // css
 import userGlobal from '../../styles/user-global.module.scss'
@@ -14,9 +14,17 @@ function GlobalJsx(props) {
   const splitUrl = props.match.url.split('/')
   const userExistUrl = splitUrl.indexOf('member')
 
+  const petSitterExistUrl = splitUrl.indexOf('petsitter')
+
   // 判斷要不要顯示RecordNavbar
   const recordExistUrl = splitUrl.indexOf('record')
 
+  let handleRecordNavbar
+  if (recordExistUrl > 0 && userExistUrl >= 0) {
+    handleRecordNavbar = <RecordNavbar />
+  } else if (recordExistUrl > 0 && petSitterExistUrl >= 0) {
+    handleRecordNavbar = <PetSitterRecordNavbar />
+  }
   return (
     <>
       {/* navbar區塊 */}
@@ -32,7 +40,7 @@ function GlobalJsx(props) {
           {/* 右側content */}
           <main className="col-10">
             {/*判斷要不要顯示RecordNavbar*/}
-            {recordExistUrl > 0 && <RecordNavbar />}
+            {handleRecordNavbar}
             {/*功能區塊*/}
             <div className={`shadow ${userGlobal.frame}`}>{props.children}</div>
           </main>
