@@ -39,14 +39,14 @@ function RecordComplete() {
     <>
       <GlobalJsx>
         <RecordGlobalJsx memberRecordData={memberRecordData}>
-          <button
+          {/* <button
             type="button"
             className={`btn btn-secondary btn-woof-Chat ${styles.record_button_position}`}
             onClick={() => setModalShow(true)}
           >
             評價
           </button>
-          <PopupEvaluate show={modalShow} onHide={() => setModalShow(false)} />
+          <PopupEvaluate show={modalShow} onHide={() => setModalShow(false)} /> */}
         </RecordGlobalJsx>
       </GlobalJsx>
     </>

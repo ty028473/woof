@@ -39,6 +39,8 @@ function Jointext() {
         icon: 'success',
         buttons: false,
         timer: 2000,
+      }).then(() => {
+        localStorage.setItem('member', JSON.stringify(res.data))
       })
     } catch (err) {
       console.log(err)

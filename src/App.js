@@ -32,11 +32,17 @@ import Collection from './pages/member/Collection'
 //保母會員
 import Album from './pages/petSitter/Album'
 import Schedule from './pages/petSitter/Schedule'
+
+// 保母 --> 訂單紀錄頁面
+import PetSitterRecordCarryOut from './pages/petSitter/PetSitterRecordCarryOut'
+import PetSitterRecordComplete from './pages/petSitter/PetSitterRecordComplete'
+import PetSitterRecordCancel from './pages/petSitter/PetSitterRecordCancel'
+
 //預約系統
 import ReserveMap from './pages/reserve_map/ReserveMap'
 
 import PetSitter from './pages/petSitter/PetSitter'
-import PetSitterRecord from './pages/petSitter/PetSitterRecord'
+
 import Chatroom from './pages/chatroom/Chatroom'
 
 import { UserContext } from './contexts/UserContext'
@@ -108,6 +114,15 @@ function App() {
           <Route path="/member">
             <Member />
           </Route>
+          <Route path="/petsitter/record/carryout">
+            <PetSitterRecordCarryOut />
+          </Route>
+          <Route path="/petsitter/record/complete">
+            <PetSitterRecordComplete />
+          </Route>
+          <Route path="/petsitter/record/cancel">
+            <PetSitterRecordCancel />
+          </Route>
           <Route path="/petsitter/schedule">
             <Schedule />
           </Route>
@@ -117,9 +132,7 @@ function App() {
           <Route path="/petsitter">
             <PetSitter />
           </Route>
-          <Route path="/petsitterrecord">
-            <PetSitterRecord />
-          </Route>
+
           <Route path="/chatroom">
             <Chatroom />
           </Route>
