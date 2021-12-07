@@ -141,7 +141,7 @@ function Album() {
                                 buttons: false,
                                 timer: 1500,
                               }).then(() => {
-                                setAlbum(album.splice(index, 1))
+                                window.location.reload()
                               })
                             } catch (err) {
                               console.log(err)
