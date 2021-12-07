@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { API_URL } from '../../configs/Config'
+import { PUBLIC_URL } from '../../configs/Config'
 
 function Board(props) {
   const { personalData } = props
@@ -13,7 +14,8 @@ function Board(props) {
       async function album() {
         try {
           let res = await axios.get(
-            `${API_URL}/reserve/album/${personalData.pet_sitter_id}`
+            `${API_URL}/reserve/album/${personalData.pet_sitter_id}`,
+            { withCredentials: true }
           )
           setPetsitterAlbum(res.data)
           console.log(res.data)
@@ -42,7 +44,7 @@ function Board(props) {
           {petsitterAlbum.map((m) => (
             <div className="col-4  board-pic d-flex justify-content-center">
               <img
-                src={m.image}
+                src={PUBLIC_URL + m.image}
                 alt="img"
                 class="img-thumbnail img-fluid m-2 "
               />
