@@ -8,12 +8,12 @@ import swal from 'sweetalert'
 // css
 import userGlobal from '../../styles/user-global.module.scss'
 
-function Popup(props) {
+function PopupEvaluate(props) {
   // 控制星星
   const [rating, setRating] = useState(null)
   const [hover, setHover] = useState(null)
-  const { test } = props
-  // console.log('ondData', oneData)
+  const { oneData, oneDataIndex, memberRecord, setMemberRecord, onHide } = props
+
   // 資料
   const [evaluation, setEvaluation] = useState({
     pet_sitter_id: 0,
@@ -25,13 +25,12 @@ function Popup(props) {
     async function getOneData() {
       setEvaluation({
         ...evaluation,
-        pet_sitter_id: test.pet_sitter_id,
-        id: test.id,
+        pet_sitter_id: oneData.pet_sitter_id,
+        id: oneData.id,
       })
-      // setOneData(oneData)
     }
     getOneData()
-  }, [test])
+  }, [oneData])
 
   function handleChange(e) {
     setEvaluation({
@@ -57,13 +56,27 @@ function Popup(props) {
         icon: 'success',
         buttons: false,
         timer: 1000,
+      }).then(() => {
+        onCancelClick()
+        let updateMemberRecord = [...memberRecord]
+        updateMemberRecord[oneDataIndex] = { ...oneData, evaluation_states: 1 }
+        setMemberRecord(updateMemberRecord)
       })
-      setEvaluation({ ...evaluation, content: '', score: 0 })
-      setHover(null)
-      setRating(null)
     } catch (err) {
       console.log(err)
     }
+  }
+
+  function setDataZero() {
+    setEvaluation({ ...evaluation, content: '', score: 0 })
+    setHover(null)
+    setRating(null)
+  }
+
+  // 取消按鈕
+  function onCancelClick() {
+    onHide()
+    setDataZero()
   }
   return (
     <Modal
@@ -82,11 +95,11 @@ function Popup(props) {
           <div className="row">
             <div className="col-4 text-center">
               <h5 className={userGlobal.title_font}>
-                {test.petSitterName}保母
+                {oneData.petSitterName}保母
               </h5>
 
               <img
-                src={`${PUBLIC_URL}${test.petSitterImage}`}
+                src={`${PUBLIC_URL}${oneData.petSitterImage}`}
                 className={userGlobal.img_cover_square_sm}
                 alt="保母頭像"
               />
@@ -108,14 +121,14 @@ function Popup(props) {
                 className={`${userGlobal.list_styled} ${userGlobal.content_font}`}
               >
                 <br />
-                <li>{test.petName}</li>
+                <li>{oneData.petName}</li>
                 <li>
-                  {test.district}
-                  {test.address}
+                  {oneData.district}
+                  {oneData.address}
                 </li>
-                <li>{test.start}</li>
-                <li>{test.end}</li>
-                <li>{test.price}</li>
+                <li>{oneData.start}</li>
+                <li>{oneData.end}</li>
+                <li>{oneData.price}</li>
               </ul>
             </div>
           </div>
@@ -177,7 +190,7 @@ function Popup(props) {
           <button
             type="button"
             className="btn btn-info btn-woof"
-            onClick={props.onHide}
+            onClick={onCancelClick}
           >
             取消
           </button>
@@ -188,4 +201,4 @@ function Popup(props) {
   )
 }
 
-export default Popup
+export default PopupEvaluate
