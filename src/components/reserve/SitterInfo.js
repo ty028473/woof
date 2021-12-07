@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { PUBLIC_URL } from '../../configs/Config'
 import { Link } from 'react-router-dom'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,7 +10,11 @@ const SitterInfo = ({ item }) => {
     <div className="container  mb-4">
       <div key={item.id} className="row mb-2">
         <div className="col-5">
-          <img className="sitter-img" src={item.image} alt={'img'} />
+          <img
+            className="sitter-img"
+            src={PUBLIC_URL + item.image}
+            alt={'img'}
+          />
         </div>
         <div className="col-7">
           <h5 className="sitter-title">{item.name}</h5>
