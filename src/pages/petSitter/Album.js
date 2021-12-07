@@ -16,21 +16,16 @@ function Album() {
   })
   const fileInputRef = useRef()
   const [album, setAlbum] = useState([])
-  const [controlDisplay, setControlDisplay] = useState([])
-  // console.log('albumData', albumData)
-  console.log('album', album)
-  console.log('controlDisplay', controlDisplay)
+
   // 抓取相簿資料
   useEffect(() => {
     async function getAlbumData() {
       let res = await axios.get(`${API_URL}/petSitter/getAlbum`, {
         withCredentials: true,
       })
-      setAlbum(res.data)
-
       // 加一個控制display顯示的key
       let addDisplay = res.data.map((v) => ({ ...v, display: 'd-none' }))
-      setControlDisplay(addDisplay)
+      setAlbum(addDisplay)
     }
     getAlbumData()
   }, [album.length])
@@ -94,25 +89,21 @@ function Album() {
           <hr />
           <section>
             <div className="mt-3 d-flex flex-wrap justify-content-center">
-              {controlDisplay.length > 0 ? (
-                controlDisplay.map((v, index) => {
+              {album.length > 0 ? (
+                album.map((v, index) => {
                   return (
                     <div
-                      style={{
-                        transition:
-                          'background 500ms, padding 500ms, width 500ms, border 500ms',
-                      }}
                       className={`card m-3 ${userGlobal.album_card}`}
                       key={v.id}
                       onMouseEnter={() => {
-                        const changeDisplay = [...controlDisplay]
+                        const changeDisplay = [...album]
                         changeDisplay[index].display = 'd-block'
-                        setControlDisplay(changeDisplay)
+                        setAlbum(changeDisplay)
                       }}
                       onMouseLeave={() => {
-                        const changeDisplay = [...controlDisplay]
+                        const changeDisplay = [...album]
                         changeDisplay[index].display = 'd-none'
-                        setControlDisplay(changeDisplay)
+                        setAlbum(changeDisplay)
                       }}
                     >
                       <img
@@ -141,7 +132,9 @@ function Album() {
                                 buttons: false,
                                 timer: 1500,
                               }).then(() => {
-                                window.location.reload()
+                                let deleteAlbum = [...album]
+                                deleteAlbum.splice(index, 1)
+                                setAlbum(deleteAlbum)
                               })
                             } catch (err) {
                               console.log(err)

@@ -12,8 +12,8 @@ function Popup(props) {
   // 控制星星
   const [rating, setRating] = useState(null)
   const [hover, setHover] = useState(null)
-  const { test } = props
-  // console.log('ondData', oneData)
+  const { test, setTest, onHide } = props
+
   // 資料
   const [evaluation, setEvaluation] = useState({
     pet_sitter_id: 0,
@@ -28,7 +28,6 @@ function Popup(props) {
         pet_sitter_id: test.pet_sitter_id,
         id: test.id,
       })
-      // setOneData(oneData)
     }
     getOneData()
   }, [test])
@@ -57,13 +56,25 @@ function Popup(props) {
         icon: 'success',
         buttons: false,
         timer: 1000,
+      }).then(() => {
+        onCancelClick()
+        setTest({ ...test, evaluation_states: 1 })
       })
-      setEvaluation({ ...evaluation, content: '', score: 0 })
-      setHover(null)
-      setRating(null)
     } catch (err) {
       console.log(err)
     }
+  }
+
+  function setDataZero() {
+    setEvaluation({ ...evaluation, content: '', score: 0 })
+    setHover(null)
+    setRating(null)
+  }
+
+  // 取消按鈕
+  function onCancelClick() {
+    onHide()
+    setDataZero()
   }
   return (
     <Modal
@@ -177,7 +188,7 @@ function Popup(props) {
           <button
             type="button"
             className="btn btn-info btn-woof"
-            onClick={props.onHide}
+            onClick={onCancelClick}
           >
             取消
           </button>

@@ -83,6 +83,7 @@ function RecordGlobalJsx(props) {
                         </button>
                         <PopupEvaluate
                           test={test}
+                          setTest={setTest}
                           show={modalShow}
                           onHide={() => setModalShow(false)}
                         />
