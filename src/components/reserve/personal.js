@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import '../../styles/calender.scss'
 import { faStar, faMapMarker } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { PUBLIC_URL } from '../../configs/Config'
 
 function SitterDetail(props) {
   const { personalData, setPersonalData } = props
@@ -15,7 +16,7 @@ function SitterDetail(props) {
             <td>
               <img
                 className="profile-img-cover"
-                src={personalData && personalData.image}
+                src={personalData && PUBLIC_URL + personalData.image}
                 alt="img"
               />
             </td>

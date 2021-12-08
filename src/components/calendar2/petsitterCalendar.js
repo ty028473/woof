@@ -69,7 +69,7 @@ class DemoApp extends React.Component {
                 // alert('未連結到後端資料庫')
                 swal({
                   title: '失敗!',
-                  text: '未連結到後端資料庫!',
+                  text: '未連結保母資訊!',
                   icon: 'error',
                 })
               },
