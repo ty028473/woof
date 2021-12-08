@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import swal from 'sweetalert'
 import { API_URL } from '../../configs/Config'
@@ -13,6 +14,7 @@ function Jointext() {
     address: '',
     ID_number: '',
   })
+  let history = useHistory()
 
   // 表單更新資料
   function handleChange(e) {
@@ -38,10 +40,11 @@ function Jointext() {
         text: ' ',
         icon: 'success',
         buttons: false,
-        timer: 2000,
+        timer: 1500,
       }).then(() => {
         localStorage.setItem('member', JSON.stringify(res.data))
         localStorage.setItem('id', JSON.stringify(res.data.member))
+        history.push('/member')
       })
     } catch (err) {
       console.log(err)

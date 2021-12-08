@@ -40,10 +40,9 @@ function Login() {
         }).then(() => {
           let user = JSON.parse(localStorage.getItem('id'))
 
-          if(user.image==null){
+          if (user.image == null) {
             history.push('/member')
-
-          }else{
+          } else {
             history.push('/')
           }
         })
@@ -83,7 +82,15 @@ function Login() {
         withCredentials: true,
       })
 
-      if (res.data.code === '1001') {
+      if (res.data.code === '1003') {
+        return swal({
+          title: '請輸入帳號',
+          text: ' ',
+          icon: 'error',
+          buttons: false,
+          timer: 1500,
+        })
+      } else if (res.data.code === '1001') {
         // 聊天室用
         localStorage.setItem('id', JSON.stringify(res.data.member))
 
@@ -95,7 +102,7 @@ function Login() {
           text: ' ',
           icon: 'success',
           buttons: false,
-          timer: 2000,
+          timer: 1500,
         }).then(() => {
           history.push('/')
         })
@@ -105,7 +112,7 @@ function Login() {
           text: ' ',
           icon: 'error',
           buttons: false,
-          timer: 2000,
+          timer: 1500,
         })
       }
     } catch (err) {
