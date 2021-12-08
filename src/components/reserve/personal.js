@@ -15,7 +15,7 @@ function SitterDetail(props) {
           <tr key={personalData && personalData.id}>
             <td>
               <img
-                className="profile-img-cover "
+                className="profile-img-cover"
                 src={personalData && PUBLIC_URL + personalData.image}
                 alt="img"
               />
