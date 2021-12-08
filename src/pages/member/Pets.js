@@ -53,7 +53,7 @@ function Pets() {
         <hr />
         {/*功能區塊*/}
 
-        {petData[0].name === '' ? (
+        {petData.length === 0 || petData[0].name === '' ? (
           <section>
             <div className={`row align-items-center ${userGlobal.no_data}`}>
               <div className="col text-center">
@@ -62,7 +62,7 @@ function Pets() {
             </div>
           </section>
         ) : (
-          petData.map((v) => {
+          petData.map((v, index) => {
             // 顯示性別
             let handleGender
             if (v.gender === 1) {
@@ -136,6 +136,7 @@ function Pets() {
                               withCredentials: true,
                             }
                           )
+
                           swal({
                             title: '寵物刪除成功',
                             text: ' ',
@@ -143,8 +144,10 @@ function Pets() {
                             buttons: false,
                             timer: 1000,
                           }).then(() => {
-                            let index = petData.indexOf(v)
-                            setPetData(petData.splice(index, 1))
+                            let deletePet = [...petData]
+                            deletePet.splice(index, 1)
+                            console.log('index', index)
+                            setPetData(deletePet)
                           })
                         } catch (err) {
                           console.log(err)

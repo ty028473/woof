@@ -14,7 +14,8 @@ function Board(props) {
       async function album() {
         try {
           let res = await axios.get(
-            `${API_URL}/reserve/album/${personalData.pet_sitter_id}`
+            `${API_URL}/reserve/album/${personalData.pet_sitter_id}`,
+            { withCredentials: true }
           )
           setPetsitterAlbum(res.data)
           console.log(res.data)

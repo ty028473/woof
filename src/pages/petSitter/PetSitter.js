@@ -282,16 +282,22 @@ function PetSitter() {
             <div className={`row text-center p-5 ${styles.record_block}`}>
               <div className="col">
                 <h5>訂單筆數</h5>
-                <h5>{petSitterData.orderTimes}</h5>
+                <h5>
+                  {petSitterData.orderTimes ? petSitterData.orderTimes : 0}
+                </h5>
               </div>
               <div className={`col ${styles.divider}`}>
                 <h5>累積金額</h5>
-                <h5>{petSitterData.totalPrice}</h5>
+                <h5>
+                  {petSitterData.orderTimes ? petSitterData.totalPrice : 0}
+                </h5>
               </div>
               <div className="col">
                 <h5>評價</h5>
                 <h5>
-                  {petSitterData.avgScore}({petSitterData.evaluationTimes})
+                  {petSitterData.orderTimes ? petSitterData.avgScore : 0}(
+                  {petSitterData.orderTimes ? petSitterData.evaluationTimes : 0}
+                  )
                 </h5>
               </div>
             </div>

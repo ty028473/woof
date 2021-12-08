@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PopupEvaluate from '../../components/member/PopupEvaluate'
 import axios from 'axios'
 import swal from 'sweetalert'
@@ -8,14 +8,18 @@ import styles from '../../styles/record.module.scss'
 import userGlobal from '../../styles/user-global.module.scss'
 
 function RecordGlobalJsx(props) {
-  const { memberRecordData } = props
-  console.log('memberRecordData', memberRecordData)
+  const [memberRecord, setMemberRecord] = useState([])
   const [modalShow, setModalShow] = useState(false)
-  const [test, setTest] = useState({})
-  console.log('test', test)
+  const [oneData, setOneData] = useState({})
+  const [oneDataIndex, setOneDataIndex] = useState(0)
+
+  useEffect(() => {
+    setMemberRecord(props.memberRecordData)
+  }, [props])
+  console.log('memberRecord', memberRecord)
   return (
     <>
-      {memberRecordData[0].petName === '' ? (
+      {memberRecord.length <= 0 || memberRecord[0].petSitterName === '' ? (
         <section>
           <div className={`row align-items-center ${userGlobal.no_data}`}>
             <div className="col text-center">
@@ -24,7 +28,7 @@ function RecordGlobalJsx(props) {
           </div>
         </section>
       ) : (
-        memberRecordData.map((v) => {
+        memberRecord.map((v, index) => {
           return (
             <section className="m-3" key={v.id}>
               <div className={`row ${userGlobal.data_block}`}>
@@ -76,13 +80,17 @@ function RecordGlobalJsx(props) {
                           className={`btn btn-secondary btn-woof-Chat ${styles.record_button_position}`}
                           onClick={() => {
                             setModalShow(true)
-                            setTest(v)
+                            setOneData(v)
+                            setOneDataIndex(index)
                           }}
                         >
                           評價
                         </button>
                         <PopupEvaluate
-                          test={test}
+                          oneData={oneData}
+                          oneDataIndex={oneDataIndex}
+                          memberRecord={memberRecord}
+                          setMemberRecord={setMemberRecord}
                           show={modalShow}
                           onHide={() => setModalShow(false)}
                         />
