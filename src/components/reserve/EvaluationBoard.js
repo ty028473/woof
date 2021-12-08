@@ -4,6 +4,7 @@ import { faStar, faMapMarker } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { API_URL } from '../../configs/Config'
 import axios from 'axios'
+import { PUBLIC_URL } from '../../configs/Config'
 
 function Evalution(props) {
   const { personalData } = props
@@ -46,7 +47,7 @@ function Evalution(props) {
               <div className="row  m-4 ">
                 <div className="col-2  my-2  ">
                   <img
-                    src={item.image}
+                    src={PUBLIC_URL + item.image}
                     className="evaluation-img-cover"
                     alt="飼主頭像"
                   />
