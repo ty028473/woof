@@ -39,7 +39,7 @@ function NavBar() {
         </Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link className="nav-title" href="/ReserveMap">
-            預約帶遛
+            預約代遛
           </Nav.Link>
           <Nav.Link className="nav-title" href="/about">
             關於我們

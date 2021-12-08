@@ -33,10 +33,10 @@ function AsideNavbarSitter() {
             <Link to="/petsitter/schedule">工作排程管理</Link>
           </li>
           <li>
-            <Link to="/petsitter/record/carryout">訂單紀錄</Link>
+            <Link to="/petsitter/album">保母相簿</Link>
           </li>
           <li>
-            <Link to="/petsitter/album">保母相簿</Link>
+            <Link to="/petsitter/record/carryout">訂單紀錄</Link>
           </li>
         </ul>
       </div>
