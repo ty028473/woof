@@ -4,7 +4,7 @@ import '../../styles/calender.scss'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import { createEventId } from './event-utils'
+
 import { API_URL } from '../../configs/Config'
 import axios from 'axios'
 import swal from 'sweetalert'
@@ -73,26 +73,13 @@ class DemoApp extends React.Component {
                   icon: 'error',
                 })
               },
-            }} // alternatively, use the `events` setting to fetch from a feed
+            }}
             select={this.handleDateSelect}
             eventContent={renderEventContent} // custom render function
-            eventDrop={(info) => {
-              //<--- see from here
-              const { start, end } = info.oldEvent._instance.range
-              console.log(start, end)
-              const { start: newStart, end: newEnd } =
-                info.event._instance.range
-              console.log(newStart, newEnd)
-              if (new Date(start).getDate() === new Date(newStart).getDate()) {
-                info.revert()
-              }
-            }}
             eventClick={this.handleEventClick}
-            eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
-            /* you can update a remote database when these fire:*/
-
+            eventsSet={this.handleEvents}
+            //事件新增刪除
             eventAdd={(event) => this.handleEventAdd(event)}
-            // eventChange={(event) => this.handleEventDrop(event)}
             eventRemove={(event) => this.handleEventRemove(event)}
           />
         </div>
@@ -120,7 +107,6 @@ class DemoApp extends React.Component {
     if (title) {
       let sitter = JSON.parse(localStorage.getItem('id'))
       calendarApi.addEvent({
-        id: createEventId(),
         pet_sitter_id: sitter.petSitterId,
         title,
         start: selectInfo.startStr,

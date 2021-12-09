@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../styles/calender.scss'
-import { faStar, faMapMarker } from '@fortawesome/free-solid-svg-icons'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { API_URL } from '../../configs/Config'
 import axios from 'axios'
