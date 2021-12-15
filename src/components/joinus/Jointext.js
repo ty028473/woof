@@ -132,9 +132,14 @@ function Jointext() {
                     className="form-check-input"
                     id="exampleCheck1"
                   />
-                  <label className="form-check-label" for="exampleCheck1">
+                  <a href="#/">
+                    <label className="form-check-label" for="exampleCheck1">
+                      我遵守網站守則
+                    </label>
+                  </a>
+                  {/* <label className="form-check-label" for="exampleCheck1">
                     我遵守網站守則
-                  </label>
+                  </label> */}
                 </div>
                 <div className=" mt-4 d-flex  align-items-center">
                   <button className=" btn btn-primary btn-woof jsbtn">
