@@ -1,0 +1,32 @@
+$block-radious: 20px;
+$block-background: #fff;
+$background-color: #f4f4f5;
+
+.signup-bg-block {
+  width: 100%;
+  height: 700px;
+  background-color: $block-background;
+  border-radius: $block-radious;
+  margin: 30px auto;
+}
+
+.signup-img {
+  width: 115%;
+  padding-top: 70px;
+}
+
+.signup-block {
+  width: 500px;
+  height: 600px;
+  border-radius: $block-radious;
+  background-color: $background-color;
+  margin: auto;
+}
+
+.signup-list-styled {
+  padding: 20px;
+}
+.signup-list-styled li {
+  list-style-type: none;
+  margin-bottom: 20px;
+}

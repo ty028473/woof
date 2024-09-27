@@ -1,0 +1,16 @@
+// 會員&保母都要用到
+$border-color: #c7c7c7;
+
+.record_block {
+  border: 3px solid $border-color;
+  border-radius: 20px;
+}
+
+.divider {
+  border-right: 3px solid $border-color;
+  border-left: 3px solid $border-color;
+}
+
+.font_color {
+  color: #51535b;
+}

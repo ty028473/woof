@@ -1,0 +1,123 @@
+// 變數覆蓋需要在導入Bootstrap的Sass檔案之前
+// 參考Bootstrap的 _variables.scss
+
+// 主要5色
+$primary: #087bdc;
+$secondary: #fac42e;
+$success: #6ba456;
+$info: #51535b;
+$danger: #d34f4f;
+
+// 主要背景色
+$background-color: #f4f4f5;
+
+// 主要字體色
+$font-color: #51535b;
+
+// 按鈕
+$btn-font-color: #fff; //按鈕白字(聊聊按鈕就不用套這個)
+$button-radious: 50px;
+
+// 導入bootstrap所有的樣式與預設變數
+@import '~bootstrap/scss/bootstrap.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+  //使用font-wight可調整粗細
+  // 300: light
+  // 400: regular
+  // 500: medium
+  // 700: bold
+  font-weight: 400;
+  font-family: 'Noto Sans TC', sans-serif;
+  color: $font-color;
+  background-color: $background-color;
+}
+
+// 彈跳視窗背景
+.background-pop {
+  background-color: rgba(225, 225, 225, 40%);
+  filter: blur(10px);
+}
+
+// 按鈕樣式
+.btn-woof {
+  border-radius: $button-radious;
+  color: $btn-font-color !important;
+  &:hover,
+  &:active,
+  &:active {
+    border-radius: $button-radious;
+    color: $btn-font-color !important;
+  }
+}
+.btn-woof-Chat {
+  border-radius: $button-radious;
+}
+// 陰影
+.shadow {
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 5%);
+}
+
+//icon大小
+.icon-btn {
+  border: none;
+  font-size: 20px;
+}
+
+// 文字相關
+h1 {
+  font-size: 40px;
+  line-height: 1.3em;
+}
+h2 {
+  font-size: 32px;
+  line-height: 1.3em;
+}
+h3 {
+  font-size: 26px;
+  line-height: 1.4em;
+}
+h4 {
+  font-size: 24px;
+  line-height: 1.4em;
+}
+h5 {
+  font-size: 20px;
+  line-height: 1.5em;
+}
+h6 {
+  font-size: 16px;
+  line-height: 1.5em;
+}
+p {
+  font-size: 18px;
+  line-height: 1.5em;
+}
+
+.icon-btn {
+  border: none;
+  font-size: 20px;
+}
+
+hr {
+  margin: 0;
+  border: 1px solid #c7c7c7;
+  background: #c7c7c7;
+}
+
+// 聊天室按鈕
+
+.chat-button {
+  color: $info;
+  width: 140px;
+  height: 50px;
+  border-radius: 10px 10px 0 0;
+  background-color: $secondary;
+  position: fixed;
+  right: 100px;
+  bottom: 0;
+  z-index: 3;
+  padding-top: 10px;
+}
